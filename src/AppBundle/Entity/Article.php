@@ -106,16 +106,15 @@ class Article
      */
     protected $content;
 
-
     /**
-     * @var Media
+     * @var \Media
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove", "merge"})
      * @ORM\JoinColumns({
-     *     @ORM\JoinColumn(name="article_image", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="article_image", referencedColumnName="id", nullable=true, onDelete="Set null")
      * })
      */
-    protected $image;
+    private $image;
 
     /**
      * The name of the product.
@@ -449,5 +448,9 @@ class Article
     public function getCategories()
     {
         return $this->categories;
+    }
+    public function __toString()
+    {
+        return $this->title;
     }
 }

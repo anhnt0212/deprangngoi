@@ -63,6 +63,9 @@ class ArticleAdmin extends AbstractAdmin
                 )
 
             ))
+            ->add('image', 'sonata_type_model_list', array(
+                'required' => FALSE
+            ), array('link_parameters' => array('context' => 'article')))
             ->add('categories', 'entity', array(
                 'property' => 'name',
                 'class' => 'AppBundle\Entity\Catelogy',

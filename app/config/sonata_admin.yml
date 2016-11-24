@@ -64,6 +64,13 @@ sonata_admin:
                   items:
                           - jobz_admin.category
                           - jobz_admin.product
+              sonata.admin.group.content:
+                   label:           Medias
+                   label_catalogue: SonataDemoBundle
+                   icon:            '<i class="fa fa-picture-o"></i>'
+                   items:
+                       - sonata.media.admin.media
+                       - sonata.media.admin.gallery
 
     templates:
         user_block:           'SonataAdminBundle:Core:user_block.html.twig'
