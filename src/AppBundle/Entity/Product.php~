@@ -687,4 +687,28 @@ class Product
     {
         return $this->purchasedItems;
     }
+
+    /**
+     * Set alias
+     *
+     * @param string $alias
+     *
+     * @return Product
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
 }

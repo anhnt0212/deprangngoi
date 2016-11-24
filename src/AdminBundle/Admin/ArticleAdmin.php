@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\HttpFoundation\File\File;
 
 class ArticleAdmin extends AbstractAdmin
 {
@@ -77,7 +78,7 @@ class ArticleAdmin extends AbstractAdmin
                     '1' => 'False'
                 ),
             ))
-            ->add('tags', 'collection')
+            ->add('tags', 'collection',[ 'required' => FALSE])
             ->add('createdAt', 'sonata_type_date_picker', array(
                 'label' => 'Created At',
                 'format' => 'yyyy/MM/dd',
@@ -93,8 +94,8 @@ class ArticleAdmin extends AbstractAdmin
             ->add('alias', 'text', [
                 'required' => true,
             ])
-            ->add('metaDescription', 'text')
-            ->add('metaKeyword', 'text')
+            ->add('metaDescription', 'text',[ 'required' => FALSE])
+            ->add('metaKeyword', 'text',['required' => FALSE])
             ->end()
             ->end();
     }

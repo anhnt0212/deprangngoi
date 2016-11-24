@@ -108,23 +108,15 @@ class Article
 
 
     /**
-     * It only stores the name of the image associated with the product.
+     * @var Media
      *
-     * @ORM\Column(type="string", length=255)
-     *
-     * @var string
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinColumns({
+     *     @ORM\JoinColumn(name="article_image", referencedColumnName="id")
+     * })
      */
     protected $image;
 
-    /**
-     * This unmapped property stores the binary contents of the image file
-     * associated with the product.
-     *
-     * @Vich\UploadableField(mapping="article_images", fileNameProperty="image")
-     *
-     * @var File
-     */
-    protected $imageFile;
     /**
      * The name of the product.
      *
@@ -330,21 +322,6 @@ class Article
     }
 
     /**
-     * @param File $image
-     */
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-    }
-
-    /**
-     * @return File
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-    /**
      * Set metaDescription
      *
      * @param string $metaDescription
@@ -393,13 +370,37 @@ class Article
     }
 
     /**
-     * Set image
+     * Set title
      *
-     * @param string $image
+     * @param string $title
      *
      * @return Article
      */
-    public function setImage($image)
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     *
+     * @return Article
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
     {
         $this->image = $image;
 
@@ -409,7 +410,7 @@ class Article
     /**
      * Get image
      *
-     * @return string
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
     public function getImage()
     {
@@ -448,32 +449,5 @@ class Article
     public function getCategories()
     {
         return $this->categories;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Article
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-    public function __toString() {
-        return $this->title;
     }
 }

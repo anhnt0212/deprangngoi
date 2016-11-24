@@ -19,15 +19,12 @@ _sonata_admin:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+# app/config/routing.yml
 
-admin_login:
-    pattern:  /admin/login
-    defaults: { _controller: FOSUserBundle:Security:login }
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
 
-admin_login_check:
-    pattern:  /admin/login_check
-    defaults: { _controller: FOSUserBundle:Security:check }
-
-admin_logout:
-    pattern:  /admin/logout
-    defaults: { _controller: FOSUserBundle:Security:logout }
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
