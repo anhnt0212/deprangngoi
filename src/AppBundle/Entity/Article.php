@@ -98,6 +98,14 @@ class Article
      */
     protected $metaDescription;
 
+    /**
+     * It only stores the name of the image associated with the product.
+     *
+     * @ORM\Column(type="string", length=255,name="image_url")
+     *
+     * @var string
+     */
+    protected $imageUrl;
 
     /**
      * @var text $content
@@ -452,5 +460,29 @@ class Article
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Set imageUrl
+     *
+     * @param string $imageUrl
+     *
+     * @return Article
+     */
+    public function setImageUrl($imageUrl)
+    {
+        $this->imageUrl = $imageUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get imageUrl
+     *
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
     }
 }

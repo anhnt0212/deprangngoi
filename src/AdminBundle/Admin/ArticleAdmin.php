@@ -63,6 +63,7 @@ class ArticleAdmin extends AbstractAdmin
                 )
 
             ))
+            ->add('imageUrl', 'text')
             ->add('image', 'sonata_type_model_list', array(
                 'required' => FALSE
             ), array('link_parameters' => array('context' => 'article')))
