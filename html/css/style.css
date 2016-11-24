@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 /*For menu*/
 
 .navbar, .dropdown-menu{
-    background: rgba(218, 110, 162, 0.69);
+    background: rgb(218, 110, 162);
     border: none;
 
 }
@@ -621,14 +621,33 @@ h1, h2, h3, h4, h5, h6 {
 .px60 {
     height: 60px;
 }
+h3.title-category {
+    text-transform: uppercase;font-size: 18px;margin-left: 5px;font-weight: bold
+}
 
-@media (min-width: 1366px) {
+
+
+/*form*/
+
+
+
+@media (min-width: 1199px)  and (max-width: 1366px) {
     .slide-left,
     .slide-right {
         display: block !important;
+        margin: 0 !important;
+        max-width: 120px !important;
+    }
+
+}
+@media only screen and (min-width: 1366px){
+    .slide-left,
+    .slide-right {
+        display: block !important;
+        margin: 0 !important;
+        max-width: 150px !important;
     }
 }
-
 @media (min-width: 768px) {
     .navbar-nav .dropdown-menu .caret
     {
