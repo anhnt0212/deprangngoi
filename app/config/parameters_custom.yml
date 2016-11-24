@@ -1,0 +1,11 @@
+parameters:
+    database_host: jobzrefer.com
+    database_port: 3306
+    database_name: dep71282_drg
+    database_user: root
+    database_password: jobz
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 06ef48ab9290bed236ca327b1692ea6b2d8d96c2

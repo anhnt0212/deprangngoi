@@ -1,0 +1,32 @@
+
+services:
+    # ...
+    jobz_admin.user:
+        class: AdminBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Tài khoản quản trị }
+    # ...
+    jobz_admin.article:
+        class: AdminBundle\Admin\ArticleAdmin
+        arguments: [~, AppBundle\Entity\Article, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Bài viết }
+
+    jobz_admin.catelogy:
+        class: AdminBundle\Admin\CatelogyAdmin
+        arguments: [~, AppBundle\Entity\Catelogy, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Danh mục bài viết }
+    # ...
+    jobz_admin.category:
+        class: AdminBundle\Admin\CategoryAdmin
+        arguments: [~, AppBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }
+
+    jobz_admin.product:
+        class: AdminBundle\Admin\ProductAdmin
+        arguments: [~, AppBundle\Entity\Product, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Danh mục sản phẩm }

@@ -1,0 +1,33 @@
+app:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:     /
+
+# sonata admin
+
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+# fos_user
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+
+admin_login:
+    pattern:  /admin/login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+admin_login_check:
+    pattern:  /admin/login_check
+    defaults: { _controller: FOSUserBundle:Security:check }
+
+admin_logout:
+    pattern:  /admin/logout
+    defaults: { _controller: FOSUserBundle:Security:logout }

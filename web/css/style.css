@@ -1,0 +1,6 @@
+p.text-center.small {
+    display: none;
+}
+.main-header .logo img {
+    max-width: 30px;
+}
