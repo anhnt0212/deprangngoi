@@ -13,15 +13,13 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Class Product.
  *
  * @author MacFJA
- *
+ * @ORM\Table(name="product")
  * @ORM\Entity
- * @Vich\Uploadable
  */
 class Product
 {
@@ -68,14 +66,14 @@ class Product
     private $image;
 
     /**
-     * This unmapped property stores the binary contents of the image file
-     * associated with the product.
+     * @var \Media
      *
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
-     *
-     * @var File
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove", "merge"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image_feature", referencedColumnName="id", nullable=true, onDelete="Set null")
+     * })
      */
-    private $imageFile;
+    private $imageFeature;
 
     /**
      * The price of the product.
@@ -201,7 +199,10 @@ class Product
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->purchasedItems = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+    public function __toString()
+    {
+        return $this->name;
+    }
     /**
      * Get id
      *
@@ -402,6 +403,30 @@ class Product
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set alias
+     *
+     * @param string $alias
+     *
+     * @return Product
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string
+     */
+    public function getAlias()
+    {
+        return $this->alias;
     }
 
     /**
@@ -621,6 +646,30 @@ class Product
     }
 
     /**
+     * Set imageFeature
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $imageFeature
+     *
+     * @return Product
+     */
+    public function setImageFeature(\Application\Sonata\MediaBundle\Entity\Media $imageFeature = null)
+    {
+        $this->imageFeature = $imageFeature;
+
+        return $this;
+    }
+
+    /**
+     * Get imageFeature
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getImageFeature()
+    {
+        return $this->imageFeature;
+    }
+
+    /**
      * Add category
      *
      * @param \AppBundle\Entity\Category $category
@@ -686,29 +735,5 @@ class Product
     public function getPurchasedItems()
     {
         return $this->purchasedItems;
-    }
-
-    /**
-     * Set alias
-     *
-     * @param string $alias
-     *
-     * @return Product
-     */
-    public function setAlias($alias)
-    {
-        $this->alias = $alias;
-
-        return $this;
-    }
-
-    /**
-     * Get alias
-     *
-     * @return string
-     */
-    public function getAlias()
-    {
-        return $this->alias;
     }
 }

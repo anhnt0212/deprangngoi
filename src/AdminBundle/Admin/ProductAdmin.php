@@ -68,6 +68,10 @@ class ProductAdmin extends AbstractAdmin
                 )
 
             ))
+            ->add('image', 'text')
+            ->add('imageFeature', 'sonata_type_model_list', array(
+                'required' => FALSE
+            ), array('link_parameters' => array('context' => 'product')))
             ->add('categories', 'entity', array(
                 'property' => 'name',
                 'class' => 'AppBundle\Entity\Category',

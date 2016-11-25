@@ -23,7 +23,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * /**
  * @ORM\Entity
  * @ORM\Table(name="article")
- * @Vich\Uploadable
  */
 class Article
 {
@@ -119,10 +118,10 @@ class Article
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove", "merge"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="article_image", referencedColumnName="id", nullable=true, onDelete="Set null")
+     *   @ORM\JoinColumn(name="image_feature", referencedColumnName="id", nullable=true, onDelete="Set null")
      * })
      */
-    private $image;
+    private $imageFeature;
 
     /**
      * The name of the product.
@@ -148,6 +147,11 @@ class Article
     public function __construct()
     {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 
     /**
@@ -353,6 +357,30 @@ class Article
     }
 
     /**
+     * Set imageUrl
+     *
+     * @param string $imageUrl
+     *
+     * @return Article
+     */
+    public function setImageUrl($imageUrl)
+    {
+        $this->imageUrl = $imageUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get imageUrl
+     *
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return $this->imageUrl;
+    }
+
+    /**
      * Set content
      *
      * @param string $content
@@ -401,27 +429,27 @@ class Article
     }
 
     /**
-     * Set image
+     * Set imageFeature
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     * @param \Application\Sonata\MediaBundle\Entity\Media $imageFeature
      *
      * @return Article
      */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    public function setImageFeature(\Application\Sonata\MediaBundle\Entity\Media $imageFeature = null)
     {
-        $this->image = $image;
+        $this->imageFeature = $imageFeature;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get imageFeature
      *
      * @return \Application\Sonata\MediaBundle\Entity\Media
      */
-    public function getImage()
+    public function getImageFeature()
     {
-        return $this->image;
+        return $this->imageFeature;
     }
 
     /**
@@ -456,33 +484,5 @@ class Article
     public function getCategories()
     {
         return $this->categories;
-    }
-    public function __toString()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set imageUrl
-     *
-     * @param string $imageUrl
-     *
-     * @return Article
-     */
-    public function setImageUrl($imageUrl)
-    {
-        $this->imageUrl = $imageUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get imageUrl
-     *
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->imageUrl;
     }
 }

@@ -40,6 +40,11 @@ sonata_media:
               - sonata.media.provider.image
             formats:
                 preview: { width: 800, height: 800, quality: 10}
+        slider:
+            providers:
+              - sonata.media.provider.image
+            formats:
+                preview: { width: 800, height: 800, quality: 10}
     cdn:
         server:
             path: /uploads/media # http://media.sonata-project.org/

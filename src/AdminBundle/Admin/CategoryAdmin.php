@@ -36,6 +36,10 @@ class CategoryAdmin extends AbstractAdmin
                     '0' => 'False'
                 ),
             ))
+            ->add('image_url', 'text')
+            ->add('imageFeature', 'sonata_type_model_list', array(
+                'required' => FALSE
+            ), array('link_parameters' => array('context' => 'category')))
             ->add('parent', 'entity', array(
                 'class' => 'AppBundle:Category',
                 'empty_value' => 'Select Parent',

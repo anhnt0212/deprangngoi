@@ -13,7 +13,6 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Class Category.
@@ -22,7 +21,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="category")
  * @ORM\Entity
- * @Vich\Uploadable
  */
 class Category
 {
@@ -62,15 +60,14 @@ class Category
     protected $image_url;
 
     /**
-     * This unmapped property stores the binary contents of the image file
-     * associated with the category.
+     * @var \Media
      *
-     * @Vich\UploadableField(mapping="category_images", fileNameProperty="image_url")
-     *
-     * @var File
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove", "merge"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image_feature", referencedColumnName="id", nullable=true, onDelete="Set null")
+     * })
      */
-    protected $imageFile;
-
+    protected $imageFeature;
 
     /**
      * @var text $body
@@ -135,10 +132,9 @@ class Category
     }
 
     /**
-     * Get the id of the category.
-     * Return null if the category is new and not saved.
+     * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -146,92 +142,27 @@ class Category
     }
 
     /**
-     * Set the name of the category.
+     * Set name
      *
      * @param string $name
+     *
+     * @return Category
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * Get the name of the category.
+     * Get name
      *
      * @return string
      */
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set the parent category.
-     *
-     * @param Category $parent
-     */
-    public function setParent($parent)
-    {
-        $this->parent = $parent;
-    }
-
-    /**
-     * Get the parent category.
-     *
-     * @return Category
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    /**
-     * Return all product associated to the category.
-     *
-     * @return Product[]
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
-     * Set all products in the category.
-     *
-     * @param Product[] $products
-     */
-    public function setProducts($products)
-    {
-        $this->products->clear();
-        $this->products = new ArrayCollection($products);
-    }
-
-    /**
-     * Add a product in the category.
-     *
-     * @param $product Product The product to associate
-     */
-    public function addProduct($product)
-    {
-        if ($this->products->contains($product)) {
-            return;
-        }
-
-        $this->products->add($product);
-        $product->addCategory($this);
-    }
-
-    /**
-     * @param Product $product
-     */
-    public function removeProduct($product)
-    {
-        if (!$this->products->contains($product)) {
-            return;
-        }
-
-        $this->products->removeElement($product);
-        $product->removeCategory($this);
     }
 
     /**
@@ -273,21 +204,6 @@ class Category
     }
 
     /**
-     * @param File $image_url
-     */
-    public function setImageFile(File $image_url = null)
-    {
-        $this->imageFile = $image_url;
-    }
-
-    /**
-     * @return File
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-    /**
      * Get imageUrl
      *
      * @return string
@@ -319,126 +235,6 @@ class Category
     public function getBody()
     {
         return $this->body;
-    }
-
-    /**
-     * Set keyword
-     *
-     * @param string $keyword
-     *
-     * @return Category
-     */
-    public function setKeyword($keyword)
-    {
-        $this->keyword = $keyword;
-
-        return $this;
-    }
-
-    /**
-     * Get keyword
-     *
-     * @return string
-     */
-    public function getKeyword()
-    {
-        return $this->keyword;
-    }
-
-    /**
-     * Set metaDesciption
-     *
-     * @param string $metaDesciption
-     *
-     * @return Category
-     */
-    public function setMetaDesciption($metaDesciption)
-    {
-        $this->meta_desciption = $metaDesciption;
-
-        return $this;
-    }
-
-    /**
-     * Get metaDesciption
-     *
-     * @return string
-     */
-    public function getMetaDesciption()
-    {
-        return $this->meta_desciption;
-    }
-
-    /**
-     * Set orderBy
-     *
-     * @param string $orderBy
-     *
-     * @return Category
-     */
-    public function setOrderBy($orderBy)
-    {
-        $this->order_by = $orderBy;
-
-        return $this;
-    }
-
-    /**
-     * Get orderBy
-     *
-     * @return string
-     */
-    public function getOrderBy()
-    {
-        return $this->order_by;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     *
-     * @return Category
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set position
-     *
-     * @param integer $position
-     *
-     * @return Category
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 
     /**
@@ -487,5 +283,135 @@ class Category
     public function getMetaDescription()
     {
         return $this->metaDescription;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     *
+     * @return Category
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Category
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Set imageFeature
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $imageFeature
+     *
+     * @return Category
+     */
+    public function setImageFeature(\Application\Sonata\MediaBundle\Entity\Media $imageFeature = null)
+    {
+        $this->imageFeature = $imageFeature;
+
+        return $this;
+    }
+
+    /**
+     * Get imageFeature
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getImageFeature()
+    {
+        return $this->imageFeature;
+    }
+
+    /**
+     * Add product
+     *
+     * @param \AppBundle\Entity\Product $product
+     *
+     * @return Category
+     */
+    public function addProduct(\AppBundle\Entity\Product $product)
+    {
+        $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param \AppBundle\Entity\Product $product
+     */
+    public function removeProduct(\AppBundle\Entity\Product $product)
+    {
+        $this->products->removeElement($product);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \AppBundle\Entity\Category $parent
+     *
+     * @return Category
+     */
+    public function setParent(\AppBundle\Entity\Category $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

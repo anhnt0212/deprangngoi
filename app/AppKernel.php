@@ -26,7 +26,6 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
-            new Vich\UploaderBundle\VichUploaderBundle(),
 
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),

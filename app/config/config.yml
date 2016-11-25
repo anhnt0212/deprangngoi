@@ -12,9 +12,6 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    app.path.product_images: /uploads/products
-    app.path.article_images: /uploads/article
-    app.path.category_images: /uploads/category
 
 
 framework:
@@ -138,17 +135,3 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
-
-vich_uploader:
-    db_driver: orm
-    mappings:
-        product_images:
-            uri_prefix: '%app.path.product_images%'
-            upload_destination: '%kernel.root_dir%/../web/uploads/products'
-        article_images:
-            uri_prefix: '%app.path.article_images%'
-            upload_destination: '%kernel.root_dir%/../web/uploads/article'
-        category_images:
-            uri_prefix: '%app.path.category_images%'
-            upload_destination: '%kernel.root_dir%/../web/uploads/category'
-#
