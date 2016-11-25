@@ -54,23 +54,39 @@ sonata_admin:
                           - jobz_admin.user
               jobz.admin.group.post:
                   label: Bài viết
-                  icon:  '<i class="fa fa-user-md"></i>'
+                  icon:  '<i class="fa fa-caret-square-o-up"></i>'
                   items:
                           - jobz_admin.article
                           - jobz_admin.catelogy
               jobz.admin.group.product:
                   label: Sản phẩm
-                  icon:  '<i class="fa fa-user-md"></i>'
+                  icon:  '<i class="fa fa-product-hunt"></i>'
                   items:
                           - jobz_admin.category
                           - jobz_admin.product
               sonata.admin.group.content:
                    label:           Medias
-                   label_catalogue: SonataDemoBundle
                    icon:            '<i class="fa fa-picture-o"></i>'
                    items:
                        - sonata.media.admin.media
                        - sonata.media.admin.gallery
+              sonata.admin.group.config:
+                   label:           Cấu hình
+                   icon:            '<i class="fa fa-picture-o"></i>'
+                   items:
+                       - jobz_admin.config
+              sonata.admin.group.slider:
+                   label:           Quảng Cáo và Slider
+                   icon:            '<i class="fa fa-picture-o"></i>'
+                   items:
+                       - jobz_admin.slider
+                       - jobz_admin.adv
+
+              sonata.admin.group.ship:
+                   label:           Quản lý chi phí
+                   icon:            '<i class="fa fa-picture-o"></i>'
+                   items:
+                       - jobz_admin.transport
 
     templates:
         user_block:           'SonataAdminBundle:Core:user_block.html.twig'

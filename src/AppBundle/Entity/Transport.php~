@@ -33,35 +33,13 @@ class Transport
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id = null;
-
     /**
-     * The category name.
      *
      * @var string
      * @ORM\Column(type="string")
      */
-    protected $name;
 
-    /**
-     * The category alias.
-     *
-     * @var string
-     * @ORM\Column(type="string")
-     */
     protected $destination;
-    /*
-     *
-     * @var integer
-     * @ORM\Column(name="city_code", type="integer", length=11,nullable=true)
-     */
-    protected $cityCode = 1;
-    /*
-     *
-     * @var string
-     * @ORM\Column("name="city_name", type="string", length=255,nullable=true)
-     */
-    protected $cityName = "HCM";
-
     /**
      * The price of the product.
      *
@@ -76,6 +54,20 @@ class Transport
      * @ORM\Column(type="boolean",name="enabled")
      */
     protected $enabled = false;
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var integer
+     * @ORM\Column(type="integer",name="city_code")
+     */
+    protected $cityCode = 1;
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var string
+     * @ORM\Column(type="string",name="city_name")
+     */
+    protected $cityName;
 
     /**
      * Get id
@@ -85,30 +77,6 @@ class Transport
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Transport
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -181,5 +149,29 @@ class Transport
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Set cityCode
+     *
+     * @param integer $cityCode
+     *
+     * @return Transport
+     */
+    public function setCityCode($cityCode)
+    {
+        $this->cityCode = $cityCode;
+
+        return $this;
+    }
+
+    /**
+     * Get cityCode
+     *
+     * @return integer
+     */
+    public function getCityCode()
+    {
+        return $this->cityCode;
     }
 }

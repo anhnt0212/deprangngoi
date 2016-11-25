@@ -30,3 +30,31 @@ services:
         arguments: [~, AppBundle\Entity\Product, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Danh mục sản phẩm }
+
+
+
+    jobz_admin.adv:
+        class: AdminBundle\Admin\AdvAdmin
+        arguments: [~, AppBundle\Entity\Adv, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Quảng cáo }
+
+
+    jobz_admin.slider:
+        class: AdminBundle\Admin\SliderAdmin
+        arguments: [~, AppBundle\Entity\Slider, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Slider}
+
+
+    jobz_admin.config:
+        class: AdminBundle\Admin\ConfigAdmin
+        arguments: [~, AppBundle\Entity\Config, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Cấu hình }
+
+    jobz_admin.transport:
+        class: AdminBundle\Admin\TransportAdmin
+        arguments: [~, AppBundle\Entity\Transport, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Quản lý chi phí ship }
