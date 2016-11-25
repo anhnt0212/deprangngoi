@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AppBundle:Home:index.html.twig');
+        $data['title'] = 'Đẹp Rạng Ngời';
+        return $this->render('AppBundle:Home:index.html.twig',$data);
     }
 }
