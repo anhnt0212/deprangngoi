@@ -170,4 +170,8 @@ class Config
     {
         return $this->body;
     }
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

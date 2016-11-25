@@ -174,4 +174,32 @@ class Transport
     {
         return $this->cityCode;
     }
+
+    /**
+     * Set cityName
+     *
+     * @param string $cityName
+     *
+     * @return Transport
+     */
+    public function setCityName($cityName)
+    {
+        $this->cityName = $cityName;
+
+        return $this;
+    }
+
+    /**
+     * Get cityName
+     *
+     * @return string
+     */
+    public function getCityName()
+    {
+        return $this->cityName;
+    }
+    public function __toString()
+    {
+        return $this->destination;
+    }
 }

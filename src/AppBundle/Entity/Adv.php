@@ -56,13 +56,6 @@ class Adv
      * @ORM\Column(type="boolean",name="enabled")
      */
     protected $enabled = false;
-    /*
-     *
-     * @var integer
-     * @ORM\Column(name="position", type="integer", length=11,nullable=true)
-     */
-    protected $position = 1;
-
     /**
      * Anh Nguyen
      *
@@ -103,7 +96,13 @@ class Adv
      * })
      */
     protected $imageFeature;
-
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var integer
+     * @ORM\Column(type="integer",name="position")
+     */
+    protected $position = 1;
     /**
      * Get id
      *
@@ -308,5 +307,29 @@ class Adv
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     *
+     * @return Adv
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }
