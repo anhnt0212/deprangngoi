@@ -306,4 +306,8 @@ class Slider
     {
         return $this->imageFeature;
     }
+    public function __toString()
+    {
+        return $this->title;
+    }
 }

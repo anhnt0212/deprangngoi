@@ -72,19 +72,19 @@ sonata_admin:
                        - sonata.media.admin.gallery
               sonata.admin.group.config:
                    label:           Cấu hình
-                   icon:            '<i class="fa fa-picture-o"></i>'
+                   icon:            '<i class="fa fa-wrench" aria-hidden="true"></i>'
                    items:
                        - jobz_admin.config
               sonata.admin.group.slider:
                    label:           Quảng Cáo và Slider
-                   icon:            '<i class="fa fa-picture-o"></i>'
+                   icon:            '<i class="fa fa-sliders" aria-hidden="true"></i>'
                    items:
                        - jobz_admin.slider
                        - jobz_admin.adv
 
               sonata.admin.group.ship:
                    label:           Quản lý chi phí
-                   icon:            '<i class="fa fa-picture-o"></i>'
+                   icon:            '<i class="fa fa-car" aria-hidden="true"></i>'
                    items:
                        - jobz_admin.transport
 

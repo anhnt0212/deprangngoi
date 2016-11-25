@@ -198,4 +198,8 @@ class Transport
     {
         return $this->cityName;
     }
+    public function __toString()
+    {
+        return $this->destination;
+    }
 }
