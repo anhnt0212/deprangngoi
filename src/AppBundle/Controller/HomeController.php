@@ -12,7 +12,7 @@ class HomeController extends Base
     }
     public function indexAction()
     {
-        $this->data['item']['alias'] = 'danh-sach-san-pham';
+        $this->data['item']['alias'] = 'muc-san-pham';
         $this->data['product']['alias'] = 'chi-tiet-san-pham';
         return $this->render('AppBundle:Home:index.html.twig',$this->data);
     }
