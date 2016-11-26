@@ -14,3 +14,8 @@ app_product_detail:
     requirements:
         slug: "[a-zA-Z0-9\-_–]+"
 
+app_product_card:
+    path:   /gio-hang/them-hang
+    defaults: { _controller: AppBundle:Card:index }
+    requirements:
+        slug: "[a-zA-Z0-9\-_–]+"

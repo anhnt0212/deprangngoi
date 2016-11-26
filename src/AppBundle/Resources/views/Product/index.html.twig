@@ -11,22 +11,32 @@
     </div>
     <div class="row product-info">
         <div class="col-sm-4">
-            <div class="product-image">
+            <div class="product-image zoom" id="productFex">
                 <img src="https://media3.scdn.vn/img2/2016/11_4/Qacq5O.jpg" alt="Celtek Merit Facemask Orange/Black" class="img-thumbnail img-responsive">
             </div>
             <div class="clearfix"></div>
             <div id="gallery_01">
-                <a href="#" data-image="http://deprangngoi.vn/content/uploads/product/auto/OK MEN_7a592d6c.png" data-zoom-image="/content/uploads/product/auto/OK MEN_7a592d6c.png">
+                <a href="javascript:;" data-image="http://deprangngoi.vn/content/uploads/product/auto/OK MEN_7a592d6c.png" data-zoom-image="/content/uploads/product/auto/OK MEN_7a592d6c.png">
                     <img id="img_01" src="http://deprangngoi.vn/content/uploads/product/auto/OK MEN_7a592d6c.png" title="OK MEN.png" alt="OK MEN.png" width="90">
                 </a>
-                <a href="#" data-image="http://deprangngoi.vn/content/uploads/product/auto/NNF_ed105da9.png" data-zoom-image="/content/uploads/product/auto/NNF_ed105da9.png">
+                <a href="javascript:;" data-image="http://deprangngoi.vn/content/uploads/product/auto/NNF_ed105da9.png" data-zoom-image="/content/uploads/product/auto/NNF_ed105da9.png">
                     <img id="img_01" src="http://deprangngoi.vn/content/uploads/product/auto/NNF_ed105da9.png" title="NNF.png" alt="NNF.png" width="90">
                 </a>
             </div>
         </div>
         <div class="col-sm-5">
             <h4 class="title-detail">Kem chống nắng - Trị nám tàn nhang White Doctors Daily Uv Care</h4>
-            <hr>
+            <div class="socical">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+                    <a class="addthis_button_facebook"></a>
+                    <a class="addthis_button_twitter"></a>
+                    <a class="addthis_button_zingme"></a>
+                    <a class="addthis_button_google_plusone_share"></a>
+                    <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                </div>
+            </div>
+                <hr>
             <div class="product-detail">
                 <p> <strong>Mã sản phẩm:</strong> <span>WD10</span> </p>
                 <p> <strong>Xuất xứ: </strong><span> Việt Nam</span> </p>
@@ -39,11 +49,11 @@
             <span class="product_price_old">150.000 VND</span>
             <br>
             <br>
-            <form action="/shop/add" id="ProductAddForm" method="post" accept-charset="utf-8">
+            <form action="{{path('app_product_card')}}" id="ProductAddForm" method="post" accept-charset="utf-8">
                 <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
                 <input type="hidden" name="data[Product][id]" value="2" id="ProductId">
 
-                <button class="btn btn-success addtocart" id="2" onclick="window.location.href='card.html'" type="submit"><i class="fa fa-cart-plus"></i> &nbsp;
+                <button class="btn btn-success addtocart" id="2" onclick="window.location.href='{{path('app_product_card')}}'" type="submit"><i class="fa fa-cart-plus"></i> &nbsp;
                     Thêm vào giỏ hàng
                 </button>
             </form>
@@ -127,6 +137,12 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            $('#productFex').zoom();
+        });
+    </script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-521230bf3fea4b8e"></script>
     <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;

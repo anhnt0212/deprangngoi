@@ -264,6 +264,34 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+
+/*zoom image*/
+
+
+.zoom {
+    display:inline-block;
+    position: relative;
+}
+
+/* magnifying glass icon */
+.zoom:after {
+    content:'';
+    display:block;
+    width:33px;
+    height:33px;
+    position:absolute;
+    top:0;
+    right:0;
+    background:url(../images/icon.png);
+}
+
+.zoom img {
+    display: block;
+}
+
+.zoom img::selection { background-color: transparent; }
+
+/*endzoom*/
 .footer {
     padding-top: 40px;
     padding-right: 0;
