@@ -1,0 +1,141 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block main_content %}
+    <div class="row box-breadcrumb">
+        <div class="btn-group btn-breadcrumb">
+            <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="#" class="btn btn-default">Snippets</a>
+            <a href="#" class="btn btn-default">Breadcrumbs</a>
+            <a href="#" class="btn btn-default">Default</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 boder-box">
+            <div class="box-title-1">
+                <h2 class="text-box-1">Khuyến mại</h2>
+            </div>
+            <div class="adv-home">
+                <a rel="nofollow"
+                   title="CHƯƠNG TR&#204;NH KHUYẾN M&#195;I ">
+                    <img src="{{ asset('default/images/1_c31d92cb.jpg') }}" class="img-responsive"
+                         title="CHƯƠNG TRÌNH KHUYẾN MÃI"
+                         alt=""/>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4 pull-left">
+            <form action="#" data-ajax="true" data-ajax-failure="OnFailure"
+                  data-ajax-success="OnSuccess" id="frmnewsletter" method="post">
+                <div class="col-md-12 boder-box">
+                    <p class="p-letter-1">NHẬN THÔNG TIN KHUYẾN MÃI</p>
+
+                    <div class="input-group">
+                        <input type="email" class="form-control" name="email-sub"
+                               placeholder="Vui lòng nhập email">
+                        <span class="input-group-btn">
+                             <button class="btn btn-default" type="button"><span
+                                         class="glyphicon glyphicon-ok-circle"></span></button>
+                </span>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <p class="p-letter-2"> Nhận mã giảm giá và các chương trình khuyến mãi mã giảm giá và các
+                        chương
+                        trình</p>
+                </div>
+            </form>
+            <div class="clearfix"></div>
+            <div class="col-md-12 boder-box pull-0 pill-0-ex">
+                <p class="p-letter-3">Cẩm nang l&#224;m đẹp</p>
+
+                <div class="offer-wrap">
+                    {% for i in 0..6 %}
+                        <a href="/cam-nang-lam-dep/top-3-cach-tri-mun-tham-hieu-qua-tu-nguyen-lieu-thien-nhien-ba-nen-thu"
+                           title="Top 3 c&#225;ch trị mụn th&#226;m hiệu quả từ nguy&#234;n liệu thi&#234;n nhi&#234;n bạn n&#234;n thử">
+                            <h3 class="text-left text-news-home">Top 3 c&#225;ch trị mụn th&#226;m hiệu
+                                quả {{ i }}
+                            </h3></a>
+                    {% endfor %}
+                </div>
+                <a href="/cam-nang-lam-dep" title="Cẩm nang l&#224;m đẹp"><p class="view-all-ex">Xem thêm &gt;&gt;</p>
+                </a>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="col-md-6">
+                <h3 style="margin-bottom: 25px; text-align: center;">ĐỊA CHỈ LIÊN HỆ</h3>
+                <div class="contact">
+                    <p><strong>Địa Chỉ:</strong>&nbsp;394 Dương Quảng Hàm, phường 5, Quân Gò Vấp, Tp.HCM</p>
+
+                    <p><strong>Hotline:</strong>&nbsp; <span style="color:rgb(45, 45, 45); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:11.8999996185303px">0938.367.123 (Zalo)</span></p>
+
+                    <p><strong>Tel:</strong>&nbsp;&nbsp;<span style="color:rgb(45, 45, 45); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:11.8999996185303px">0971.319.345</span></p>
+
+                    <p><strong>Email:&nbsp;</strong><a href="mailto:deprangngoi.vn@gmail.com" style="color: rgb(0, 136, 204); text-decoration: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11.8999996185303px; line-height: 20px;" title="Gửi mail đến Đẹp Rạng Ngời">deprangngoi.vn@gmail.com</a></p>
+
+                    <p><strong>Website:</strong>&nbsp;<a href="http://deprangngoi.vn" style="color: rgb(0, 136, 204); text-decoration: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11.8999996185303px; line-height: 20px;" title="Gửi mail đến Đẹp Rạng Ngời">deprangngoi.vn</a></p>
+
+                </div>
+                <br>
+                <div class="map">
+                    <div id="map"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-area">
+                    <form role="form">
+                        <h3 style="margin-bottom: 25px; text-align: center;">TIN NHẮN</h3>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+                            <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
+                        </div>
+
+                        <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Gửi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="span12 margin-top hidden-phone">
+            <a rel="nofollow" title="Quảng c&#225;o footer">
+                <img src="{{ asset('default/images/footer_6ad50663_d63f4d23.png') }}" class="img-responsive"
+                     title="Quảng c&#225;o footer" alt=""/>
+            </a>
+        </div>
+    </div>
+    <script>
+        function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKphRSM9_O7y_BnL6bPUaNYKNK0lSnihs&callback=initMap">
+    </script>
+{% endblock %}

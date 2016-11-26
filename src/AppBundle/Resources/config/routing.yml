@@ -17,5 +17,13 @@ app_product_detail:
 app_product_card:
     path:   /gio-hang/them-hang
     defaults: { _controller: AppBundle:Card:index }
-    requirements:
-        slug: "[a-zA-Z0-9\-_–]+"
+
+
+
+app_list_new:
+    path:  /cam-nang-lam-dep/tin-tuc
+    defaults: { _controller: AppBundle:New:index }
+
+app_contact:
+    path:  /lien-he/thong-tin/thong-tin-len-he
+    defaults: { _controller: AppBundle:Contact:index }

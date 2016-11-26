@@ -24,215 +24,249 @@
     <meta property="article:publisher" content=""/>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700' rel='stylesheet'
           type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{{asset('default/css/bootstrap.min.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('default/css/style.css')}}">
-    <link href="{{asset('default/css/font-awesome.min.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('default/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('default/css/style.css') }}">
+    <link href="{{ asset('default/css/font-awesome.min.css') }}" rel="stylesheet"/>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="{{asset('default/js/jquery-2.2.4.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('default/js/jquery.zoom.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('default/js/jquery-2.2.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('default/js/jquery.zoom.min.js') }}"></script>
 </head>
 <body>
 
 {% block adv %}
     <div class="slide-left left" id="slide-left">
         <a rel="nofollow" title="Quảng cáo trái">
-            <img src="{{asset('default/images/Left-banner_a94138b7.png')}}" class="img-responsive adv_img left"
+            <img src="{{ asset('default/images/Left-banner_a94138b7.png') }}" class="img-responsive adv_img left"
                  title="Quảng cáo trái" alt=""/>
         </a>
     </div>
     <div class="slide-right right" id="slide-right">
         <a rel="nofollow" title="Quảng cáo phải">
-            <img src="{{asset('default/images/Right-banner_1_e9c10c24.png')}}" class="img-responsive adv_img right"
+            <img src="{{ asset('default/images/Right-banner_1_e9c10c24.png') }}" class="img-responsive adv_img right"
                  title="Quảng cáo phải" alt=""/>
         </a>
     </div>
 {% endblock %}
 <div class="container" id="main">
-{% block nav_bar %}
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container main-menu">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle" data-toggle="dropdown">Danh Mục Sản Phẩm<b
-                                    class="caret"></b></a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Action [Menu 1.1]</a></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Another action [Menu 1.1]</a></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Something else here [Menu 1.1]</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Separated link [Menu 1.1]</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">One more separated link [Menu 1.1]</a></li>
-                            <li>
-                                <a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                                    [Menu 1.1] <b
-                                            class="caret"></b></a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Action [Menu 1.2]</a></li>
-                                    <li>
-                                        <a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                                            [Menu 1.2]
-                                            <b class="caret"></b></a>
-
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle"
-                                                   data-toggle="dropdown">Dropdown
-                                                    [Menu 1.3] <b class="caret"></b></a>
-
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Action [Menu 1.4]</a></li>
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Another action [Menu 1.4]</a></li>
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Something else here [Menu 1.4]</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Separated link [Menu 1.4]</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">One more separated link [Menu
-                                                            1.4]</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle" data-toggle="dropdown">Thương Hiệu<b
-                                    class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Action [Menu 2.1]</a></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Another action [Menu 2.1]</a></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Something else here [Menu 2.1]</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Separated link [Menu 2.1]</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">One more separated link [Menu 2.1]</a></li>
-                            <li>
-                                <a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                                    [Menu 2.1] <b
-                                            class="caret"></b></a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Action [Menu 2.2]</a></li>
-                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Another action [Menu 2.2]</a></li>
-                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Something else here [Menu 2.2]</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Separated link [Menu 2.2]</a></li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                                            [Menu 2.2]
-                                            <b class="caret"></b></a>
-
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle"
-                                                   data-toggle="dropdown">Dropdown
-                                                    [Menu 2.3] <b class="caret"></b></a>
-
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Action [Menu 2.4]</a></li>
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Another action [Menu 2.4]</a></li>
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Something else here [Menu 2.4]</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">Separated link [Menu 2.4]</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="{{path('app_category',{'slug':item.alias})}}">One more separated link [Menu
-                                                            2.4]</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="{{path('app_category',{'slug':item.alias})}}" >Cẩm Nang Làm Đẹp</a></li>
-                    <li><a href="{{path('app_category',{'slug':item.alias})}}" >Sản Phẩm Bán Chạy</a></li>
-                    <li><a href="{{path('app_category',{'slug':item.alias})}}" >Liên Hệ</a></li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li class=" dropdown"><a href="{{path('app_category',{'slug':item.alias})}}" class="dropdown-toggle active"
-                                             data-toggle="dropdown"
-                                             role="button" aria-haspopup="true" aria-expanded="false">Đăng Nhập<span
-                                    class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Đăng Nhập</a></li>
-                            <li><a href="{{path('app_category',{'slug':item.alias})}}">Đăng Kí</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-
-                        <a href="{{path('app_category',{'slug':item.alias})}}" title="Giỏ hàng">
-                            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> (0)
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </div>
-{% endblock %}
-<div class="clearfix"></div>
-{% block box_slogan %}
-    <div class="row box-slogan">
-        <div class="row">
-            <img src="{{asset('default/images/deprangngoivn.png')}}" class="img-responsive"/>
-        </div>
-    </div>
-{% endblock %}
-{% block search_box %}
-    <div class="row  box-search">
-        <div class="col-md-3 logo ">
-            <a href="/" title="Logo Đẹp Rạng Ngời">
-                <img class="logo img-responsive" src="{{asset('default/images/logo.png')}}">
-            </a>
-        </div>
-        <div class="col-md-7">
-            <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span id="search_concept">Tìm kiếm theo</span> <span class="caret"></span>
+    {% block nav_bar %}
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container main-menu">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li value="30"><a href="#30">Danh mục sản phẩm</a></li>
-                        <li value="65"><a href="#65">Chăm sóc da mặt</a></li>
-                        <li value="84"><a href="#84">Kem trị mụn, thâm, liền sẹo</a></li>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{ path('app_category',{'slug':item.alias}) }}" class="dropdown-toggle"
+                               data-toggle="dropdown">Danh Mục Sản Phẩm<b
+                                        class="caret"></b></a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Action [Menu 1.1]</a></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Another action [Menu
+                                        1.1]</a></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Something else here [Menu
+                                        1.1]</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Separated link [Menu
+                                        1.1]</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">One more separated link
+                                        [Menu 1.1]</a></li>
+                                <li>
+                                    <a href="{{ path('app_category',{'slug':item.alias}) }}" class="dropdown-toggle"
+                                       data-toggle="dropdown">Dropdown
+                                        [Menu 1.1] <b
+                                                class="caret"></b></a>
+
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Action [Menu
+                                                1.2]</a></li>
+                                        <li>
+                                            <a href="{{ path('app_category',{'slug':item.alias}) }}"
+                                               class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                [Menu 1.2]
+                                                <b class="caret"></b></a>
+
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="{{ path('app_category',{'slug':item.alias}) }}"
+                                                       class="dropdown-toggle"
+                                                       data-toggle="dropdown">Dropdown
+                                                        [Menu 1.3] <b class="caret"></b></a>
+
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Action
+                                                                [Menu 1.4]</a></li>
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Another
+                                                                action [Menu 1.4]</a></li>
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Something
+                                                                else here [Menu 1.4]</a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Separated
+                                                                link [Menu 1.4]</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">One
+                                                                more separated link [Menu
+                                                                1.4]</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_category',{'slug':item.alias}) }}" class="dropdown-toggle"
+                               data-toggle="dropdown">Thương Hiệu<b
+                                        class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Action [Menu 2.1]</a></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Another action [Menu
+                                        2.1]</a></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Something else here [Menu
+                                        2.1]</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Separated link [Menu
+                                        2.1]</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">One more separated link
+                                        [Menu 2.1]</a></li>
+                                <li>
+                                    <a href="{{ path('app_category',{'slug':item.alias}) }}" class="dropdown-toggle"
+                                       data-toggle="dropdown">Dropdown
+                                        [Menu 2.1] <b
+                                                class="caret"></b></a>
+
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Action [Menu
+                                                2.2]</a></li>
+                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Another action
+                                                [Menu 2.2]</a></li>
+                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Something else here
+                                                [Menu 2.2]</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Separated link
+                                                [Menu 2.2]</a></li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="{{ path('app_category',{'slug':item.alias}) }}"
+                                               class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                                [Menu 2.2]
+                                                <b class="caret"></b></a>
+
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="{{ path('app_category',{'slug':item.alias}) }}"
+                                                       class="dropdown-toggle"
+                                                       data-toggle="dropdown">Dropdown
+                                                        [Menu 2.3] <b class="caret"></b></a>
+
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Action
+                                                                [Menu 2.4]</a></li>
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Another
+                                                                action [Menu 2.4]</a></li>
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Something
+                                                                else here [Menu 2.4]</a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Separated
+                                                                link [Menu 2.4]</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">One
+                                                                more separated link [Menu
+                                                                2.4]</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ path('app_list_new') }}">Cẩm Nang Làm Đẹp</a></li>
+                        <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Sản Phẩm Bán Chạy</a></li>
+                        <li><a href="{{ path('app_contact') }}">Liên Hệ</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li class=" dropdown"><a href="{{ path('app_category',{'slug':item.alias}) }}"
+                                                 class="dropdown-toggle active"
+                                                 data-toggle="dropdown"
+                                                 role="button" aria-haspopup="true" aria-expanded="false">Đăng Nhập<span
+                                        class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Đăng Nhập</a></li>
+                                <li><a href="{{ path('app_category',{'slug':item.alias}) }}">Đăng Kí</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+
+                            <a href="{{ path('app_category',{'slug':item.alias}) }}" title="Giỏ hàng">
+                                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> (0)
+                            </a>
+                        </li>
                     </ul>
                 </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    {% endblock %}
+    <div class="clearfix"></div>
+    {% block box_slogan %}
+        <div class="row box-slogan">
+            <div class="row">
+                <img src="{{ asset('default/images/deprangngoivn.png') }}" class="img-responsive"/>
+            </div>
+        </div>
+    {% endblock %}
+    {% block search_box %}
+        <div class="row  box-search">
+            <div class="col-md-3 logo ">
+                <a href="/" title="Logo Đẹp Rạng Ngời">
+                    <img class="logo img-responsive" src="{{ asset('default/images/logo.png') }}">
+                </a>
+            </div>
+            <div class="col-md-7">
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">Tìm kiếm theo</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li value="30"><a href="#30">Danh mục sản phẩm</a></li>
+                            <li value="65"><a href="#65">Chăm sóc da mặt</a></li>
+                            <li value="84"><a href="#84">Kem trị mụn, thâm, liền sẹo</a></li>
+                        </ul>
+                    </div>
 
-                <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" name="x" placeholder="Vui lòng nhập từ khoá...">
+                    <input type="hidden" name="search_param" value="all" id="search_param">
+                    <input type="text" class="form-control" name="x" placeholder="Vui lòng nhập từ khoá...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><span
                                 class="glyphicon glyphicon-search"></span></button>
                 </span>
+                </div>
+                <p class="p-search">Từ khóa hot: <strong>giảm cân làm đẹp 24h</strong>, <strong>thuốc giảm cân</strong>
+                </p>
             </div>
-            <p class="p-search">Từ khóa hot: <strong>giảm cân làm đẹp 24h</strong>, <strong>thuốc giảm cân</strong>
-            </p>
         </div>
+    {% endblock %}
+    <div class="main-content">
+        {% block main_content %}
+            // show content
+        {% endblock %}
     </div>
-{% endblock %}
-{% block main_content %}
-    // show content
-{% endblock %}
 </div>
 </body>
 {% block footer %}
@@ -302,17 +336,29 @@
                     <ul class="list-unstyled clear-margins"><!-- widgets -->
 
                         <li class="widget-container widget_nav_menu"><!-- widgets list -->
-                            <script>(function(d, s, id) {
+                            <script>(function (d, s, id) {
                                     var js, fjs = d.getElementsByTagName(s)[0];
                                     if (d.getElementById(id)) return;
-                                    js = d.createElement(s); js.id = id;
+                                    js = d.createElement(s);
+                                    js.id = id;
                                     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.3&appId=425450817599085";
                                     fjs.parentNode.insertBefore(js, fjs);
                                 }(document, 'script', 'facebook-jssdk'));</script>
 
                             <h1 class="title-widget">Facebook</h1>
+
                             <div id="fb-root"></div>
-                            <div class="fb-page" data-href="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble" data-width="340" data-height="235" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble"><a href="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble">Bí Quyết Đẹp Hơn Mỗi Ngày</a></blockquote></div></div>
+                            <div class="fb-page"
+                                 data-href="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble"
+                                 data-width="340" data-height="235" data-hide-cover="false" data-show-facepile="true"
+                                 data-show-posts="false">
+                                <div class="fb-xfbml-parse-ignore">
+                                    <blockquote
+                                            cite="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble"><a
+                                                href="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble">Bí
+                                            Quyết Đẹp Hơn Mỗi Ngày</a></blockquote>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -352,6 +398,19 @@
         </div>
 
     </div>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/580ee450e808d60cd07266ea/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 {% endblock %}
 
 {% block app_js %}
@@ -371,9 +430,9 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKphRSM9_O7y_BnL6bPUaNYKNK0lSnihs&callback=initMap">
     </script>
-    <script type="text/javascript" src="{{asset('default/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('default/js/common.js')}}"></script>
-    <script src="{{asset('default/bxslider/jquery.bxslider.min.js')}}"></script>
-    <link href="{{asset('default/bxslider/jquery.bxslider.css')}}" rel="stylesheet"/>
+    <script type="text/javascript" src="{{ asset('default/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('default/js/common.js') }}"></script>
+    <script src="{{ asset('default/bxslider/jquery.bxslider.min.js') }}"></script>
+    <link href="{{ asset('default/bxslider/jquery.bxslider.css') }}" rel="stylesheet"/>
 {% endblock %}
 </html>
