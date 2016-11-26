@@ -1,0 +1,137 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block main_content %}
+    <div class="row box-breadcrumb">
+        <div class="btn-group btn-breadcrumb">
+            <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="#" class="btn btn-default">Snippets</a>
+            <a href="#" class="btn btn-default">Breadcrumbs</a>
+            <a href="#" class="btn btn-default">Default</a>
+        </div>
+    </div>
+    <div class="row product-info">
+        <div class="col-sm-4">
+            <div class="product-image">
+                <img src="https://media3.scdn.vn/img2/2016/11_4/Qacq5O.jpg" alt="Celtek Merit Facemask Orange/Black" class="img-thumbnail img-responsive">
+            </div>
+            <div class="clearfix"></div>
+            <div id="gallery_01">
+                <a href="#" data-image="http://deprangngoi.vn/content/uploads/product/auto/OK MEN_7a592d6c.png" data-zoom-image="/content/uploads/product/auto/OK MEN_7a592d6c.png">
+                    <img id="img_01" src="http://deprangngoi.vn/content/uploads/product/auto/OK MEN_7a592d6c.png" title="OK MEN.png" alt="OK MEN.png" width="90">
+                </a>
+                <a href="#" data-image="http://deprangngoi.vn/content/uploads/product/auto/NNF_ed105da9.png" data-zoom-image="/content/uploads/product/auto/NNF_ed105da9.png">
+                    <img id="img_01" src="http://deprangngoi.vn/content/uploads/product/auto/NNF_ed105da9.png" title="NNF.png" alt="NNF.png" width="90">
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <h4 class="title-detail">Kem chống nắng - Trị nám tàn nhang White Doctors Daily Uv Care</h4>
+            <hr>
+            <div class="product-detail">
+                <p> <strong>Mã sản phẩm:</strong> <span>WD10</span> </p>
+                <p> <strong>Xuất xứ: </strong><span> Việt Nam</span> </p>
+                <p> <strong>Thương hiệu:</strong> <span> ỐC SÊN OHIO</span> </p>
+                <p> <strong>Loại sản phẩm:</strong> <span> Kem mụn thâm</span> </p>
+                <p> <strong>Trọng lượng:</strong> <span> 30g</span> </p>
+                <p> <strong>Quy cách: </strong><span> Hộp</span> </p>
+            </div>
+            <span class="product_price">150.000 VND</span>
+            <span class="product_price_old">150.000 VND</span>
+            <br>
+            <br>
+            <form action="/shop/add" id="ProductAddForm" method="post" accept-charset="utf-8">
+                <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
+                <input type="hidden" name="data[Product][id]" value="2" id="ProductId">
+
+                <button class="btn btn-success addtocart" id="2" onclick="window.location.href='card.html'" type="submit"><i class="fa fa-cart-plus"></i> &nbsp;
+                    Thêm vào giỏ hàng
+                </button>
+            </form>
+            <br>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div id="fb-root"></div>
+            <div class="fb-like fb_iframe_widget" data-href="/kem-tri-mun-tham-lien-seo/kem-mun--xoa-tham--lien-seo--phuc-hoi-da-x2" data-layout="standard" data-action="like" data-show-faces="true" data-share="true" data-width="100%" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=&amp;container_width=700&amp;href=http%3A%2F%2Fdeprangngoi.vn%2Fkem-tri-mun-tham-lien-seo%2Fkem-mun--xoa-tham--lien-seo--phuc-hoi-da-x2&amp;layout=standard&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;width=100%25"><span style="vertical-align: top; width: 0px; height: 0px; overflow: hidden;"><iframe name="f14a8ebb7a498dc" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.0/plugins/like.php?action=like&amp;app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FfTmIQU3LxvB.js%3Fversion%3D42%23cb%3Df310d9c463f2ac%26domain%3Ddeprangngoi.vn%26origin%3Dhttp%253A%252F%252Fdeprangngoi.vn%252Ff14243d3a4524%26relation%3Dparent.parent&amp;container_width=700&amp;href=http%3A%2F%2Fdeprangngoi.vn%2Fkem-tri-mun-tham-lien-seo%2Fkem-mun--xoa-tham--lien-seo--phuc-hoi-da-x2&amp;layout=standard&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;width=100%25" style="border: none; visibility: visible; width: 0px; height: 0px;"></iframe></span></div>
+            <div class="post-content">
+                <p><strong>Công dụng</strong>&nbsp;:</p>
+
+                <p>Kiwi được biết đến như là nguồn nguyên liệu trị mụn, giảm nếp nhăn và giảm thâm quầng mắt. Trong hạt Kiwi có các thành phần như Omega-3, A-linolennci acid, Tocotrienols,…các thành phần này ngăn ngừa sự hình thành Bacterium lipase là tác nhân phá vỡ các tuyến nhờn gây ra viêm da sinh ra mụn gây sạm da. Kem chiết xuất từ hạt Kiwi có chức năng làm giảm mụn, giảm nếp nhăn, thâm quầng mắt, ngăn ngừa nội tiết tố và chống lại hoạt động của vi khuẩn, cân bằng độ ẩm cho da, cân bằng độ Ph, giúp phục hồi da, mang đến cho bạn làn da trắng sáng, mịn màng tự nhiên chỉ sau một thời gian ngắn sử dụng.</p>
+
+                <p style="text-align:center"><img alt="" src="http://deprangngoi.vn/uploads/042016/nd_58e6ae4b.png"></p>
+
+                <p><strong>Thành phần</strong>&nbsp;:</p>
+
+                <p><a href="http://deprangngoi.vn/kem-tri-mun-tham-lien-seo/kem-mun--xoa-tham--lien-seo--phuc-hoi-da-x2"><span style="color:#FF0000"><u>Kem mụn - Xóa thâm - Liền Sẹo - Phục hồi da X2</u></span></a>&nbsp;seline, Paraffinum liquidum, Vitamin E, Lactic acid, Malic acid, Methyl paraben, Propyl paraben,Betaine salicylate, Collagen, Kojic dipalmitate, Toccopheryl acetate, Glycerin, Parfum, Titanium dioxide.</p>
+
+                <p><strong>Cách dùng</strong>:</p>
+
+                <p>Rửa sạch mặt, sau đó thoa một lớp kem mỏng mặt và massage đều cho kem thấm ssâu vào da mặt. Sử &nbsp;dụng&nbsp; 1 lần trong ngày sáng hoặc tối (tốt nhất vào buổi tối).</p>
+
+                <p style="text-align:center"><img alt="" src="http://deprangngoi.vn//uploads/112016/13_e235576c.png"></p>
+
+                <p><strong>Chỉ tiêu kích ứng da</strong>:</p>
+
+                <p>Không gây kích ứng da.</p>
+
+                <p><strong>Bảo quản</strong>:</p>
+
+                <p>Nơi khô ráo thoáng mát, tránh ánh nắng trực tiếp, để xa tầm tay trẻ em.</p>
+
+                <p><strong>Hạn sử dụng</strong>: 3 năm kể từ ngày sản xuất.</p>
+
+                <p><strong>Sản xuất bởi: <span style="color:#0000FF">CÔNG TY TNHH SX – TM PHÚC LANG</span></strong></p>
+
+                <p style="text-align:center"><span style="font-size:20px"><span style="color:#FF0000"><strong><span style="font-family:arial">PHÂN PHỐI SỈ &amp; LẼ SẢN PHẨM TRÊN TOÀN QUỐC</span></strong></span></span></p>
+            </div>
+            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="2"></div>
+        </div>
+    </div>
+    <div class="row box-category">
+        <div class="col-md-12 boder-box">
+            <h3 class="title-category">Sản Phẩm Tương Tự</h3>
+            <br>
+            <div class="row row-list-item">
+                <div id="products-1" class="row list-group">
+                    {% for i in 0..5 %}
+                    <div class="item  col-xs-12 col-lg-4">
+                        <div class="thumbnail">
+                            <img class="group list-group-image img-responsive" data-toggle="tooltip"
+                                 data-placement="top"
+                                 src="https://media3.scdn.vn/img2/2016/11_4/Qacq5O.jpg" alt=""/>
+
+                            <div class="caption">
+                                <a href="detail.html"
+                                   title="Kem dưỡng trắng da to&#224;n th&#226;n Ốc s&#234;n New Today 120g"><h4
+                                            class="text-left product-title"> Kem dưỡng trắng da toàn thân Ốc sên New Today
+                                        120g</h4>
+                                </a>
+                                <div class="row price">
+                                    <div class="col-xs-12 col-md-6">
+                                        <span class="lead">
+                                            120.000 VNĐ</span>
+                                        <span class="lead-old">
+                                            200.000 VNĐ</span>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <a class="btn btn-detail" href="http://www.jquery2dotnet.com">Xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=425450817599085";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}

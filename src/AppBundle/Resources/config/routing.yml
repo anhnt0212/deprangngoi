@@ -1,3 +1,16 @@
 app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Home:index }
+
+
+app_category:
+    path:   /{slug}
+    defaults: { _controller: AppBundle:Category:index }
+    requirements:
+        slug: "[a-zA-Z0-9\-_–]+"
+app_product_detail:
+    path:   /danh-muc-san-pham/{slug}
+    defaults: { _controller: AppBundle:Product:index }
+    requirements:
+        slug: "[a-zA-Z0-9\-_–]+"
+

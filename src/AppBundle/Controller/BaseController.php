@@ -11,7 +11,7 @@ abstract class BaseController extends Controller
     public function __construct()
     {
         $this->data = [
-            'title' => 'Mỹ Phẩm Đẹp Rạng Ngời'
+            'title' => 'Mỹ Phẩm | Đẹp Rạng Ngời'
         ];
     }
 }

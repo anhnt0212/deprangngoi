@@ -1,19 +1,21 @@
 <?php
 
 namespace AppBundle\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Controller\BaseController as Base;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class HomeController extends Base
+class ProductController extends Base
 {
     public function __construct()
     {
-        parent::__construct();
+       parent::__construct();
     }
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $this->data['item']['alias'] = 'danh-sach-san-pham';
         $this->data['product']['alias'] = 'chi-tiet-san-pham';
-        return $this->render('AppBundle:Home:index.html.twig',$this->data);
+        $alias = $request->get('slug', NULL);
+        return $this->render('AppBundle:Product:index.html.twig',$this->data);
     }
 }
