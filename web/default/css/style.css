@@ -726,6 +726,14 @@ h3.title-category {
 }
 
 @media (max-width: 767px) {
+    .page_links {
+        text-align: center;
+    }
+    .main-content .new-list{
+        float: left;
+        width: 100%;
+        padding: 25px;
+    }
     .box-breadcrumb {
         margin-top: 75px;
         margin-bottom: 25px;
