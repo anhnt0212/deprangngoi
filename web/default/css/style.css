@@ -725,6 +725,10 @@ h3.title-category {
     /*}*/
 }
 
+.row.card-detail {
+    margin-top: 25px;margin-bottom: 25px;padding: 15px;
+}
+
 @media (max-width: 767px) {
     .page_links {
         text-align: center;
