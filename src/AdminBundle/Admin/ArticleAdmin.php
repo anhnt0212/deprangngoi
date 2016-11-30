@@ -25,6 +25,7 @@ class ArticleAdmin extends AbstractAdmin
             ))
             ->add('title', 'text', [
                 'required' => true,
+                'label' => 'Tiêu đề'
             ])
             ->add('description', 'ckeditor', array(
                 'config' => array(
@@ -42,7 +43,8 @@ class ArticleAdmin extends AbstractAdmin
                         )
                     ),
                     'uiColor' => '#ffffff'
-                )
+                ),
+                'label' => 'Mô tả'
             ))
             ->add('content', 'ckeditor', array(
                 'config' => array(
@@ -70,26 +72,26 @@ class ArticleAdmin extends AbstractAdmin
             ->add('categories', 'entity', array(
                 'property' => 'name',
                 'class' => 'AppBundle\Entity\Catelogy',
-                'empty_value' => 'Select Category',
+                'empty_value' => 'Vui lòng chọn danh mục',
                 'multiple' => true,
                 'required' => FALSE
             ))
             ->add('enabled', 'choice', array(
-                'label' => 'Enabled',
+                'label' => 'Trạng Thái',
                 'choices' => array
                 (
-                    '0' => 'True',
-                    '1' => 'False'
+                    '0' => 'Công Khai',
+                    '1' => 'Ẩn'
                 ),
             ))
             ->add('tags', 'collection',[ 'required' => FALSE])
             ->add('createdAt', 'sonata_type_date_picker', array(
-                'label' => 'Created At',
+                'label' => 'Tạo ngày',
                 'format' => 'yyyy/MM/dd',
                 'required' => FALSE
             ))
             ->add('updatedAt', 'sonata_type_date_picker', array(
-                'label' => 'Created At',
+                'label' => 'Cập nhật lúc',
                 'format' => 'yyyy/MM/dd',
                 'required' => FALSE
             ))
