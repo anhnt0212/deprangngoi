@@ -1,0 +1,130 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <style type="text/css">
+        .login-box {
+            width: 360px;
+            margin: 7% auto;
+        }
+
+        .login-box-body{
+            background: #fff;
+            padding: 20px;
+            border-top: 0;
+            color: #666;
+        }
+
+        .login-box-msg, .register-box-msg {
+            margin: 0;
+            text-align: center;
+            padding: 0 20px 20px 20px;
+        }
+
+        .has-feedback {
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+        a[href="/login"] {display: none;}
+        .btn-primary:hover, .btn-primary:active, .btn-primary.hover {
+            background-color: #367fa9;
+        }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+        }
+        .btn.focus, .btn:focus, .btn:hover {
+            color: #333;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background-color: #3c8dbc;
+            border-color: #367fa9;
+        }
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .btn.btn-flat {
+            border-radius: 0;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-width: 1px;
+        }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+        }
+
+    </style>
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <div class="login-box">
+        <div class="login-box-body">
+            <p class="login-box-msg">Authentication</p>
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                {% endif %}
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="Tài khoản" id="username" name="_username"
+                           value="{{ last_username }}" required="required"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" id="password" placeholder="Mật khẩu" class="form-control" name="_password"
+                           required="required"/>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+                <input type="submit" class="btn btn-primary btn-block btn-flat" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}
