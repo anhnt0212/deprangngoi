@@ -31,14 +31,14 @@ media:
 
 
 
-admin_login:
-    pattern:  /admin/login
-    defaults: { _controller: FOSUserBundle:Security:login }
-
-admin_login_check:
-    pattern:  /admin/login_check
-    defaults: { _controller: FOSUserBundle:Security:check }
-
-admin_logout:
-    pattern:  /admin/logout
-    defaults: { _controller: FOSUserBundle:Security:logout }
+#admin_login:
+#    pattern:  /admin/login
+#    defaults: { _controller: FOSUserBundle:Security:login }
+#
+#admin_login_check:
+#    pattern:  /admin/login_check
+#    defaults: { _controller: FOSUserBundle:Security:check }
+#
+#admin_logout:
+#    pattern:  /admin/logout
+#    defaults: { _controller: FOSUserBundle:Security:logout }
