@@ -79,7 +79,7 @@ class ProductAdmin extends AbstractAdmin
             ), array('link_parameters' => array('context' => 'product')))
             ->add('gallery', 'sonata_type_model_list', array(
                 'required' => false,
-                'label' =>'Hình sản phẩm'
+                'label' =>'Danh sách hình'
             ), array(
                 'link_parameters' => array(
                     'context' => 'product'
