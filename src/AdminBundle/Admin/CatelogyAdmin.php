@@ -20,21 +20,24 @@ class CatelogyAdmin extends AbstractAdmin
         $formMapper
             ->add('name', 'text',[
                 'required'=>true,
+                'label' =>'Tên'
             ])
             ->add('alias', 'text',[
                 'required'=>true,
+                'label' =>'Link thân thiện'
             ])
             ->add('enabled', 'choice', array(
-                'label' => 'Enabled',
+                'label' => 'Trạng thái',
                 'choices' => array
                 (
-                    '1' => 'True',
-                    '0' => 'False'
+                    '1' => 'Kích hoạt',
+                    '0' => 'Không'
                 ),
             ))
             ->add('parent', 'entity', array(
                 'class' => 'AppBundle:Catelogy',
-                'empty_value' => 'Select Parent',
+                'empty_value' => 'Đang là thư mục cha',
+                'label' =>'Thư mục cha',
                 'query_builder' => function(EntityRepository $er) {
                     $qb = $er->createQueryBuilder('c');
                     $qb->where('c.parent IS NULL');

@@ -25,16 +25,18 @@ class ConfigAdmin extends AbstractAdmin
             ))
             ->add('name', 'text', [
                 'required' => FALSE,
+                'label' =>'Tên'
             ])
             ->add('value', 'text', [
                 'required' => FALSE,
+                'label' =>'Giá trị'
             ])
             ->add('enabled', 'choice', array(
-                'label' => 'Enabled',
+                'label' => 'Trạng thái',
                 'choices' => array
                 (
-                    '0' => 'True',
-                    '1' => 'False'
+                    '0' => 'Không',
+                    '1' => 'Kích hoạt'
                 ),
             ))
             ->add('body', 'ckeditor', array(
@@ -53,11 +55,13 @@ class ConfigAdmin extends AbstractAdmin
                         )
                     ),
                     'uiColor' => '#ffffff'
-                )
+                ),
+                'label' =>'Văn bản'
 
             ))
             ->add('type', 'number', [
                 'required' => FALSE,
+                'label' =>'Kiểu'
             ])
             ->end()
             ->end();

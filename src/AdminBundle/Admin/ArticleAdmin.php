@@ -62,29 +62,33 @@ class ArticleAdmin extends AbstractAdmin
                         )
                     ),
                     'uiColor' => '#ffffff'
-                )
+                ),
+                'label' => 'Bài viết'
+
 
             ))
             ->add('imageUrl', 'text')
             ->add('imageFeature', 'sonata_type_model_list', array(
-                'required' => FALSE
+                'required' => FALSE,
+                'label' => 'Hình đại diện'
             ), array('link_parameters' => array('context' => 'article')))
             ->add('categories', 'entity', array(
                 'property' => 'name',
                 'class' => 'AppBundle\Entity\Catelogy',
-                'empty_value' => 'Vui lòng chọn danh mục',
+                'empty_value' => 'Vui lòng chọn danh m',
                 'multiple' => true,
-                'required' => FALSE
+                'required' => FALSE,
+                'label' => 'Danh mục'
             ))
             ->add('enabled', 'choice', array(
                 'label' => 'Trạng Thái',
                 'choices' => array
                 (
-                    '0' => 'Công Khai',
-                    '1' => 'Ẩn'
+                    '0' => 'Đang ẩn',
+                    '1' => 'Công Khai'
                 ),
             ))
-            ->add('tags', 'collection',[ 'required' => FALSE])
+            ->add('tags', 'collection', ['required' => FALSE])
             ->add('createdAt', 'sonata_type_date_picker', array(
                 'label' => 'Tạo ngày',
                 'format' => 'yyyy/MM/dd',
@@ -100,8 +104,8 @@ class ArticleAdmin extends AbstractAdmin
             ->add('alias', 'text', [
                 'required' => true,
             ])
-            ->add('metaDescription', 'text',[ 'required' => FALSE])
-            ->add('metaKeyword', 'text',['required' => FALSE])
+            ->add('metaDescription', 'text', ['required' => FALSE])
+            ->add('metaKeyword', 'text', ['required' => FALSE])
             ->end()
             ->end();
     }

@@ -191,8 +191,15 @@ class Product
      */
     private $purchasedItems;
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
+     * @ORM\JoinColumn(name="gallery", referencedColumnName="id")
+     */
+    private $gallery;
+
+    /**
      * Constructor
      */
+
     public function __construct()
     {
         $this->updatedAt = new \DateTime('now');

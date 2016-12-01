@@ -23,14 +23,15 @@ class ProductAdmin extends AbstractAdmin
             ))
             ->add('name', 'text', [
                 'required' => true,
+                'label'=>'Tên sản phẩm'
             ])
-            ->add('typeName', 'text')
-            ->add('productCode', 'text')
-            ->add('specification', 'text')
-            ->add('weights', 'text')
-            ->add('madeIn', 'text')
-            ->add('price', 'number')
-            ->add('priceOld', 'number')
+            ->add('typeName', 'text',[  'label'=>'Tên kiểu','required' => false,])
+            ->add('productCode', 'text',[  'label'=>'Mã SP','required' => false,])
+            ->add('specification', 'text',[  'label'=>'Quy cách đóng gói','required' => false,])
+            ->add('weights', 'text',[  'label'=>'Trọng lượng','required' => false,])
+            ->add('madeIn', 'text',[  'label'=>'Nước sản xuất','required' => false,])
+            ->add('price', 'number',[  'label'=>'Giá sản phẩm','required' => true,])
+            ->add('priceOld', 'number',[  'label'=>'Giá cũ','required' => true,])
             ->add('description', 'ckeditor', array(
                 'config' => array(
                     'toolbar' => array(
@@ -47,7 +48,8 @@ class ProductAdmin extends AbstractAdmin
                         )
                     ),
                     'uiColor' => '#ffffff'
-                )
+                ),
+                'label' =>'Mô tả ngắn'
             ))
             ->add('body', 'ckeditor', array(
                 'config' => array(
@@ -64,36 +66,48 @@ class ProductAdmin extends AbstractAdmin
                             )
                         )
                     ),
-                    'uiColor' => '#ffffff'
-                )
+                    'uiColor' => '#ffffff',
+                ),
+                'label' =>'Bài viết mô tả'
+
 
             ))
             ->add('image', 'text')
             ->add('imageFeature', 'sonata_type_model_list', array(
-                'required' => FALSE
+                'required' => FALSE,
+                'label' =>'Hình đại diện'
             ), array('link_parameters' => array('context' => 'product')))
+            ->add('gallery', 'sonata_type_model_list', array(
+                'required' => false,
+                'label' =>'Hình sản phẩm'
+            ), array(
+                'link_parameters' => array(
+                    'context' => 'product'
+                )
+            ))
             ->add('categories', 'entity', array(
                 'property' => 'name',
                 'class' => 'AppBundle\Entity\Category',
                 'empty_value' => 'Select Category',
                 'multiple' => true,
-                'required' => FALSE
+                'required' => FALSE,
+                'label' =>'Danh mục sản phẩm'
             ))
             ->add('enabled', 'choice', array(
-                'label' => 'Enabled',
+                'label' => 'Trạng thái',
                 'choices' => array
                 (
-                    '0' => 'True',
-                    '1' => 'False'
+                    '0' => 'Đang ẩn',
+                    '1' => 'Đang bày bán'
                 ),
             ))
             ->add('createdAt', 'sonata_type_date_picker', array(
-                'label' => 'Created At',
+                'label' => 'Tạo ngày',
                 'format' => 'yyyy/MM/dd',
                 'required' => FALSE
             ))
             ->add('updatedAt', 'sonata_type_date_picker', array(
-                'label' => 'Created At',
+                'label' => 'Cập nhật ngày',
                 'format' => 'yyyy/MM/dd',
                 'required' => FALSE
             ))

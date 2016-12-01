@@ -191,8 +191,15 @@ class Product
      */
     private $purchasedItems;
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
+     * @ORM\JoinColumn(name="gallery", referencedColumnName="id")
+     */
+    private $gallery;
+
+    /**
      * Constructor
      */
+
     public function __construct()
     {
         $this->updatedAt = new \DateTime('now');
@@ -735,5 +742,29 @@ class Product
     public function getPurchasedItems()
     {
         return $this->purchasedItems;
+    }
+
+    /**
+     * Set gallery
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Gallery $gallery
+     *
+     * @return Product
+     */
+    public function setGallery(\Application\Sonata\MediaBundle\Entity\Gallery $gallery = null)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
     }
 }
