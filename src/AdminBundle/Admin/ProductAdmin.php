@@ -30,6 +30,7 @@ class ProductAdmin extends AbstractAdmin
             ->add('specification', 'text',[  'label'=>'Quy cách đóng gói','required' => false,])
             ->add('weights', 'text',[  'label'=>'Trọng lượng','required' => false,])
             ->add('madeIn', 'text',[  'label'=>'Nước sản xuất','required' => false,])
+            ->add('trademark', 'text',[  'label'=>'Nhãn hiệu hàng hoá','required' => false,])
             ->add('price', 'number',[  'label'=>'Giá sản phẩm','required' => true,])
             ->add('priceOld', 'number',[  'label'=>'Giá cũ','required' => true,])
             ->add('description', 'ckeditor', array(

@@ -175,6 +175,15 @@ class Product
      * @ORM\Column(type="string", length=255,name="made_in")
      */
     private $madeIn;
+
+    /**
+     * The description of the product.
+     *
+     * @var string
+     * @ORM\Column(type="string", length=255,name="trademark")
+     */
+    private $trademark;
+
     /**
      * List of categories where the products is
      * (Owning side).
@@ -766,5 +775,29 @@ class Product
     public function getGallery()
     {
         return $this->gallery;
+    }
+
+    /**
+     * Set trademark
+     *
+     * @param string $trademark
+     *
+     * @return Product
+     */
+    public function setTrademark($trademark)
+    {
+        $this->trademark = $trademark;
+
+        return $this;
+    }
+
+    /**
+     * Get trademark
+     *
+     * @return string
+     */
+    public function getTrademark()
+    {
+        return $this->trademark;
     }
 }
