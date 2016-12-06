@@ -3,17 +3,13 @@
 namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManager;
+use AppBundle\Controller\BaseController;
 
 class HomeController extends Controller
 {
+    protected $layout = null;
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $qb = $em->getRepository('AppBundle:Category')->createQueryBuilder('c');
-        $categories = $qb->where('c.enabled = 1')->orderBy('c.name', 'ASC');
-        echo "<pre>";
-        print_r($value = get_class_methods($categories));
-        exit();
         $this->data['title'] = 'Mỹ phẩm đẹp rạng ngời';
         $this->data['item']['alias'] = 'muc-san-pham';
         $this->data['product']['alias'] = 'chi-tiet-san-pham';

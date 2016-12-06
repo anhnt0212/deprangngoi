@@ -18,7 +18,13 @@ app_product_card:
     path:   /gio-hang/them-hang
     defaults: { _controller: AppBundle:Card:index }
 
+app_list_product_hot :
+        path:   /san-pham-ban-chay
+        defaults: { _controller: AppBundle:Product:index }
 
+app_list_product_trademark:
+        path:   /san-pham/thuong-hieu
+        defaults: { _controller: AppBundle:Category:index}
 
 app_list_new:
     path:  /cam-nang-lam-dep/tin-tuc
@@ -31,3 +37,12 @@ app_contact:
 app_form_search :
      path:  /tim-kiem
      defaults: { _controller: AppBundle:Product:search }
+
+
+app_block_search :
+     path:  /render/block/search
+     defaults: { _controller: AppBundle:Base:search }
+
+app_block_menu :
+     path:  /render/block/menu
+     defaults: { _controller: AppBundle:Base:menu }

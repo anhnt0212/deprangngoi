@@ -1,0 +1,138 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container main-menu">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh Mục Sản Phẩm<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        {% for category in categories %}
+                            <li><a href="#">Action [Menu 1.1]</a></li>
+                                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ category.name }}<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                            <li>
+                                                <a href=""
+                                                   class="dropdown-toggle" data-toggle="dropdown">aa
+                                                    <b class="caret"></b></a>
+
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href="' ' "
+                                                           class="dropdown-toggle"
+                                                           data-toggle="dropdown">Dropdown
+                                                            [Menu 1.3] <b class="caret"></b></a>
+
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="' ' ">Action
+                                                                    [Menu 1.4]</a></li>
+                                                            <li><a href="' ' ">Another
+                                                                    action [Menu 1.4]</a></li>
+                                                            <li><a href="' ' ">Something
+                                                                    else here [Menu 1.4]</a>
+                                                            </li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="' ' ">Separated
+                                                                    link [Menu 1.4]</a></li>
+                                                            <li class="divider"></li>
+                                                            <li><a href="' ' ">One
+                                                                    more separated link [Menu
+                                                                    1.4]</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                    </ul>
+                                </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>
+                    <a href="' ' " class="dropdown-toggle"
+                       data-toggle="dropdown">Thương Hiệu<b
+                                class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="One Today">One Today</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="New Today">New Today</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="EVI">EVI</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="Ốc sên - Sữa dê Q10">Ốc s&#234;n -
+                                Sữa d&#234; Q10</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="Roomax">Roomax</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="OLY HT">OLY HT</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="OHIO">OHIO</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="Bạch sâm - Nhau thai cừu">Bạch s&#226;m
+                                - Nhau thai cừu</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="Erons">Erons</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="Nairem">Nairem</a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('app_list_product_trademark') }}" title="Sắc Nét Ngọc Khang">Sắc N&#233;t
+                                Ngọc Khang</a>
+
+                        </li>
+
+                    </ul>
+                </li>
+                <li><a href="{{ path('app_list_new') }}">Cẩm Nang Làm Đẹp</a></li>
+                <li><a href="{{ path('app_list_product_hot') }}">Sản Phẩm Bán Chạy</a></li>
+                <li><a href="{{ path('app_contact') }}">Liên Hệ</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class=" dropdown"><a href="' ' "
+                                         class="dropdown-toggle active"
+                                         data-toggle="dropdown"
+                                         role="button" aria-haspopup="true" aria-expanded="false">Tài Khoản<span
+                                class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:;">Đăng Nhập</a></li>
+                        <li><a href="javascript:;">Đăng Kí</a></li>
+                    </ul>
+                </li>
+                <li class="">
+
+                    <a href="' ' " title="Giỏ hàng">
+                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> (0)
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+{{ dump(categories) }}

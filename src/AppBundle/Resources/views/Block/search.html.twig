@@ -1,0 +1,30 @@
+<div class="row box-search">
+    <div class="col-md-3 logo ">
+        <a href="/" title="Logo Đẹp Rạng Ngời">
+            <img class="logo img-responsive" src="{{ asset('default/images/logo.png') }}">
+        </a>
+    </div>
+    <div class="col-md-7">
+        <form action="{{path('app_form_search')}}" method="post">
+            <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept">Tìm kiếm theo</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        {% for category in categories %}
+                             <li value="{{ category.id }}"><a href="{{ category.id }}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <input type="text" class="form-control" name="x" placeholder="Vui lòng nhập từ khoá...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+            <p class="p-search">Từ khóa hot: <strong>giảm cân làm đẹp 24h</strong>, <strong>thuốc giảm
+                    cân</strong>
+            </p>
+        </form>
+    </div>
+</div>
