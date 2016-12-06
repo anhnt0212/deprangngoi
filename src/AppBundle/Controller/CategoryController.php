@@ -14,12 +14,14 @@ class CategoryController extends Controller
         $conn = $this->getDoctrine()->getConnection();
         $slug = $request->get('alias', NULL);
         $manager = $this->getDoctrine()->getManager();
-        $careertools = $manager->getRepository('AppBundle:Product')
+        $category = $manager->getRepository('AppBundle:Category')->findOneBy(array('alias' => trim($slug)));
+        $product = $manager->getRepository('AppBundle:Product')
             ->createQueryBuilder('p')
             ->join('p.categories', 'c')
-            ->where("LOWER(c.alias) = " . $conn->quote(mb_strtolower(trim($slug)), \PDO::PARAM_STR));
+            ->where("c.id = " .$category->getId())
+            ->getQuery()->getArrayResult();
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($careertools, $request->query->getInt('page', 1), 5);
+        $pagination = $paginator->paginate($product, $request->query->getInt('page', 1), 15);
         $data['items'] = $pagination;
         return $this->render('AppBundle:Category:index.html.twig',$data);
     }
