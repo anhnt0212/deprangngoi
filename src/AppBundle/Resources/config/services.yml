@@ -5,3 +5,9 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: jobz_user_registration }
+
+    base_controller:
+         class:  AppBundle\Controller\BaseController
+         calls:
+             - [setContainer, ["@service_container"]]
+         arguments: ["@doctrine.orm.entity_manager"]

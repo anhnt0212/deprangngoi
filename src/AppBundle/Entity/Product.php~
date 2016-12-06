@@ -175,6 +175,15 @@ class Product
      * @ORM\Column(type="string", length=255,name="made_in")
      */
     private $madeIn;
+
+    /**
+     * The description of the product.
+     *
+     * @var string
+     * @ORM\Column(type="string", length=255,name="trademark")
+     */
+    private $trademark;
+
     /**
      * List of categories where the products is
      * (Owning side).
@@ -742,5 +751,29 @@ class Product
     public function getPurchasedItems()
     {
         return $this->purchasedItems;
+    }
+
+    /**
+     * Set gallery
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Gallery $gallery
+     *
+     * @return Product
+     */
+    public function setGallery(\Application\Sonata\MediaBundle\Entity\Gallery $gallery = null)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
     }
 }

@@ -27,3 +27,7 @@ app_list_new:
 app_contact:
     path:  /lien-he/thong-tin/thong-tin-len-he
     defaults: { _controller: AppBundle:Contact:index }
+
+app_form_search :
+     path:  /tim-kiem
+     defaults: { _controller: AppBundle:Product:search }

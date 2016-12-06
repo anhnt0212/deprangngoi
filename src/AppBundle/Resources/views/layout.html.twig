@@ -231,34 +231,35 @@
         </div>
     {% endblock %}
     {% block search_box %}
-        <div class="row  box-search">
+        <div class="row box-search">
             <div class="col-md-3 logo ">
                 <a href="/" title="Logo Đẹp Rạng Ngời">
                     <img class="logo img-responsive" src="{{ asset('default/images/logo.png') }}">
                 </a>
             </div>
             <div class="col-md-7">
-                <div class="input-group">
-                    <div class="input-group-btn search-panel">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span id="search_concept">Tìm kiếm theo</span> <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li value="30"><a href="#30">Danh mục sản phẩm</a></li>
-                            <li value="65"><a href="#65">Chăm sóc da mặt</a></li>
-                            <li value="84"><a href="#84">Kem trị mụn, thâm, liền sẹo</a></li>
-                        </ul>
-                    </div>
-
-                    <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Vui lòng nhập từ khoá...">
-                <span class="input-group-btn">
+                <form action="{{path('app_form_search')}}" method="post">
+                    <div class="input-group">
+                        <div class="input-group-btn search-panel">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span id="search_concept">Tìm kiếm theo</span> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li value="30"><a href="#30">Danh mục sản phẩm</a></li>
+                                <li value="65"><a href="#65">Chăm sóc da mặt</a></li>
+                                <li value="84"><a href="#84">Kem trị mụn, thâm, liền sẹo</a></li>
+                            </ul>
+                        </div>
+                        <input type="text" class="form-control" name="x" placeholder="Vui lòng nhập từ khoá...">
+                        <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><span
                                 class="glyphicon glyphicon-search"></span></button>
                 </span>
-                </div>
-                <p class="p-search">Từ khóa hot: <strong>giảm cân làm đẹp 24h</strong>, <strong>thuốc giảm cân</strong>
-                </p>
+                    </div>
+                    <p class="p-search">Từ khóa hot: <strong>giảm cân làm đẹp 24h</strong>, <strong>thuốc giảm
+                            cân</strong>
+                    </p>
+                </form>
             </div>
         </div>
     {% endblock %}
@@ -400,14 +401,14 @@
     </div>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/580ee450e808d60cd07266ea/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/580ee450e808d60cd07266ea/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
         })();
     </script>
     <!--End of Tawk.to Script-->
