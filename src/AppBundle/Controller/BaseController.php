@@ -19,21 +19,25 @@ class BaseController extends Controller
     }
     public function menuAction()
     {
+        $sql = "SELECT
+          id,parent_id,name,parent_id,alias,image_url,body,meta_keyword,meta_description,position,image_feature
+            FROM category
+          WHERE category.enabled = 1";
         $em = $this->getDoctrine()->getManager();
-        $qb = $em->getRepository('AppBundle:Category')->createQueryBuilder('c');
-        $categories = $qb->where('c.enabled = 1')->orderBy('c.name', 'ASC')->getQuery()->getResult();
-        $categories = $this->buildTree($categories);
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $categories = $this->buildTree($stmt->fetchAll());
         $variables = array(
             'categories' => $categories
         );
         return $this->render('AppBundle:Block:menu.html.twig', $variables);
     }
 
-    public function buildTree(array $elements, $parentId = 0, $parent_id_field = 'parent_id') {
+    public function buildTree(array $elements, $parentId = null, $parent_id_field = 'parent_id') {
         $branch = array();
         foreach ($elements as $element) {
             if ($element[$parent_id_field] == $parentId) {
-                $children = buildTree($elements, $element['id']);
+                $children = $this->buildTree($elements, $element['id']);
                 $element['children'] = empty($children) ? [] : $children;
 
                 $branch[] = $element;

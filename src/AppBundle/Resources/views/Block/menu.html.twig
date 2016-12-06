@@ -11,45 +11,49 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh Mục Sản Phẩm<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh Mục Sản Phẩm<b
+                                class="caret"></b></a>
                     <ul class="dropdown-menu">
                         {% for category in categories %}
-                            <li><a href="#">Action [Menu 1.1]</a></li>
-                                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ category.name }}<b class="caret"></b></a>
+                            {% if category['children'] == false %}
+                                <li>
+                                    <a href="{{ path('app_category',{'alias':category.alias}) }}">{{ category.name }}</a>
+                                </li>
+                            {% else %}
+                                <li><a href="{{ path('app_category',{'alias':category.alias}) }}"
+                                       class="dropdown-toggle" data-toggle="dropdown">{{ category.name }}
+                                        <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
+                                        {% for cc in category['children'] %}
                                             <li>
-                                                <a href=""
-                                                   class="dropdown-toggle" data-toggle="dropdown">aa
-                                                    <b class="caret"></b></a>
-
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a href="' ' "
-                                                           class="dropdown-toggle"
-                                                           data-toggle="dropdown">Dropdown
-                                                            [Menu 1.3] <b class="caret"></b></a>
-
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="' ' ">Action
-                                                                    [Menu 1.4]</a></li>
-                                                            <li><a href="' ' ">Another
-                                                                    action [Menu 1.4]</a></li>
-                                                            <li><a href="' ' ">Something
-                                                                    else here [Menu 1.4]</a>
-                                                            </li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="' ' ">Separated
-                                                                    link [Menu 1.4]</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="' ' ">One
-                                                                    more separated link [Menu
-                                                                    1.4]</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+                                                <a href="{{ path('app_category',{'alias':cc.alias}) }}">{{ cc.name }}</a>
                                             </li>
+                                            {% if cc['children'] == false %}
+                                            {% else %}
+                                                <li>
+                                                    <a href="{{ path('app_category',{'alias':cc.alias}) }}"
+                                                       class="dropdown-toggle" data-toggle="dropdown">{{ cc.name }}
+                                                        <b class="caret"></b>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        {% for ccc in cc['children'] %}
+                                                            <li>
+                                                                <a href="{{ path('app_category',{'alias':ccc.alias}) }}">{{ ccc.name }}</a>
+                                                            </li>
+                                                            {% if ccc['children'] == false %}
+                                                            {% else %}
+                                                                <li>
+                                                                    <a href="{{ path('app_category',{'alias':ccc.alias}) }}">{{ ccc.name }}</a>
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </ul>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
                                     </ul>
                                 </li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 </li>
@@ -125,7 +129,7 @@
                 </li>
                 <li class="">
 
-                    <a href="' ' " title="Giỏ hàng">
+                    <a href="" title="Giỏ hàng">
                         <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> (0)
                     </a>
                 </li>
@@ -134,5 +138,3 @@
         <!--/.nav-collapse -->
     </div>
 </div>
-
-{{ dump(categories) }}
