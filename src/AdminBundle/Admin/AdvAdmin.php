@@ -29,16 +29,15 @@ class AdvAdmin extends AbstractAdmin
             ->add('link', 'text', [
                 'required' => FALSE,
             ])
-            ->add('imageOld', 'text')
             ->add('imageFeature', 'sonata_type_model_list', array(
                 'required' => FALSE
             ), array('link_parameters' => array('context' => 'slider')))
             ->add('enabled', 'choice', array(
-                'label' => 'Enabled',
+                'label' => 'Trạng Thái',
                 'choices' => array
                 (
-                    '0' => 'True',
-                    '1' => 'False'
+                    '0' => 'Tắt',
+                    '1' => 'Mở'
                 ),
             ))
             ->add('position', 'number', [
@@ -46,9 +45,9 @@ class AdvAdmin extends AbstractAdmin
             ])
             ->end()
             ->with('SEO', array('class' => 'col-sm-4'))
-            ->add('metaDescription', 'text')
-            ->add('metaKeyword', 'text')
-            ->add('metaTitle', 'text')
+            ->add('metaDescription', 'text', ['required' => FALSE])
+            ->add('metaKeyword', 'text', ['required' => FALSE])
+            ->add('metaTitle', 'text', ['required' => FALSE])
             ->end()
             ->end();
     }
@@ -60,6 +59,17 @@ class AdvAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')->addIdentifier('title')->addIdentifier('enabled');
+        $listMapper->addIdentifier('id')->addIdentifier('title','text',['label'=>'Tên'])->addIdentifier('enabled', 'choice', array(
+            'label' => 'Trạng Thái',
+            'choices' => array
+            (
+                '0' => 'Tắt',
+                '1' => 'Mở'
+            )))
+            ->add('_action', null, array('actions' => array(
+            'edit' => array(),
+            'delete' => array(),
+        )
+        ));
     }
 }

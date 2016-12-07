@@ -36,8 +36,8 @@ class SliderAdmin extends AbstractAdmin
                 'label' => 'Enabled',
                 'choices' => array
                 (
-                    '1' => 'True',
-                    '0' => 'False'
+                    '1' => 'Mở',
+                    '0' => 'Tắt'
                 ),
             ))
             ->add('position', 'number', [

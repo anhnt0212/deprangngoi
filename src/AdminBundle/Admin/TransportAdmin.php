@@ -26,11 +26,11 @@ class TransportAdmin extends AbstractAdmin
             ->add('cityCode', 'number')
             ->add('cityName', 'text', ['required' => FALSE])
             ->add('enabled', 'choice', array(
-                'label' => 'Enabled',
+                'label' => 'Trạng Thái',
                 'choices' => array
                 (
-                    '0' => 'True',
-                    '1' => 'False'
+                    '0' => 'Tắt',
+                    '1' => 'Mở'
                 ),
             ));
     }

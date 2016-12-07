@@ -776,4 +776,28 @@ class Product
     {
         return $this->gallery;
     }
+
+    /**
+     * Set trademark
+     *
+     * @param string $trademark
+     *
+     * @return Product
+     */
+    public function setTrademark($trademark)
+    {
+        $this->trademark = $trademark;
+
+        return $this;
+    }
+
+    /**
+     * Get trademark
+     *
+     * @return string
+     */
+    public function getTrademark()
+    {
+        return $this->trademark;
+    }
 }

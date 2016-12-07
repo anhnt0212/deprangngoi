@@ -41,14 +41,6 @@ class Adv
      * @ORM\Column(type="string")
      */
     protected $title;
-
-    /**
-     * The category alias.
-     *
-     * @var string
-     * @ORM\Column(type="string",name="image")
-     */
-    protected $imageOld;
     /**
      * Indicate if the product is enabled (available in store).
      *
@@ -103,6 +95,7 @@ class Adv
      * @ORM\Column(type="integer",name="position")
      */
     protected $position = 1;
+
     /**
      * Get id
      *
@@ -135,30 +128,6 @@ class Adv
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set imageOld
-     *
-     * @param string $imageOld
-     *
-     * @return Adv
-     */
-    public function setImageOld($imageOld)
-    {
-        $this->imageOld = $imageOld;
-
-        return $this;
-    }
-
-    /**
-     * Get imageOld
-     *
-     * @return string
-     */
-    public function getImageOld()
-    {
-        return $this->imageOld;
     }
 
     /**
@@ -282,6 +251,30 @@ class Adv
     }
 
     /**
+     * Set position
+     *
+     * @param integer $position
+     *
+     * @return Adv
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
      * Set imageFeature
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $imageFeature
@@ -307,29 +300,5 @@ class Adv
     public function __toString()
     {
         return $this->title;
-    }
-
-    /**
-     * Set position
-     *
-     * @param integer $position
-     *
-     * @return Adv
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return integer
-     */
-    public function getPosition()
-    {
-        return $this->position;
     }
 }

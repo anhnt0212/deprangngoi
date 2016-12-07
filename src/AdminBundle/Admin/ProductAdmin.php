@@ -130,6 +130,11 @@ class ProductAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')->addIdentifier('name')->addIdentifier('price')->addIdentifier('priceOld')->addIdentifier('createdAt')->addIdentifier('enabled');
+        $listMapper->addIdentifier('id')->addIdentifier('name')->addIdentifier('price')->addIdentifier('priceOld')->addIdentifier('enabled')
+            ->add('_action', null, array('actions' => array(
+                'edit' => array(),
+                'delete' => array(),
+            )
+            ));
     }
 }

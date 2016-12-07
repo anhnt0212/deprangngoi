@@ -117,6 +117,12 @@ class ArticleAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')->addIdentifier('title')->addIdentifier('createdAt')->addIdentifier('enabled');
+        $listMapper->addIdentifier('id')->addIdentifier('title','text',['label'=>'Tên'])->addIdentifier('enabled','', array(
+            'label' => 'Trạng Thái'))->addIdentifier('createdAt')
+            ->add('_action', null, array('actions' => array(
+                'edit' => array(),
+                'delete' => array(),
+            )
+            ));
     }
 }

@@ -90,7 +90,7 @@ class CategoryAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')->addIdentifier('name')->add('parent', null, array(
+        $listMapper->addIdentifier('id')->addIdentifier('name','',['Label'=>'Tên'])->add('parent', null, array(
             'associated_property' => 'name',
             'admin_code' => 'jobz_admin.catelogy'
         ), array('admin_code' => 'jobz_admin.catelogy'))->addIdentifier('enabled');
