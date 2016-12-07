@@ -9,8 +9,6 @@ class CategoryController extends Controller
     public function indexAction(Request $request)
     {
         $data['title'] = 'Mỹ phẩm đẹp rạng ngời';
-        $data['item']['alias'] = 'muc-san-pham';
-        $data['product']['alias'] = 'chi-tiet-san-pham';
         $slug = $request->get('alias', NULL);
         $manager = $this->getDoctrine()->getManager();
         $category = $manager->getRepository('AppBundle:Category')->findOneBy(array('alias' => trim($slug)));
@@ -22,6 +20,7 @@ class CategoryController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($product, $request->query->getInt('page', 1), 15);
         $data['items'] = $pagination;
+        $data['category'] = $category;
         return $this->render('AppBundle:Category:index.html.twig',$data);
     }
 }

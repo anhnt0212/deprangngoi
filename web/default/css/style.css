@@ -186,7 +186,8 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 10px;
 }
 .list-group-image {
-    max-height: 150px;
+    max-height: 200px;
+    min-height: 170px;
     padding-top: 15px;
 }
 
@@ -704,6 +705,11 @@ h3.title-category {
         max-width: 120px !important;
     }
 
+}
+@media only screen and (min-width: 991px){
+    .thumbnail {
+        min-height: 415px;
+    }
 }
 @media only screen and (min-width: 1366px){
     .slide-left,

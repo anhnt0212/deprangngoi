@@ -9,7 +9,7 @@ app_category:
     requirements:
         alias: "[a-zA-Z0-9\-_–]+"
 app_product_detail:
-    path:   /danh-muc-san-pham/{slug}
+    path:   /chi-tiet-san-pham/{slug}
     defaults: { _controller: AppBundle:Product:index }
     requirements:
         slug: "[a-zA-Z0-9\-_–]+"
