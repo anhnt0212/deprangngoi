@@ -22,6 +22,7 @@ class PurchaseAdmin extends AbstractAdmin
                 'class' => 'col-md-8',
                 'box_class' => 'box'
             ))
+            ->add('purchaseNo', 'text', ['label' => 'Mã đơn hàng'])
             ->add('deliveryDate', 'sonata_type_date_picker', array(
                 'label' => 'Ngày Giao',
                 'format' => 'yyyy/MM/dd',
@@ -39,6 +40,15 @@ class PurchaseAdmin extends AbstractAdmin
             ->add('customerName', 'text', ['label' => 'Tên khách hàng'])
             ->add('customerPhone', 'text', ['label' => 'SĐT khách hàng'])
             ->add('customerEmail', 'email', ['label' => 'Email khách hàng'])
+            ->add('customerAddress', 'text', ['label' => 'Địa chỉ khách hàng'])
+//            ->add('purchasedItems', 'sonata_type_collection', array(
+//                'by_reference' => false,
+//                'type_options' => array()), array(
+//                'edit' => 'inline',
+//                'inline' => 'table',
+//                'label' => false,
+//                'required' => FALSE
+//            ))
             ->end();
     }
 
