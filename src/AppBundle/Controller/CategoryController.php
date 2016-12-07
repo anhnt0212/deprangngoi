@@ -11,7 +11,6 @@ class CategoryController extends Controller
         $data['title'] = 'Mỹ phẩm đẹp rạng ngời';
         $data['item']['alias'] = 'muc-san-pham';
         $data['product']['alias'] = 'chi-tiet-san-pham';
-        $conn = $this->getDoctrine()->getConnection();
         $slug = $request->get('alias', NULL);
         $manager = $this->getDoctrine()->getManager();
         $category = $manager->getRepository('AppBundle:Category')->findOneBy(array('alias' => trim($slug)));

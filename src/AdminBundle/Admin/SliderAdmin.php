@@ -45,9 +45,9 @@ class SliderAdmin extends AbstractAdmin
             ])
             ->end()
             ->with('SEO', array('class' => 'col-sm-4'))
-            ->add('metaDescription', 'text')
-            ->add('metaKeyword', 'text')
-            ->add('metaTitle', 'text')
+            ->add('metaDescription', 'text', ['required' => FALSE])
+            ->add('metaKeyword', 'text', ['required' => FALSE])
+            ->add('metaTitle', 'text', ['required' => FALSE])
             ->end()
             ->end();
     }

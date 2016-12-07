@@ -24,7 +24,7 @@ class TransportAdmin extends AbstractAdmin
             ])
             ->add('price', 'number')
             ->add('cityCode', 'number')
-            ->add('cityName', 'text')
+            ->add('cityName', 'text', ['required' => FALSE])
             ->add('enabled', 'choice', array(
                 'label' => 'Enabled',
                 'choices' => array

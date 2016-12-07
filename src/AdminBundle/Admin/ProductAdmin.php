@@ -117,8 +117,8 @@ class ProductAdmin extends AbstractAdmin
             ->add('alias', 'text', [
                 'required' => true,
             ])
-            ->add('metaDescription', 'text')
-            ->add('metaKeyword', 'text')
+            ->add('metaDescription', 'text', ['required' => FALSE])
+            ->add('metaKeyword', 'text', ['required' => FALSE])
             ->end()
             ->end();
     }
