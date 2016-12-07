@@ -61,4 +61,11 @@ class SliderAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('id')->addIdentifier('title')->addIdentifier('enabled');
     }
+    public function prePersist($object) {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object) {
+
+    }
 }

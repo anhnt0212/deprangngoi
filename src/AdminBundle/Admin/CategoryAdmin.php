@@ -95,4 +95,11 @@ class CategoryAdmin extends AbstractAdmin
             'admin_code' => 'jobz_admin.catelogy'
         ), array('admin_code' => 'jobz_admin.catelogy'))->addIdentifier('enabled');
     }
+    public function prePersist($object) {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object) {
+
+    }
 }

@@ -137,4 +137,11 @@ class ProductAdmin extends AbstractAdmin
             )
             ));
     }
+    public function prePersist($object) {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object) {
+
+    }
 }

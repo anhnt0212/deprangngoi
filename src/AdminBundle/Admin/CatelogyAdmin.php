@@ -64,4 +64,11 @@ class CatelogyAdmin extends AbstractAdmin
             ), array('admin_code' => 'jobz_admin.catelogy'))
             ->addIdentifier('enabled');
     }
+    public function prePersist($object) {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object) {
+
+    }
 }

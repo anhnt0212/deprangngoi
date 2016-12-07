@@ -7,6 +7,7 @@
  */
 
 namespace AdminBundle\Admin;
+
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -14,5 +15,48 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class PurchaseAdmin extends AbstractAdmin
 {
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        $formMapper
+            ->with('Chi tiết đơn hàng', array(
+                'class' => 'col-md-8',
+                'box_class' => 'box'
+            ))
+            ->add('deliveryDate', 'sonata_type_date_picker', array(
+                'label' => 'Ngày Giao',
+                'format' => 'yyyy/MM/dd',
+                'required' => FALSE
+            ))
+            ->add('createdAt', 'sonata_type_date_picker', array(
+                'label' => 'Tạo Ngày',
+                'format' => 'yyyy/MM/dd',
+                'required' => FALSE
+            ))
+            ->add('deliveryHour', 'time', array(
+                'label' => 'Giờ Giao',
+                'required' => FALSE
+            ))
+            ->add('customerName', 'text', ['label' => 'Tên khách hàng'])
+            ->add('customerPhone', 'text', ['label' => 'SĐT khách hàng'])
+            ->add('customerEmail', 'email', ['label' => 'Email khách hàng'])
+            ->end();
+    }
+
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper->add('customerName')->add('customerPhone')->add('customerEmail');
+    }
+
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper->addIdentifier('id')->addIdentifier('customerName')->addIdentifier('customerPhone')->addIdentifier('customerEmail');
+    }
+    public function prePersist($object) {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object) {
+
+    }
 
 }

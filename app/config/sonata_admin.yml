@@ -87,7 +87,11 @@ sonata_admin:
                    icon:            '<i class="fa fa-car" aria-hidden="true"></i>'
                    items:
                        - jobz_admin.transport
-
+              sonata.admin.group.ship:
+                   label:           Quản lý đơn hàng
+                   icon:            '<i class="fa fa-car" aria-hidden="true"></i>'
+                   items:
+                       - jobz_admin.purchase
     templates:
         user_block:           'SonataAdminBundle:Core:user_block.html.twig'
         add_block:            'SonataAdminBundle:Core:add_block.html.twig'

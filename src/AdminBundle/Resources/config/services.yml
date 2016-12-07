@@ -58,3 +58,10 @@ services:
         arguments: [~, AppBundle\Entity\Transport, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Quản lý chi phí ship }
+
+
+    jobz_admin.purchase:
+        class: AdminBundle\Admin\PurchaseAdmin
+        arguments: [~, AppBundle\Entity\Purchase, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Quản lý đơn hàng }

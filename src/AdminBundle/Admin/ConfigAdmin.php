@@ -76,4 +76,11 @@ class ConfigAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('id')->addIdentifier('name')->addIdentifier('enabled');
     }
+    public function prePersist($object) {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object) {
+
+    }
 }

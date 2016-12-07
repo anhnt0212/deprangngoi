@@ -34,5 +34,11 @@ class UserAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('id')->addIdentifier('username')->addIdentifier('email');
     }
+    public function prePersist($object) {
+        $this->preUpdate($object);
+    }
 
+    public function preUpdate($object) {
+
+    }
 }

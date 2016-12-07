@@ -44,4 +44,11 @@ class TransportAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('id')->addIdentifier('destination')->addIdentifier('price')->addIdentifier('enabled');
     }
+    public function prePersist($object) {
+        $this->preUpdate($object);
+    }
+
+    public function preUpdate($object) {
+
+    }
 }
