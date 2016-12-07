@@ -25,7 +25,8 @@ class ArticleAdmin extends AbstractAdmin
             ))
             ->add('title', 'text', [
                 'required' => true,
-                'label' => 'Tiêu đề'
+                'label' => 'Tiêu đề',
+                'attr' => array('class' => 'title'),
             ])
             ->add('description', 'ckeditor', array(
                 'config' => array(
@@ -103,6 +104,7 @@ class ArticleAdmin extends AbstractAdmin
             ->with('SEO', array('class' => 'col-sm-4'))
             ->add('alias', 'text', [
                 'required' => true,
+                'attr' => array('class' => 'alias')
             ])
             ->add('metaDescription', 'text', ['required' => FALSE])
             ->add('metaKeyword', 'text', ['required' => FALSE])

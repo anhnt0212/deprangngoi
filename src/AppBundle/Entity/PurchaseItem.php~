@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class PurchaseItem.
  *
- * @author MacFJA
+ * @author Anh Nguyen
  *
  * @ORM\Table(name="purchase_item")
  * @ORM\Entity

@@ -95,6 +95,13 @@ class Purchase
      * @ORM\Column(type="text",name="customer_address")
      */
     protected $customerAddress;
+    /**
+     * The customer billing address.
+     *
+     * @var text
+     * @ORM\Column(type="text",name="total_price")
+     */
+    protected $totalPrice;
 
     /**
      * Items that have been purchased.
@@ -114,6 +121,10 @@ class Purchase
         $this->createdAt = new \DateTime();
         $this->deliveryDate = new \DateTime('+2 days');
         $this->deliveryHour = new \DateTime('14:00');
+    }
+    public function __toString()
+    {
+        return $this->purchaseNo;
     }
     /**
      * @param \DateTime $deliveryDate
@@ -366,5 +377,32 @@ class Purchase
     public function getPurchaseNo()
     {
         return $this->purchaseNo;
+    }
+
+    /**
+     * Set totalPrice
+     *
+     * @param string $totalPrice
+     *
+     * @return Purchase
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        if(!$totalPrice){
+            $this->totalPrice = $this->getTotal();
+        }
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get totalPrice
+     *
+     * @return string
+     */
+    public function getTotalPrice()
+    {
+        return $this->getTotal();
     }
 }

@@ -11,3 +11,23 @@ services:
          calls:
              - [setContainer, ["@service_container"]]
          arguments: ["@doctrine.orm.entity_manager"]
+
+#
+##   Extension twig
+#    app.service.twig_extension:
+#            class: AppBundle\Twig\Extension
+#            public: false
+#            arguments:
+#                - @service_container
+#                - @translator
+#            tags:
+#                - { name: twig.extension }
+##Custom resize image
+#    sonata.media.resizer.custom:
+#        class: AppBundle\Resizer\CustomResizer
+#        arguments: [@sonata.media.adapter.image.gd, 'outbound', @sonata.media.metadata.proxy]
+
+#        #Create Extension
+#    cmn.admin.create.extension:
+#        class: AppBundle\Extensions\Util
+#       #Custom provider

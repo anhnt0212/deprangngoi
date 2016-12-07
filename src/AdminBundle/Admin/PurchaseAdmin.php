@@ -41,14 +41,22 @@ class PurchaseAdmin extends AbstractAdmin
             ->add('customerPhone', 'text', ['label' => 'SĐT khách hàng'])
             ->add('customerEmail', 'email', ['label' => 'Email khách hàng'])
             ->add('customerAddress', 'text', ['label' => 'Địa chỉ khách hàng'])
-//            ->add('purchasedItems', 'sonata_type_collection', array(
-//                'by_reference' => false,
-//                'type_options' => array()), array(
-//                'edit' => 'inline',
-//                'inline' => 'table',
-//                'label' => false,
-//                'required' => FALSE
-//            ))
+            ->add('totalPrice', 'text', ['label' => 'Tổng số tiền','required' => FALSE,    'attr' => array(
+                'readonly' => true,
+                'disabled' => true
+            )])
+            ->add('purchasedItems', 'entity', array(
+                'property' => 'product',
+                'class' => 'AppBundle\Entity\PurchaseItem',
+                'empty_value' => 'Vui lòng chọn',
+                'multiple' => true,
+                'required' => FALSE,
+                'label' => 'Danh sách sản phẩm',
+                'attr' => array(
+                    'readonly' => true,
+                    'disabled' => true
+                )
+            ))
             ->end();
     }
 
