@@ -26,7 +26,7 @@ class ArticleAdmin extends AbstractAdmin
             ->add('title', 'text', [
                 'required' => true,
                 'label' => 'Tiêu đề',
-                'attr' => array('class' => 'title'),
+                'attr' => array('class' => 'meta-title'),
             ])
             ->add('description', 'ckeditor', array(
                 'config' => array(

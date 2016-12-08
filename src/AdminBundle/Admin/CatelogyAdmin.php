@@ -20,11 +20,13 @@ class CatelogyAdmin extends AbstractAdmin
         $formMapper
             ->add('name', 'text',[
                 'required'=>true,
-                'label' =>'Tên'
+                'label' =>'Tên',
+                'attr' => array('class' => 'meta-title'),
             ])
             ->add('alias', 'text',[
                 'required'=>true,
-                'label' =>'Link thân thiện'
+                'label' =>'Link thân thiện',
+                'attr' => array('class' => 'alias'),
             ])
             ->add('enabled', 'choice', array(
                 'label' => 'Trạng thái',

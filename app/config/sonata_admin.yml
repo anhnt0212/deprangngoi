@@ -144,7 +144,7 @@ sonata_admin:
             - bundles/sonataadmin/css/layout.css
             - bundles/sonataadmin/css/tree.css
             - bundles/sonataadmin/css/colors.css
-            - css/style.css
+            - admin/css/style.css
         javascripts:
 
             # Defaults:
@@ -166,7 +166,7 @@ sonata_admin:
             - bundles/sonataadmin/vendor/waypoints/lib/shortcuts/sticky.min.js
             - bundles/sonataadmin/Admin.js
             - bundles/sonataadmin/treeview.js
-            - js/app.js
+            - admin/js/app.js
     extensions:
 
         # Prototype

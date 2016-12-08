@@ -24,7 +24,8 @@ class CategoryAdmin extends AbstractAdmin
             ))
             ->add('name', 'text',[
                 'required'=>true,
-                'label' =>'Tên danh mục'
+                'label' =>'Tên danh mục',
+                'attr' => array('class' => 'meta-title'),
             ])
             ->add('enabled', 'choice', array(
                 'label' => 'Trạng thái',
@@ -77,6 +78,7 @@ class CategoryAdmin extends AbstractAdmin
             ->with('SEO', array('class' => 'col-sm-4'))
             ->add('alias', 'text', [
                 'required' => true,
+                'attr' => array('class' => 'alias'),
             ])
             ->add('metaDescription', 'text')
             ->add('metaKeyword', 'text')

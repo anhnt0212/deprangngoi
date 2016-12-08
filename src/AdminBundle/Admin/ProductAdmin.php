@@ -23,7 +23,9 @@ class ProductAdmin extends AbstractAdmin
             ))
             ->add('name', 'text', [
                 'required' => true,
-                'label'=>'Tên sản phẩm'
+                'label'=>'Tên sản phẩm',
+                'attr' => array('class' => 'meta-title'),
+
             ])
             ->add('typeName', 'text',[  'label'=>'Tên kiểu','required' => false,])
             ->add('productCode', 'text',[  'label'=>'Mã SP','required' => false,])
@@ -116,6 +118,7 @@ class ProductAdmin extends AbstractAdmin
             ->with('SEO', array('class' => 'col-sm-4'))
             ->add('alias', 'text', [
                 'required' => true,
+                'attr' => array('class' => 'alias'),
             ])
             ->add('metaDescription', 'text', ['required' => FALSE])
             ->add('metaKeyword', 'text', ['required' => FALSE])
