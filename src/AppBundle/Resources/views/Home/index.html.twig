@@ -3,82 +3,10 @@
 {% block main_content %}
     <div class="main-content">
         {% block slider %}
-            <div class="row box-slider">
-                <div class="container sliders">
-                    <div class="slide"><a href="/"><img src="{{ asset('default/images/habiku_727377ed_44d7d933.jpg') }}"
-                                                        class="img-responsive "
-                                                        title="Mỹ Phẩm"
-                                                        alt="Mỹ Phẩm"/></a></div>
-                    <div class="slide"><a href="/"><img
-                                    src="{{ asset('default/images/Cham-soc-toc_a369c9f5_a16e6498.jpg') }}"
-                                    class="img-responsive"
-                                    title="Mỹ Phẩm"
-                                    alt="Mỹ Phẩm"/></a></div>
-                    <div class="slide"><a href="/"><img
-                                    src="{{ asset('default/images/My-pham3_954e82ee_c6bf0970.jpg') }}"
-                                    class="img-responsive"
-                                    title="Mỹ Phẩm"
-                                    alt="Mỹ Phẩm"/></a></div>
-                </div>
-            </div>
+            {{ render(url('app_block_slider')) }}
         {% endblock %}
         {% block adv_home %}
-            <div class="row">
-                <div class="col-md-8 boder-box">
-                    <div class="box-title-1">
-                        <h2 class="text-box-1">Khuyến mại</h2>
-                    </div>
-                    <div class="adv-home">
-                        <a rel="nofollow"
-                           title="CHƯƠNG TR&#204;NH KHUYẾN M&#195;I ">
-                            <img src="{{ asset('default/images/1_c31d92cb.jpg') }}" class="img-responsive"
-                                 title="CHƯƠNG TRÌNH KHUYẾN MÃI"
-                                 alt=""/>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 pull-left">
-                    <form action="#" data-ajax="true" data-ajax-failure="OnFailure"
-                          data-ajax-success="OnSuccess" id="frmnewsletter" method="post">
-                        <div class="col-md-12 boder-box">
-                            <p class="p-letter-1">NHẬN THÔNG TIN KHUYẾN MÃI</p>
-
-                            <div class="input-group">
-                                <input type="email" class="form-control" name="email-sub"
-                                       placeholder="Vui lòng nhập email">
-                        <span class="input-group-btn">
-                             <button class="btn btn-default" type="button"><span
-                                         class="glyphicon glyphicon-ok-circle"></span></button>
-                </span>
-
-                                <div class="clearfix"></div>
-                            </div>
-                            <p class="p-letter-2"> Nhận mã giảm giá và các chương trình khuyến mãi mã giảm giá và các
-                                chương
-                                trình</p>
-                        </div>
-                    </form>
-                    <div class="clearfix"></div>
-                    <div class="col-md-12 boder-box pull-0 pill-0-ex">
-                        <p class="p-letter-3">Cẩm nang l&#224;m đẹp</p>
-
-                        <div class="offer-wrap">
-                            {% for i in 0..6 %}
-                                <a href="/cam-nang-lam-dep/top-3-cach-tri-mun-tham-hieu-qua-tu-nguyen-lieu-thien-nhien-ba-nen-thu"
-                                   title="Top 3 c&#225;ch trị mụn th&#226;m hiệu quả từ nguy&#234;n liệu thi&#234;n nhi&#234;n bạn n&#234;n thử">
-                                    <h3 class="text-left text-news-home">Top 3 c&#225;ch trị mụn th&#226;m hiệu
-                                        quả {{ i }}
-                                    </h3></a>
-                            {% endfor %}
-                        </div>
-                        <a href="/cam-nang-lam-dep" title="Cẩm nang l&#224;m đẹp"><p class="view-all-ex">Xem thêm &gt;&gt;</p>
-                        </a>
-
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            {{ render(url('app_block_news')) }}
         {% endblock %}
         <div class="row box-category">
             <div class="col-md-12 boder-box">
@@ -114,7 +42,7 @@
                                             <div class="col-xs-12 col-md-6">
                                         <span class="lead">
                                             120.000 VNĐ</span>
-                                        <span class="lead-old">
+                                                <span class="lead-old">
                                             200.000 VNĐ</span>
                                             </div>
                                             <div class="col-xs-12 col-md-6">
@@ -129,14 +57,6 @@
                         {% endfor %}
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="span12 margin-top hidden-phone">
-                <a rel="nofollow" title="Quảng c&#225;o footer">
-                    <img src="{{ asset('default/images/footer_6ad50663_d63f4d23.png') }}" class="img-responsive"
-                         title="Quảng c&#225;o footer" alt=""/>
-                </a>
             </div>
         </div>
         <div class="row box-category">
@@ -173,7 +93,7 @@
                                             <div class="col-xs-12 col-md-6">
                                         <span class="lead">
                                             120.000 VNĐ</span>
-                                        <span class="lead-old">
+                                                <span class="lead-old">
                                             200.000 VNĐ</span>
                                             </div>
                                             <div class="col-xs-12 col-md-6">

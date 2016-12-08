@@ -17,6 +17,7 @@ class BaseController extends Controller
         );
         return $this->render('AppBundle:Block:search.html.twig', $variables);
     }
+
     public function menuAction()
     {
         $sql = "SELECT
@@ -33,7 +34,27 @@ class BaseController extends Controller
         return $this->render('AppBundle:Block:menu.html.twig', $variables);
     }
 
-    public function buildTree(array $elements, $parentId = null, $parent_id_field = 'parent_id') {
+    public function sliderAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('AppBundle:Slider')->createQueryBuilder('s');
+        $sliders = $qb->where('s.enabled = 1')->orderBy('s.position', 'ASC')->getQuery()->setMaxResults(5)->getResult();
+        $variables = array(
+            'categories' => $sliders
+        );
+        return $this->render('AppBundle:Block:slider.html.twig', $variables);
+    }
+
+    public function newsAction()
+    {
+        $variables = array(
+            'news' => ''
+        );
+        return $this->render('AppBundle:Block:news.html.twig', $variables);
+    }
+
+    public function buildTree(array $elements, $parentId = null, $parent_id_field = 'parent_id')
+    {
         $branch = array();
         foreach ($elements as $element) {
             if ($element[$parent_id_field] == $parentId) {
@@ -45,6 +66,7 @@ class BaseController extends Controller
         }
         return $branch;
     }
+
     public static function setMetaData()
     {
         $data['title'] = 'Mỹ phẩm đẹp rạng ngời';

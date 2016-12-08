@@ -46,3 +46,11 @@ app_block_search :
 app_block_menu :
      path:  /render/block/menu
      defaults: { _controller: AppBundle:Base:menu }
+
+app_block_slider :
+     path:  /render/block/slider
+     defaults: { _controller: AppBundle:Base:slider }
+
+app_block_news :
+     path:  /render/block/news
+     defaults: { _controller: AppBundle:Base:news }
