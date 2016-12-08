@@ -27,7 +27,7 @@ services:
 #        class: AppBundle\Resizer\CustomResizer
 #        arguments: [@sonata.media.adapter.image.gd, 'outbound', @sonata.media.metadata.proxy]
 
-#        #Create Extension
-#    cmn.admin.create.extension:
-#        class: AppBundle\Extensions\Util
-#       #Custom provider
+#Create Extension
+    app_bundle.create.extension:
+        class: AppBundle\Extensions\Util
+       #Custom provider
