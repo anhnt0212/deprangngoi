@@ -208,6 +208,13 @@ class Product
     /**
      * Constructor
      */
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $old = true;
 
     public function __construct()
     {

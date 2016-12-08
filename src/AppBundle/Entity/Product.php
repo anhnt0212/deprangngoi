@@ -208,6 +208,13 @@ class Product
     /**
      * Constructor
      */
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $old = true;
 
     public function __construct()
     {
@@ -799,5 +806,29 @@ class Product
     public function getTrademark()
     {
         return $this->trademark;
+    }
+
+    /**
+     * Set old
+     *
+     * @param boolean $old
+     *
+     * @return Product
+     */
+    public function setOld($old)
+    {
+        $this->old = $old;
+
+        return $this;
+    }
+
+    /**
+     * Get old
+     *
+     * @return boolean
+     */
+    public function getOld()
+    {
+        return $this->old;
     }
 }

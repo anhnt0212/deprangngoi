@@ -378,4 +378,31 @@ class Purchase
     {
         return $this->purchaseNo;
     }
+
+    /**
+     * Set totalPrice
+     *
+     * @param string $totalPrice
+     *
+     * @return Purchase
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        if(!$totalPrice){
+            $this->totalPrice = $this->getTotal();
+        }
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get totalPrice
+     *
+     * @return string
+     */
+    public function getTotalPrice()
+    {
+        return $this->getTotal();
+    }
 }
