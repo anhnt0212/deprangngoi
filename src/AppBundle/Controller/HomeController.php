@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     protected $layout = null;
 
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $data = \AppBundle\Controller\BaseController::setMetaData();
         $sql = "SELECT id,parent_id,name,parent_id,alias,image_url,body,meta_keyword,meta_description,position,image_feature,in_home FROM category WHERE category.enabled = 1 AND category.in_home =1";
@@ -19,30 +19,24 @@ class HomeController extends Controller
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
         $categories = $stmt->fetchAll();
-        $cate_array_id = [];
+        $all_childs = [];
         foreach ($categories as $key => $value) {
-
-            array_push($cate_array_id, $value['id']);
-        }
-        $qb = $em->getRepository('AppBundle:Category')->createQueryBuilder('c');
-        $qb->where('c.parent IN (:ids)')
-            ->setParameter('ids', $cate_array_id);
-        $all_childs = $qb->getQuery()->getArrayResult();
-        foreach ($all_childs as $key => &$value) {
+            $product[$value['id']] = $value;
+            $product[$value['id']]['product'] = [];
+            $all_childs[$value['id']] = [];
+            $qb = $em->getRepository('AppBundle:Category')->createQueryBuilder('c');
+            $value['child'] = $qb->where('c.parent = (:ids)')->setParameter('ids', $value['id'])->getQuery()->getArrayResult();
+            foreach ($value['child'] as $k) {
+                array_push($all_childs[$value['id']], $k['id']);
+            }
             $repository = $em->getRepository('AppBundle:Product');
-            $products[$value['id']] = $repository->createQueryBuilder('p')
+            $product[$value['id']]['product']  = $repository->createQueryBuilder('p')
                 ->innerJoin('p.categories', 'g')
                 ->where('g.id IN (:category_id)')
-                ->setParameter('category_id', $value['id'])
-                ->getQuery()->setMaxResults(25)->getArrayResult();
+                ->setParameter('category_id', $all_childs[$value['id']])
+                ->getQuery()->setMaxResults(6)->getArrayResult();
         }
-        echo "<pre>";
-        print_r($value = $products);
-        exit();
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($products, $request->query->getInt('page', 1), 15);
-        $data['items'] = $pagination;
-        $data['category'] = $categories;
+        $data['category'] = $product;
         return $this->render('AppBundle:Home:index.html.twig', $data);
     }
 

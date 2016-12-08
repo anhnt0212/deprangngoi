@@ -14,14 +14,14 @@ services:
 
 #
 ##   Extension twig
-#    app.service.twig_extension:
-#            class: AppBundle\Twig\Extension
-#            public: false
-#            arguments:
-#                - @service_container
-#                - @translator
-#            tags:
-#                - { name: twig.extension }
+    app.service.twig_extension:
+            class: AppBundle\Twig\Extension
+            public: false
+            arguments:
+                - @service_container
+                - @translator
+            tags:
+                - { name: twig.extension }
 ##Custom resize image
 #    sonata.media.resizer.custom:
 #        class: AppBundle\Resizer\CustomResizer
