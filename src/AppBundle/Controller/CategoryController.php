@@ -8,7 +8,7 @@ class CategoryController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $data['title'] = 'Mỹ phẩm đẹp rạng ngời';
+        $data = \AppBundle\Controller\BaseController::setMetaData();
         $slug = $request->get('alias', NULL);
         $manager = $this->getDoctrine()->getManager();
         $category = $manager->getRepository('AppBundle:Category')->findOneBy(array('alias' => trim($slug)));

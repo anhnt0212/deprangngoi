@@ -45,4 +45,9 @@ class BaseController extends Controller
         }
         return $branch;
     }
+    public static function setMetaData()
+    {
+        $data['title'] = 'Mỹ phẩm đẹp rạng ngời';
+        return $data;
+    }
 }

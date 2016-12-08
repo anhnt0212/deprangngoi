@@ -102,7 +102,13 @@ class Category
      * @ORM\Column(type="boolean",name="enabled")
      */
     protected $enabled = false;
-
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean",name="in_home")
+     */
+    protected $inHome = 0;
 
     /**
      * Product in the category.
@@ -413,5 +419,29 @@ class Category
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * Set inHome
+     *
+     * @param boolean $inHome
+     *
+     * @return Category
+     */
+    public function setInHome($inHome)
+    {
+        $this->inHome = $inHome;
+
+        return $this;
+    }
+
+    /**
+     * Get inHome
+     *
+     * @return boolean
+     */
+    public function getInHome()
+    {
+        return $this->inHome;
     }
 }

@@ -206,9 +206,6 @@ class Product
     private $gallery;
 
     /**
-     * Constructor
-     */
-    /**
      * Indicate if the product is enabled (available in store).
      *
      * @var bool
@@ -216,6 +213,24 @@ class Product
      */
     private $old = true;
 
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $inSale = 0;
+
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $inHot = 0;
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->updatedAt = new \DateTime('now');
@@ -830,5 +845,53 @@ class Product
     public function getOld()
     {
         return $this->old;
+    }
+
+    /**
+     * Set inSale
+     *
+     * @param boolean $inSale
+     *
+     * @return Product
+     */
+    public function setInSale($inSale)
+    {
+        $this->inSale = $inSale;
+
+        return $this;
+    }
+
+    /**
+     * Get inSale
+     *
+     * @return boolean
+     */
+    public function getInSale()
+    {
+        return $this->inSale;
+    }
+
+    /**
+     * Set inHot
+     *
+     * @param boolean $inHot
+     *
+     * @return Product
+     */
+    public function setInHot($inHot)
+    {
+        $this->inHot = $inHot;
+
+        return $this;
+    }
+
+    /**
+     * Get inHot
+     *
+     * @return boolean
+     */
+    public function getInHot()
+    {
+        return $this->inHot;
     }
 }

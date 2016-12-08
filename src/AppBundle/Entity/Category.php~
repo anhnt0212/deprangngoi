@@ -102,7 +102,13 @@ class Category
      * @ORM\Column(type="boolean",name="enabled")
      */
     protected $enabled = false;
-
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean",name="in_home")
+     */
+    protected $inHome = 0;
 
     /**
      * Product in the category.

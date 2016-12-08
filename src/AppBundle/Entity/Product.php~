@@ -206,9 +206,6 @@ class Product
     private $gallery;
 
     /**
-     * Constructor
-     */
-    /**
      * Indicate if the product is enabled (available in store).
      *
      * @var bool
@@ -216,6 +213,24 @@ class Product
      */
     private $old = true;
 
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $inSale = 0;
+
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $inHot = 0;
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->updatedAt = new \DateTime('now');
@@ -806,5 +821,29 @@ class Product
     public function getTrademark()
     {
         return $this->trademark;
+    }
+
+    /**
+     * Set old
+     *
+     * @param boolean $old
+     *
+     * @return Product
+     */
+    public function setOld($old)
+    {
+        $this->old = $old;
+
+        return $this;
+    }
+
+    /**
+     * Get old
+     *
+     * @return boolean
+     */
+    public function getOld()
+    {
+        return $this->old;
     }
 }
