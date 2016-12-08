@@ -2,9 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use Buzz\Message\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Controller\BaseController;
 
 class HomeController extends Controller
@@ -28,18 +28,17 @@ class HomeController extends Controller
         $qb->where('c.parent IN (:ids)')
             ->setParameter('ids', $cate_array_id);
         $all_childs = $qb->getQuery()->getArrayResult();
-        $all_childs_id = [];
-        foreach ($all_childs as $key => $value) {
-            array_push($all_childs_id, $value['id']);
+        foreach ($all_childs as $key => &$value) {
+            $repository = $em->getRepository('AppBundle:Product');
+            $products[$value['id']] = $repository->createQueryBuilder('p')
+                ->innerJoin('p.categories', 'g')
+                ->where('g.id IN (:category_id)')
+                ->setParameter('category_id', $value['id'])
+                ->getQuery()->setMaxResults(25)->getArrayResult();
         }
-        $repository = $em->getRepository('AppBundle:Product');
-        $products = $repository->createQueryBuilder('p')
-            ->innerJoin('p.categories', 'g')
-            ->where('g.id IN (:category_id)')
-            ->setParameter('category_id', $all_childs_id)
-            ->select('p', 'g.id AS categoryId', 'g.name AS categoryName')
-            ->groupBy('g.id')
-            ->getQuery()->getArrayResult();
+        echo "<pre>";
+        print_r($value = $products);
+        exit();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($products, $request->query->getInt('page', 1), 15);
         $data['items'] = $pagination;
