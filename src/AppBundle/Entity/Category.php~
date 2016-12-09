@@ -420,4 +420,28 @@ class Category
     {
         return $this->parent;
     }
+
+    /**
+     * Set inHome
+     *
+     * @param boolean $inHome
+     *
+     * @return Category
+     */
+    public function setInHome($inHome)
+    {
+        $this->inHome = $inHome;
+
+        return $this;
+    }
+
+    /**
+     * Get inHome
+     *
+     * @return boolean
+     */
+    public function getInHome()
+    {
+        return $this->inHome;
+    }
 }

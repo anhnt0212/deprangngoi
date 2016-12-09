@@ -58,58 +58,15 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="' ' " class="dropdown-toggle"
+                    <a href="javascript:;" class="dropdown-toggle"
                        data-toggle="dropdown">Thương Hiệu<b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        {% for td in trademark %}
                         <li>
                             <a href="{{ path('app_list_product_trademark') }}" title="One Today">One Today</a>
-
                         </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="New Today">New Today</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="EVI">EVI</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="Ốc sên - Sữa dê Q10">Ốc s&#234;n -
-                                Sữa d&#234; Q10</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="Roomax">Roomax</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="OLY HT">OLY HT</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="OHIO">OHIO</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="Bạch sâm - Nhau thai cừu">Bạch s&#226;m
-                                - Nhau thai cừu</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="Erons">Erons</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="Nairem">Nairem</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="Sắc Nét Ngọc Khang">Sắc N&#233;t
-                                Ngọc Khang</a>
-
-                        </li>
-
+                        {% endfor %}
                     </ul>
                 </li>
                 <li><a href="{{ path('app_list_new') }}">Cẩm Nang Làm Đẹp</a></li>

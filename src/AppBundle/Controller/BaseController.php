@@ -28,8 +28,16 @@ class BaseController extends Controller
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
         $categories = $this->buildTree($stmt->fetchAll());
+        $sql2 = "SELECT
+          id,parent_id,name,parent_id,alias,image_url,body,meta_keyword,meta_description,position,image_feature
+            FROM category
+          WHERE category.enabled = 1 AND category.parent_id = 32";
+        $stmt2 = $em->getConnection()->prepare($sql2);
+        $stmt2->execute();
+        $trademark =$stmt2->fetchAll();
         $variables = array(
-            'categories' => $categories
+            'categories' => $categories,
+            'trademark' => $trademark
         );
         return $this->render('AppBundle:Block:menu.html.twig', $variables);
     }
@@ -47,8 +55,12 @@ class BaseController extends Controller
 
     public function newsAction()
     {
-        $variables = array(
-            'news' => ''
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('AppBundle:Article')->createQueryBuilder('a');
+        $articles = $qb->where('a.enabled = 1')->orderBy('a.updatedAt', 'DESC')->getQuery()->setMaxResults(6)->getResult();
+        $variables = array
+        (
+            'news' => $articles
         );
         return $this->render('AppBundle:Block:news.html.twig', $variables);
     }

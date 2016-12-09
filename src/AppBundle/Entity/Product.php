@@ -211,7 +211,7 @@ class Product
      * @var bool
      * @ORM\Column(type="boolean")
      */
-    private $old = true;
+    private $old = false;
 
     /**
      * Indicate if the product is enabled (available in store).

@@ -211,7 +211,7 @@ class Product
      * @var bool
      * @ORM\Column(type="boolean")
      */
-    private $old = true;
+    private $old = false;
 
     /**
      * Indicate if the product is enabled (available in store).
@@ -845,5 +845,53 @@ class Product
     public function getOld()
     {
         return $this->old;
+    }
+
+    /**
+     * Set inSale
+     *
+     * @param boolean $inSale
+     *
+     * @return Product
+     */
+    public function setInSale($inSale)
+    {
+        $this->inSale = $inSale;
+
+        return $this;
+    }
+
+    /**
+     * Get inSale
+     *
+     * @return boolean
+     */
+    public function getInSale()
+    {
+        return $this->inSale;
+    }
+
+    /**
+     * Set inHot
+     *
+     * @param boolean $inHot
+     *
+     * @return Product
+     */
+    public function setInHot($inHot)
+    {
+        $this->inHot = $inHot;
+
+        return $this;
+    }
+
+    /**
+     * Get inHot
+     *
+     * @return boolean
+     */
+    public function getInHot()
+    {
+        return $this->inHot;
     }
 }

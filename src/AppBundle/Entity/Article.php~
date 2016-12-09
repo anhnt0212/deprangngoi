@@ -140,6 +140,13 @@ class Article
      * @ORM\JoinTable(name="article_catelogy")
      */
     protected $categories;
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $old = false;
 
     /**
      * Constructor
@@ -484,5 +491,29 @@ class Article
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Set old
+     *
+     * @param boolean $old
+     *
+     * @return Article
+     */
+    public function setOld($old)
+    {
+        $this->old = $old;
+
+        return $this;
+    }
+
+    /**
+     * Get old
+     *
+     * @return boolean
+     */
+    public function getOld()
+    {
+        return $this->old;
     }
 }
