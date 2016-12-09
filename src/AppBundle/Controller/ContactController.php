@@ -6,12 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ContactController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        $this->data['title'] = 'Mỹ phẩm đẹp rạng ngời';
-        $this->data['item']['alias'] = 'muc-san-pham';
-        $this->data['product']['alias'] = 'chi-tiet-san-pham';
-        $alias = $request->get('slug', NULL);
-        return $this->render('AppBundle:Contact:index.html.twig',$this->data);
+        $data = \AppBundle\Controller\BaseController::setMetaData();
+        return $this->render('AppBundle:Contact:index.html.twig',$data);
     }
 }
