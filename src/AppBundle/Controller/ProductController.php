@@ -33,7 +33,7 @@ class ProductController extends Controller
             ->createQueryBuilder('p')
             ->join('p.categories', 'c')
             ->where("c.id = " . $category[0]['id'])
-            ->getQuery()->setMaxResults(6)->getArrayResult();
+            ->getQuery()->setMaxResults(6)->getResult();
         $data['productLike'] = $productLike;
         return $this->render('AppBundle:Product:detail.html.twig', $data);
     }
@@ -46,7 +46,7 @@ class ProductController extends Controller
         $product = $manager->getRepository('AppBundle:Product')->createQueryBuilder('p');
         $like = "%" . mb_strtolower(trim(strip_tags($keyword))) . "%";
         $product->where("LOWER(p.name) LIKE :like OR LOWER(p.description) LIKE :like");
-        $result = $product->setParameter('like', $like) ->getQuery()->getArrayResult();
+        $result = $product->setParameter('like', $like) ->getQuery()->getResult();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($result, $request->query->getInt('page', 1), 15);
         $data['items'] = $pagination;

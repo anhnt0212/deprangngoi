@@ -11,7 +11,7 @@ class BaseController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('AppBundle:Category')->createQueryBuilder('c');
-        $categories = $qb->where('c.enabled = 1 AND c.parent = 30')->orderBy('c.name', 'ASC')->getQuery()->setMaxResults(15)->getResult();
+        $categories = $qb->where('c.enabled = 1 AND c.parent IS NULL')->orderBy('c.name', 'ASC')->getQuery()->setMaxResults(15)->getResult();
         $variables = array(
             'categories' => $categories
         );
@@ -57,7 +57,7 @@ class BaseController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('AppBundle:Article')->createQueryBuilder('a');
-        $articles = $qb->where('a.enabled = 1')->orderBy('a.updatedAt', 'DESC')->getQuery()->setMaxResults(6)->getResult();
+        $articles = $qb->where('a.enabled = 1')->orderBy('a.updatedAt', 'DESC')->getQuery()->setMaxResults(5)->getResult();
         $variables = array
         (
             'news' => $articles

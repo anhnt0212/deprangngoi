@@ -19,14 +19,6 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @var Purchase[]
-     *
-     * @ORM\OneToMany(targetEntity="Purchase", mappedBy="buyer", cascade={"remove"})
-     */
-    private $purchases;
-
     /**
      * @var bool
      *
@@ -42,8 +34,6 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-
-        $this->purchases = new ArrayCollection();
         $this->isActive = true;
     }
 
@@ -71,21 +61,6 @@ class User extends BaseUser
         return $this->isActive;
     }
 
-    /**
-     * @param Purchase[] $purchases
-     */
-    public function setPurchases($purchases)
-    {
-        $this->purchases = $purchases;
-    }
-
-    /**
-     * @return Purchase[]
-     */
-    public function getPurchases()
-    {
-        return $this->purchases;
-    }
     public function getRoles()
     {
         return $this->roles;
@@ -106,29 +81,5 @@ class User extends BaseUser
             $this->id,
             $this->username,
             $this->password) = unserialize($serialized);
-    }
-
-    /**
-     * Add purchase
-     *
-     * @param \AppBundle\Entity\Purchase $purchase
-     *
-     * @return User
-     */
-    public function addPurchase(\AppBundle\Entity\Purchase $purchase)
-    {
-        $this->purchases[] = $purchase;
-
-        return $this;
-    }
-
-    /**
-     * Remove purchase
-     *
-     * @param \AppBundle\Entity\Purchase $purchase
-     */
-    public function removePurchase(\AppBundle\Entity\Purchase $purchase)
-    {
-        $this->purchases->removeElement($purchase);
     }
 }

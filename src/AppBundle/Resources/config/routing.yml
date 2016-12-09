@@ -31,7 +31,7 @@ app_list_new:
     defaults: { _controller: AppBundle:New:index }
 
 app_list_new_detail:
-    path:  /cam-nang-lam-dep/tin-tuc/{alias}
+    path:  /cam-nang-lam-dep/{alias}
     defaults: { _controller: AppBundle:New:detail }
     requirements:
         alias: "[a-zA-Z0-9\-_–]+"

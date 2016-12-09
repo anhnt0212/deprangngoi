@@ -10,10 +10,12 @@
     </div>
     {{ render(url('app_block_news')) }}
     <div class="row article-content">
-        <div class="col-lg-9 col-md-9">
+        <div class="col-lg-8 col-md-8ss">
             {% if item|length > 0 %}
                 <h1>{{ item.title }}</h1>
+                <hr>
                 <p class="date">Đăng ngày : {{ item.createdAt|date("d/m/Y") }}</p>
+                <hr>
                 <div class="socical">
                     <!-- AddThis Button BEGIN -->
                     <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
@@ -50,8 +52,7 @@
                 <p class="alert alert-info col-xs-12">{{ 'Result not found'|trans() }}</p>
             {% endif %}
         </div>
-        <div class="col-lg-3 col-md-3">
-            <h1 class="title-widget">Facebook</h1>
+        <div class="col-lg-4 col-md-4">
             <div id="fb-root"></div>
             <div class="fb-page"
                  data-href="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble"

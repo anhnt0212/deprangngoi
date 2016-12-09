@@ -41,7 +41,7 @@
                                             {% if(item.description|length > 0) %}
                                                 {{ item.description }}
                                             {% else %}
-                                                {{ characterLimit(item.body,225)|striptags }}
+                                                {{ characterLimit(item.body,225)|raw }}
                                             {% endif %}.</p>
 
                                         <div class="row price">

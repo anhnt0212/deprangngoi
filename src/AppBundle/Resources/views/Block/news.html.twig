@@ -5,7 +5,7 @@
         </div>
         <div class="adv-home">
             <a rel="nofollow"
-               title="CHƯƠNG TR&#204;NH KHUYẾN M&#195;I ">
+               title="CHƯƠNG TRÌNH KHUYẾN MÃI">
                 <img src="{{ asset('default/images/1_c31d92cb.jpg') }}" class="img-responsive"
                      title="CHƯƠNG TRÌNH KHUYẾN MÃI"
                      alt=""/>
@@ -40,7 +40,7 @@
                 {% for n in news %}
                     <a href="{{ path('app_list_new_detail',{'alias':n.alias}) }}"
                        title="{{ n.title }}">
-                        <h3 class="text-left text-news-home">{{ n.title }}
+                        <h3 class="text-left text-news-home">{{characterLimit(n.title,50)}}
                         </h3></a>
                 {% endfor %}
             </div>
