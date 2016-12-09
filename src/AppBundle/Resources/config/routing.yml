@@ -15,7 +15,7 @@ app_product_detail:
         slug: "[a-zA-Z0-9\-_–]+"
 
 app_product_card:
-    path:   /gio-hang/them-hang
+    path:   /gio-hang/chi-tiet
     defaults: { _controller: AppBundle:Card:index }
 
 app_list_product_hot :

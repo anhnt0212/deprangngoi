@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManager;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 class BaseController extends Controller
 {
     public function searchAction()
@@ -20,6 +20,7 @@ class BaseController extends Controller
 
     public function menuAction()
     {
+        $session = new Session();
         $sql = "SELECT
           id,parent_id,name,parent_id,alias,image_url,body,meta_keyword,meta_description,position,image_feature
             FROM category
@@ -35,9 +36,11 @@ class BaseController extends Controller
         $stmt2 = $em->getConnection()->prepare($sql2);
         $stmt2->execute();
         $trademark =$stmt2->fetchAll();
+        $card = $session->get('card');
         $variables = array(
             'categories' => $categories,
-            'trademark' => $trademark
+            'trademark' => $trademark,
+            'card' => count($card)
         );
         return $this->render('AppBundle:Block:menu.html.twig', $variables);
     }
