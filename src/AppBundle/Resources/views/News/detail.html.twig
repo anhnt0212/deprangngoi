@@ -1,0 +1,77 @@
+{% extends 'AppBundle::layout.html.twig' %}
+{% block main_content %}
+    <div class="row box-breadcrumb">
+        <div class="btn-group btn-breadcrumb">
+            <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="#" class="btn btn-default">Trang Chủ</a>
+            <a href="#" class="btn btn-default">Cẩm Nang Làm Đẹp</a>
+            <a href="#" class="btn btn-default">{{ item.title }}</a>
+        </div>
+    </div>
+    {{ render(url('app_block_news')) }}
+    <div class="row article-content">
+        <div class="col-lg-9 col-md-9">
+            {% if item|length > 0 %}
+                <h1>{{ item.title }}</h1>
+                <p class="date">Đăng ngày : {{ item.createdAt|date("d/m/Y") }}</p>
+                <div class="socical">
+                    <!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+                        <a class="addthis_button_facebook"></a>
+                        <a class="addthis_button_twitter"></a>
+                        <a class="addthis_button_zingme"></a>
+                        <a class="addthis_button_google_plusone_share"></a>
+                        <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    {{ item.content|raw }}
+                </div>
+                <hr>
+                {% if(list|length > 0) %}
+                    <div class="other-news">
+                        <h3>Các tin khác</h3>
+                        <ul>
+                            {% for l in list %}
+                                <li>
+                                    <h2>
+                                        <a href="{{ path('app_list_new_detail',{'alias':l.alias}) }}">{{ l.title }}
+                                        </a>
+                                    </h2>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="clearfix"></div>
+                <div class="fb-comments" data-href="https://www.facebook.com/biquyetdeprangngoi/" data-width="100%"
+                     data-numposts="1"></div>
+            {% else %}
+                <p class="alert alert-info col-xs-12">{{ 'Result not found'|trans() }}</p>
+            {% endif %}
+        </div>
+        <div class="col-lg-3 col-md-3">
+            <h1 class="title-widget">Facebook</h1>
+            <div id="fb-root"></div>
+            <div class="fb-page"
+                 data-href="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble"
+                 data-width="340" data-height="235" data-hide-cover="false" data-show-facepile="true"
+                 data-show-posts="false">
+                <div class="fb-xfbml-parse-ignore">
+                    <blockquote cite="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble"><a
+                                href="https://www.facebook.com/biquyetdeprangngoi?__mref=message_bubble">BíQuyết Đẹp Hơn
+                            Mỗi Ngày</a></blockquote>
+                </div>
+            </div>
+        </div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=425450817599085";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </div>
+{% endblock %}
