@@ -48,7 +48,7 @@ class BaseController extends Controller
         $qb = $em->getRepository('AppBundle:Slider')->createQueryBuilder('s');
         $sliders = $qb->where('s.enabled = 1')->orderBy('s.position', 'ASC')->getQuery()->setMaxResults(5)->getResult();
         $variables = array(
-            'categories' => $sliders
+            'sliders' => $sliders
         );
         return $this->render('AppBundle:Block:slider.html.twig', $variables);
     }

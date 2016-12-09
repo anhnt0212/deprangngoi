@@ -1,18 +1,15 @@
+
 <div class="row box-slider">
     <div class="container sliders">
-        <div class="slide"><a href="/"><img src="{{ asset('default/images/habiku_727377ed_44d7d933.jpg') }}"
-                                            class="img-responsive "
-                                            title="Mỹ Phẩm"
-                                            alt="Mỹ Phẩm"/></a></div>
-        <div class="slide"><a href="/"><img
-                        src="{{ asset('default/images/Cham-soc-toc_a369c9f5_a16e6498.jpg') }}"
-                        class="img-responsive"
-                        title="Mỹ Phẩm"
-                        alt="Mỹ Phẩm"/></a></div>
-        <div class="slide"><a href="/"><img
-                        src="{{ asset('default/images/My-pham3_954e82ee_c6bf0970.jpg') }}"
-                        class="img-responsive"
-                        title="Mỹ Phẩm"
-                        alt="Mỹ Phẩm"/></a></div>
+        {% for item in sliders %}
+        <div class="slide"><a href="{{ item.link }}">
+                {% if(item.imageFeature == null) %}
+                    <img width="100%" src="{{ item.imageOld }}" class="img-responsive " title="{{ item.title }}" alt="{{ item.metaTitle }}"/>
+                {% else %}
+                    <img width="100%" src="{% path item.imageFeature,'preview' %}" class="img-responsive " title="{{ item.title }}" alt="{{ item.metaTitle }}"/>
+                {% endif %}
+            </a>
+        </div>
+        {% endfor %}
     </div>
 </div>

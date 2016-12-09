@@ -1,5 +1,4 @@
 {% extends 'AppBundle::layout.html.twig' %}
-
 {% block main_content %}
     <div class="main-content">
         {% block slider %}
@@ -8,47 +7,45 @@
         {% block adv_home %}
             {{ render(url('app_block_news')) }}
         {% endblock %}
+        {% for cat in category %}
         <div class="row box-category">
             <div class="col-md-12 boder-box">
                 <div class="box-title-2">
-                    <h2 class="text-box-2"> Chăm s&#243;c da mặt </h2>
-                    <a href="/cham-soc-da-mat" title="Chăm s&#243;c da mặt"><p class="view-all">Xem thêm >></p></a>
+                    <h2 class="text-box-2"> {{ cat.name }} </h2>
+                    <a href="{{ path('app_category',{'alias':cat.alias}) }}" title="{{ cat.name }}"><p class="view-all">Xem thêm >></p></a>
                 </div>
                 <div class="row row-list-item">
                     <div id="products-1" class="row list-group">
-                        {% for i in 0..5 %}
+                        {% for item in cat.product %}
                             <div class="item  col-xs-12 col-lg-4">
                                 <div class="thumbnail">
                                     <img class="group list-group-image img-responsive" data-toggle="tooltip"
                                          data-placement="top"
-                                         src="https://media3.scdn.vn/img2/2016/11_4/Qacq5O.jpg" alt=""/>
+                                         src="{{ item.image }}" alt=""/>
 
                                     <div class="caption">
-                                        <a href="{{ path('app_product_detail',{'slug':product.alias}) }}"
-                                           title="Kem dưỡng trắng da to&#224;n th&#226;n Ốc s&#234;n New Today 120g"><h4
-                                                    class="text-left product-title"> Kem dưỡng trắng da toàn thân Ốc sên
-                                                New
-                                                Today
-                                                120g</h4>
+                                        <a href="{{ path('app_product_detail',{'slug':item.alias }) }}"
+                                           title="{{ item.name }}"><h4
+                                                    class="text-left product-title">{{ item.name }}</h4>
                                         </a>
 
                                         <p class="group inner list-group-item-text product-description">
-                                            Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit,
-                                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                            volutpat.</p>
-
+                                          {% if(item.description|length > 0) %}
+                                            {{ item.description }}
+                                                {% else %}
+                                                {{ characterLimit(item.body,225)|striptags  }}
+                                          {% endif %}
+                                        </p>
                                         <div class="row price">
                                             <div class="col-xs-12 col-md-6">
                                         <span class="lead">
-                                            120.000 VNĐ</span>
+                                            {{ item.price|number_format(0, '.', ',') }} VND</span>
                                                 <span class="lead-old">
-                                            200.000 VNĐ</span>
+                                            {{ item.priceOld|number_format(0, '.', ',') }} VND</span>
                                             </div>
                                             <div class="col-xs-12 col-md-6">
                                                 <a class="btn btn-detail"
-                                                   href="{{ path('app_product_detail',{'slug':product.alias}) }}">Xem
-                                                    thêm</a>
+                                                   href="{{ path('app_product_detail',{'slug':item.alias }) }}">Xem Thêm</a>
                                             </div>
                                         </div>
                                     </div>
@@ -59,57 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="row box-category">
-            <div class="col-md-12 boder-box">
-                <div class="box-title-2">
-                    <h2 class="text-box-2"> Chăm Sóc Tóc </h2>
-                    <a href="/cham-soc-da-mat" title="Chăm s&#243;c da mặt"><p class="view-all">Xem thêm >></p></a>
-                </div>
-                <div class="row row-list-item">
-                    <div id="products-2" class="row list-group">
-                        {% for i in 0..5 %}
-                            <div class="item  col-xs-12 col-lg-4">
-                                <div class="thumbnail">
-                                    <img class="group list-group-image img-responsive" data-toggle="tooltip"
-                                         data-placement="top"
-                                         src="https://media3.scdn.vn/img2/2016/11_4/Qacq5O.jpg" alt=""/>
-
-                                    <div class="caption">
-                                        <a href="{{ path('app_product_detail',{'slug':product.alias}) }}"
-                                           title="Kem dưỡng trắng da to&#224;n th&#226;n Ốc s&#234;n New Today 120g"><h4
-                                                    class="text-left product-title"> Kem dưỡng trắng da toàn thân Ốc sên
-                                                New
-                                                Today
-                                                120g</h4>
-                                        </a>
-
-                                        <p class="group inner list-group-item-text product-description">
-                                            Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                            elit,
-                                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                            volutpat.</p>
-
-                                        <div class="row price">
-                                            <div class="col-xs-12 col-md-6">
-                                        <span class="lead">
-                                            120.000 VNĐ</span>
-                                                <span class="lead-old">
-                                            200.000 VNĐ</span>
-                                            </div>
-                                            <div class="col-xs-12 col-md-6">
-                                                <a class="btn btn-detail"
-                                                   href="{{ path('app_product_detail',{'slug':product.alias}) }}">Xem
-                                                    thêm</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
         <div class="row">
             <div class="span12 margin-top hidden-phone">
                 <a rel="nofollow" title="Quảng c&#225;o footer">
