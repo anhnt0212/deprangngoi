@@ -32,7 +32,6 @@ sonata_media:
             providers:
               - sonata.media.provider.image
             formats:
-                image_feature : { width: 180, height: 180, quality: 100}
                 image_content: { width: 400, height: 400, quality: 100}
         category:
             providers:

@@ -20,8 +20,10 @@
                 <div id="gallery_01">
                     {% if(oldGallery|length > 0) %}
                         {% for g in oldGallery %}
-                            <a href="javascript:;" data-image="http://deprangngoi.vn/{{ g.image }}" data-zoom-image="http://deprangngoi.vn/{{ g.image }}">
-                                <img id="img_01" src="http://deprangngoi.vn/{{ g.image }}" title="OK MEN.png" alt="{{ g.title }}" width="90">
+                            <a href="javascript:;" data-image="http://deprangngoi.vn/{{ g.image }}"
+                               data-zoom-image="http://deprangngoi.vn/{{ g.image }}">
+                                <img id="img_01" src="http://deprangngoi.vn/{{ g.image }}" title="OK MEN.png"
+                                     alt="{{ g.title }}" width="90">
                             </a>
                         {% endfor %}
                     {% endif %}
@@ -64,7 +66,9 @@
                 <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
                 <input type="hidden" name="data[Product][id]" value="2" id="ProductId">
 
-                <button class="btn btn-success addtocart" id="2" onclick="window.location.href='{{ path('app_product_card') }}'" type="submit"><i class="fa fa-cart-plus"></i> &nbsp;
+                <button class="btn btn-success addtocart" id="2"
+                        onclick="window.location.href='{{ path('app_product_card') }}'" type="submit"><i
+                            class="fa fa-cart-plus"></i> &nbsp;
                     Thêm vào giỏ hàng
                 </button>
             </form>
@@ -77,7 +81,8 @@
             <div class="post-content">
                 {{ item.body|raw }}
             </div>
-            <div class="fb-comments" data-href="https://www.facebook.com/biquyetdeprangngoi/" data-width="100%" data-numposts="1"></div>
+            <div class="fb-comments" data-href="https://www.facebook.com/biquyetdeprangngoi/" data-width="100%"
+                 data-numposts="1"></div>
         </div>
     </div>
     <div class="row box-category">
@@ -90,10 +95,15 @@
                     {% for item in productLike %}
                         <div class="item  col-xs-12 col-lg-4">
                             <div class="thumbnail">
-                                <img class="group list-group-image img-responsive" data-toggle="tooltip"
-                                     data-placement="top"
-                                     src="{{ item.image }}" alt=""/>
-
+                                {% if(item.imageFeature == null) %}
+                                    <img class="group list-group-image img-responsive" data-toggle="tooltip"
+                                         data-placement="top"
+                                         src="{{ item.image }}" alt=""/>
+                                {% else %}
+                                    <img class="group list-group-image img-responsive" data-toggle="tooltip"
+                                         data-placement="top"
+                                         src="{% path item.imageFeature,'image_content' %}" alt=""/>
+                                {% endif %}
                                 <div class="caption">
                                     <a href="{{ path('app_product_detail',{'slug':item.alias }) }}"
                                        title="{{ item.name }}"><h4
@@ -104,14 +114,14 @@
                                         {% if(item.description|length > 0) %}
                                             {{ item.description }}
                                         {% else %}
-                                            {{ characterLimit(item.body,225)|striptags  }}
+                                            {{ characterLimit(item.body,225)|striptags }}
                                         {% endif %}
                                     </p>
                                     <div class="row price">
                                         <div class="col-xs-12 col-md-6">
                                         <span class="lead">
                                             {{ item.price|number_format(0, '.', ',') }} VND</span>
-                                                <span class="lead-old">
+                                            <span class="lead-old">
                                             {{ item.priceOld|number_format(0, '.', ',') }} VND</span>
                                         </div>
                                         <div class="col-xs-12 col-md-6">

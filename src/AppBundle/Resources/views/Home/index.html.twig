@@ -19,9 +19,15 @@
                         {% for item in cat.product %}
                             <div class="item  col-xs-12 col-lg-4">
                                 <div class="thumbnail">
-                                    <img class="group list-group-image img-responsive" data-toggle="tooltip"
-                                         data-placement="top"
-                                         src="{{ item.image }}" alt=""/>
+                                    {% if(item.imageFeature == null) %}
+                                        <img class="group list-group-image img-responsive" data-toggle="tooltip"
+                                             data-placement="top"
+                                             src="{{ item.image }}" alt=""/>
+                                    {% else %}
+                                        <img class="group list-group-image img-responsive" data-toggle="tooltip"
+                                             data-placement="top"
+                                             src="{% path item.imageFeature,'image_content' %}" alt=""/>
+                                    {% endif %}
 
                                     <div class="caption">
                                         <a href="{{ path('app_product_detail',{'slug':item.alias }) }}"

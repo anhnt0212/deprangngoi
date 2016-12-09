@@ -4,8 +4,7 @@
         <div class="btn-group btn-breadcrumb">
             <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
             <a href="#" class="btn btn-default">Trang Chủ</a>
-            <a href="#" class="btn btn-default">Danh Mục Sản Phẩm</a>
-            <a href="#" class="btn btn-default">{{ category.name }}</a>
+            <a href="#" class="btn btn-default">Tìm Kiếm</a>
         </div>
     </div>
     {{ render(url('app_block_news')) }}
@@ -13,8 +12,8 @@
         <div class="row box-category">
             <div class="col-md-12 boder-box">
                 <div class="box-title-2">
-                    <h2 class="text-box-2"> {{ category.name }} </h2>
-                    <a href="#" title="{{ category.name }}"><p class="view-all">Xem thêm >></p></a>
+                    <h2 class="text-box-2"> Kết quả tìm kiếm </h2>
+                    <a href="#" title="Kết quả tìm kiếm"><p class="view-all">Xem thêm >></p></a>
                 </div>
                 <div class="row row-list-item">
                     <div id="products-1" class="row list-group">
@@ -30,20 +29,18 @@
                                              data-placement="top"
                                              src="{% path item.imageFeature,'image_content' %}" alt=""/>
                                     {% endif %}
-
                                     <div class="caption">
                                         <a href="{{ path('app_product_detail',{'slug':item.alias }) }}"
                                            title="{{ item.name }}"><h4
-                                                    class="text-left product-title">{{ characterLimit(item.name,50) }}</h4>
+                                                    class="text-left product-title">{{ item.name }}</h4>
                                         </a>
-
                                         <p class="group inner list-group-item-text product-description">
                                             {% if(item.description|length > 0) %}
                                                 {{ item.description }}
                                             {% else %}
                                                 {{ characterLimit(item.body,225)|striptags }}
-                                            {% endif %}.</p>
-
+                                            {% endif %}.
+                                        </p>
                                         <div class="row price">
                                             <div class="col-xs-12 col-md-6">
                                         <span class="lead">
@@ -66,15 +63,6 @@
             </div>
         </div>
         <div class="row">
-            {#<div class="page_links">#}
-            {#<ul class="pagination">#}
-            {#<li><a href="#">1</a></li>#}
-            {#<li><a href="#">2</a></li>#}
-            {#<li><a href="#">3</a></li>#}
-            {#<li><a href="#">4</a></li>#}
-            {#<li><a href="#">5</a></li>#}
-            {#</ul>#}
-            {#</div>#}
             <div class='pager'>{{ knp_pagination_render(items) }}</div>
         </div>
     {% else %}

@@ -34,7 +34,7 @@ class HomeController extends Controller
                 ->innerJoin('p.categories', 'g')
                 ->where('g.id IN (:category_id)')
                 ->setParameter('category_id', $all_childs[$value['id']])
-                ->getQuery()->setMaxResults(6)->getArrayResult();
+                ->getQuery()->setMaxResults(6)->getResult();
         }
         $data['category'] = $product;
         return $this->render('AppBundle:Home:index.html.twig', $data);

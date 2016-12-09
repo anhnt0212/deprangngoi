@@ -27,31 +27,29 @@ class ProductController extends Controller
         $category = $manager->getRepository('AppBundle:Category')
             ->createQueryBuilder('p')
             ->join('p.products', 'c')
-            ->where("c.id = " .$product->getId())
+            ->where("c.id = " . $product->getId())
             ->getQuery()->getArrayResult();
         $productLike = $manager->getRepository('AppBundle:Product')
             ->createQueryBuilder('p')
             ->join('p.categories', 'c')
-            ->where("c.id = " .$category[0]['id'])
+            ->where("c.id = " . $category[0]['id'])
             ->getQuery()->setMaxResults(6)->getArrayResult();
         $data['productLike'] = $productLike;
         return $this->render('AppBundle:Product:detail.html.twig', $data);
     }
+
     public function searchAction(Request $request)
     {
-        $slug = 'new-today';
         $data = \AppBundle\Controller\BaseController::setMetaData();
+        $keyword = $request->get('keyword');
         $manager = $this->getDoctrine()->getManager();
-        $category = $manager->getRepository('AppBundle:Category')->findOneBy(array('alias' => trim($slug)));
-        $product = $manager->getRepository('AppBundle:Product')
-            ->createQueryBuilder('p')
-            ->join('p.categories', 'c')
-            ->where("c.id = " .$category->getId())
-            ->getQuery()->getArrayResult();
+        $product = $manager->getRepository('AppBundle:Product')->createQueryBuilder('p');
+        $like = "%" . mb_strtolower(trim(strip_tags($keyword))) . "%";
+        $product->where("LOWER(p.name) LIKE :like OR LOWER(p.description) LIKE :like");
+        $result = $product->setParameter('like', $like) ->getQuery()->getArrayResult();
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($product, $request->query->getInt('page', 1), 15);
+        $pagination = $paginator->paginate($result, $request->query->getInt('page', 1), 15);
         $data['items'] = $pagination;
-        $data['category'] = $category;
         return $this->render('AppBundle:Product:search.html.twig', $data);
     }
 }
