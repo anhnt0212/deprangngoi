@@ -20,7 +20,7 @@
 
                 <div class="input-group">
                     <input type="email" class="form-control" name="email-sub"
-                           placeholder="Vui lòng nhập email">
+                           placeholder="Vui lòng nhập email" required>
                     <span class="input-group-btn">
                              <button class="btn btn-default" type="button"><span
                                          class="glyphicon glyphicon-ok-circle"></span></button>
@@ -35,17 +35,16 @@
         </form>
         <div class="clearfix"></div>
         <div class="col-md-12 boder-box pull-0 pill-0-ex">
-            <p class="p-letter-3">Tin Tức</p>
+            <p class="p-letter-3">Cẩm nang làm đẹp</p>
             <div class="offer-wrap">
-                {% for i in 0..6 %}
-                    <a href="/cam-nang-lam-dep/top-3-cach-tri-mun-tham-hieu-qua-tu-nguyen-lieu-thien-nhien-ba-nen-thu"
-                       title="Top 3 c&#225;ch trị mụn th&#226;m hiệu quả từ nguy&#234;n liệu thi&#234;n nhi&#234;n bạn n&#234;n thử">
-                        <h3 class="text-left text-news-home">Top 3 c&#225;ch trị mụn th&#226;m hiệu
-                            quả {{ i }}
+                {% for n in news %}
+                    <a href="{{ path('app_list_new_detail',{'alias':n.alias}) }}"
+                       title="{{ n.title }}">
+                        <h3 class="text-left text-news-home">{{ n.title }}
                         </h3></a>
                 {% endfor %}
             </div>
-            <a href="/cam-nang-lam-dep" title="Cẩm nang l&#224;m đẹp"><p class="view-all-ex">Xem thêm &gt;&gt;</p>
+            <a href="{{ path('app_list_new') }}" title="Cẩm nang làm đẹp"><p class="view-all-ex">Xem thêm &gt;&gt;</p>
             </a>
 
             <div class="clearfix"></div>

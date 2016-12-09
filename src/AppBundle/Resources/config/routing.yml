@@ -30,6 +30,12 @@ app_list_new:
     path:  /cam-nang-lam-dep/tin-tuc
     defaults: { _controller: AppBundle:New:index }
 
+app_list_new_detail:
+    path:  /cam-nang-lam-dep/tin-tuc/{alias}
+    defaults: { _controller: AppBundle:New:detail }
+    requirements:
+        alias: "[a-zA-Z0-9\-_–]+"
+
 app_contact:
     path:  /lien-he/thong-tin/thong-tin-len-he
     defaults: { _controller: AppBundle:Contact:index }

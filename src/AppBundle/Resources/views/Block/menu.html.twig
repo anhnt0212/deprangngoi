@@ -67,13 +67,13 @@
                     <ul class="dropdown-menu">
                         {% for td in trademark %}
                         <li>
-                            <a href="{{ path('app_list_product_trademark') }}" title="One Today">One Today</a>
+                            <a href="{{ path('app_category',{'alias':td.alias}) }}" title="{{ td.name }}">{{ td.name }}</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </li>
                 <li><a href="{{ path('app_list_new') }}">Cẩm Nang Làm Đẹp</a></li>
-                <li><a href="{{ path('app_list_product_hot') }}">Sản Phẩm Bán Chạy</a></li>
+                <li><a href="{{ path('app_homepage') }}">Sản Phẩm Bán Chạy</a></li>
                 <li><a href="{{ path('app_contact') }}">Liên Hệ</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">

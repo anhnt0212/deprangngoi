@@ -14,4 +14,9 @@ class NewController extends Controller
         $alias = $request->get('slug', NULL);
         return $this->render('AppBundle:News:index.html.twig',$this->data);
     }
+    public function detailAction(Request $request){
+        echo "<pre>";
+        print_r($value = 111);
+        exit();
+    }
 }
