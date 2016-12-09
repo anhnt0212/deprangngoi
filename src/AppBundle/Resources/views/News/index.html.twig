@@ -3,97 +3,50 @@
     <div class="row box-breadcrumb">
         <div class="btn-group btn-breadcrumb">
             <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
-            <a href="#" class="btn btn-default">Snippets</a>
-            <a href="#" class="btn btn-default">Breadcrumbs</a>
-            <a href="#" class="btn btn-default">Default</a>
+            <a href="#" class="btn btn-default">Trang Chủ</a>
+            <a href="#" class="btn btn-default">Cẩm Nang Làm Đẹp</a>
         </div>
     </div>
+    {{ render(url('app_block_news')) }}
     <div class="row">
-        <div class="col-md-8 boder-box">
-            <div class="box-title-1">
-                <h2 class="text-box-1">Khuyến mại</h2>
-            </div>
-            <div class="adv-home">
-                <a rel="nofollow"
-                   title="CHƯƠNG TR&#204;NH KHUYẾN M&#195;I ">
-                    <img src="{{ asset('default/images/1_c31d92cb.jpg') }}" class="img-responsive"
-                         title="CHƯƠNG TRÌNH KHUYẾN MÃI"
-                         alt=""/>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 pull-left">
-            <form action="#" data-ajax="true" data-ajax-failure="OnFailure"
-                  data-ajax-success="OnSuccess" id="frmnewsletter" method="post">
-                <div class="col-md-12 boder-box">
-                    <p class="p-letter-1">NHẬN THÔNG TIN KHUYẾN MÃI</p>
-
-                    <div class="input-group">
-                        <input type="email" class="form-control" name="email-sub"
-                               placeholder="Vui lòng nhập email">
-                        <span class="input-group-btn">
-                             <button class="btn btn-default" type="button"><span
-                                         class="glyphicon glyphicon-ok-circle"></span></button>
-                </span>
-
-                        <div class="clearfix"></div>
-                    </div>
-                    <p class="p-letter-2"> Nhận mã giảm giá và các chương trình khuyến mãi mã giảm giá và các
-                        chương
-                        trình</p>
-                </div>
-            </form>
-            <div class="clearfix"></div>
-            <div class="col-md-12 boder-box pull-0 pill-0-ex">
-                <p class="p-letter-3">Cẩm nang l&#224;m đẹp</p>
-
-                <div class="offer-wrap">
-                    {% for i in 0..6 %}
-                        <a href="/cam-nang-lam-dep/top-3-cach-tri-mun-tham-hieu-qua-tu-nguyen-lieu-thien-nhien-ba-nen-thu"
-                           title="Top 3 c&#225;ch trị mụn th&#226;m hiệu quả từ nguy&#234;n liệu thi&#234;n nhi&#234;n bạn n&#234;n thử">
-                            <h3 class="text-left text-news-home">Top 3 c&#225;ch trị mụn th&#226;m hiệu
-                                quả {{ i }}
-                            </h3></a>
-                    {% endfor %}
-                </div>
-                <a href="/cam-nang-lam-dep" title="Cẩm nang l&#224;m đẹp"><p class="view-all-ex">Xem thêm &gt;&gt;</p>
-                </a>
-
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-        <div class="row">
-            <div class="col-md-9 new-list">
-                <div class="content">
-                    {% for i in 0..6 %}
+        <div class="col-md-9 new-list">
+            <div class="content">
+                {% for item in items %}
                     <div class="box1">
-                        <h3><a href="javascript:;">Phân biệt nám, tàn nhang và cách điều trị</a></h3>
-                        <span>By Admin - 2 hours ago</span>
+                        <h3><a href="{{ path('app_list_new_detail',{'alias':item.alias}) }}">{{ item.title }}</a></h3>
+                        <span>By Admin - {{ item.createdAt|date("d/m/Y") }}</span>
                         <div class="view">
-                            <a href="javascript:;"><img class="img-responsive" src="https://p.w3layouts.com/demos/share_blog/web/images/img1.jpg"></a>
+                            <a href="{{ path('app_list_new_detail',{'alias':item.alias}) }}">
+                                {% if(item.imageFeature == null) %}
+                                    <img class="img-responsive" src="{{ item.imageUrl }}" title="{{ item.title }}"
+                                         alt="{{ item.title }}"/>
+                                {% else %}
+                                    <img src="{% path item.imageFeature,'image_feature' %}" class="img-responsive "
+                                         title="{{ item.title }}" alt="{{ item.title }}"/>
+                                {% endif %}
+                            </a>
                         </div>
                         <div class="data">
-                            <p>Nhân dịp khai trương cửa hàng mới tại địa chỉ 394 Dương Quảng Hàm, Phường 5, Quận Gò Vấp cũng như nhằm tri ân khách hàng thân thiết đã ủng hộ shop suốt thời gian qua. Mỹ phẩm Đẹp rạng ngời áp dụng chương trình khuyến mãi “khủng” khi khách hàng ghé mua sản phẩm trực tiếp tại cửa hàng</p>
-                            <span><a href="javascript:;">Continue reading &gt;&gt;&gt;</a></span>
+                            <p>{{ item.description }}</p>
+                            <span><a href="{{ path('app_list_new_detail',{'alias':item.alias}) }}">Chi tiết &gt;&gt;&gt;</a></span>
                         </div>
                         <div class="clear"></div>
                     </div>
-                        {% endfor %}
-                    <!---728x90--->
-                </div>
+                {% endfor %}
+                <!---728x90--->
             </div>
         </div>
-        <div class="row">
-            <div class="page_links">
-                <ul class="pagination">
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                </ul>
-            </div>
+    </div>
+    <div class="row">
+        <div class="page_links">
+            <ul class="pagination">
+                {#<li><a href="#">1</a></li>#}
+                {#<li><a href="#">2</a></li>#}
+                {#<li><a href="#">3</a></li>#}
+                {#<li><a href="#">4</a></li>#}
+                {#<li><a href="#">5</a></li>#}
+                <div class='pager'>{{ knp_pagination_render(items) }}</div>
+            </ul>
         </div>
+    </div>
 {% endblock %}

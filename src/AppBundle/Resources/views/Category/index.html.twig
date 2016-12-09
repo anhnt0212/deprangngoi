@@ -21,9 +21,7 @@
                         {% for item in items %}
                             <div class="item  col-xs-12 col-lg-4">
                                 <div class="thumbnail">
-                                    <img class="group list-group-image img-responsive" data-toggle="tooltip"
-                                         data-placement="top"
-                                         src="{{ item.image }}" alt=""/>
+                                    <img class="group list-group-image img-responsive" data-toggle="tooltip" data-placement="top" src="{{ item.image }}" alt=""/>
 
                                     <div class="caption">
                                         <a href="{{ path('app_product_detail',{'slug':item.alias }) }}"
