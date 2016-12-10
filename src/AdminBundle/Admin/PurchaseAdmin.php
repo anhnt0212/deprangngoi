@@ -41,7 +41,7 @@ class PurchaseAdmin extends AbstractAdmin
             ->add('customerPhone', 'text', ['label' => 'SĐT khách hàng'])
             ->add('customerEmail', 'email', ['label' => 'Email khách hàng'])
             ->add('customerAddress', 'text', ['label' => 'Địa chỉ khách hàng'])
-            ->add('totalPrice', 'text', ['label' => 'Tổng số tiền','required' => FALSE,    'attr' => array(
+            ->add('totalPrice', 'number', ['label' => 'Tổng số tiền','required' => FALSE,'attr' => array(
                 'readonly' => true,
                 'disabled' => true
             )])

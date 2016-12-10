@@ -60,3 +60,11 @@ app_block_slider :
 app_block_news :
      path:  /render/block/news
      defaults: { _controller: AppBundle:Base:news }
+
+
+
+#ajax
+
+app_block_ajax_city :
+     path:  /_ajax/get_data/load_city
+     defaults: { _controller: AppBundle:Ajax:loadCity }

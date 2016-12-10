@@ -39,22 +39,32 @@
                         <br>
                         <small></small>
                     </div>
-                    <div class="col col-sm-1" id="price-2_0">{{ item.product.price|number_format(0, '.', ',') }} VNĐ</div>
+                    <div class="col col-sm-1" id="price-2_0">{{ item.product.price|number_format(0, '.', ',') }}VNĐ
+                    </div>
                     <div class="col col-sm-1"><input name="data[Product][quantity-2_0]"
-                                                     class="numeric form-control input-small" size="2" disabled maxlength="2"
+                                                     class="numeric form-control input-small" size="2" disabled
+                                                     maxlength="2"
                                                      tabindex="1" data-id="2" data-mods="" value="{{ item.quantity }}"
                                                      type="text" id="ProductQuantity-20"></div>
-                    <div class="col col-sm-1" id="subtotal_2_0">{{ (item.product.price*item.quantity)|number_format(0, '.', ',') }} VNĐ</div>
-                    <div class="col col-sm-1"><a class="remove" id="2_0" href="{{ path('app_product_card',{'action':'delete','value': item.product.id }) }}" title="Xoá Sản Phẩm"><i class="glyphicon glyphicon-trash"></i></a></div>
+                    <div class="col col-sm-1"
+                         id="subtotal_2_0">{{ (item.product.price*item.quantity)|number_format(0, '.', ',') }} VNĐ
+                    </div>
+                    <div class="col col-sm-1"><a class="remove" id="2_0"
+                                                 href="{{ path('app_product_card',{'action':'delete','value': item.product.id }) }}"
+                                                 title="Xoá Sản Phẩm"><i class="glyphicon glyphicon-trash"></i></a>
+                    </div>
                 </div>
                 <hr>
             {% endfor %}
             <div class="row">
                 <div class="col col-sm-12">
                     <div class="pull-right">
-                        <a href="{{ path('app_product_card',{'action':'delete-all'}) }}" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> &nbsp;Xoá toàn bộ
+                        <a href="{{ path('app_product_card',{'action':'all'}) }}"
+                           class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> &nbsp;Xoá toàn bộ
                             đơn hàng</a> &nbsp; &nbsp;
-                        <button class="btn btn-sm btn-default" onclick="window.location.href='{{ path('app_homepage') }}'" type="button"><i class="fa fa-calculator"></i> &nbsp;Tiếp tục mua
+                        <button class="btn btn-sm btn-default"
+                                onclick="window.location.href='{{ path('app_homepage') }}'" type="button"><i
+                                    class="fa fa-calculator"></i> &nbsp;Tiếp tục mua
                         </button>
                     </div>
                 </div>
@@ -86,47 +96,46 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Nhập tên của bạn"/>
+                                    <input type="text" class="form-control" name="email" id="email"
+                                           placeholder="Nhập tên của bạn"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Nhập địa chỉ"/>
+                                    <input type="text" class="form-control" name="email" id="email"
+                                           placeholder="Nhập địa chỉ"/>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-6">
                                 <select class="form-control" name="city_trans">
-                                    <option value="-1" disabled selected>Vui lòng chọn thành phố giao hàng</option>
+                                    <option value="-1" selected disabled>Vui lòng chọn thành phố giao hàng</option>
                                     {% if(city|length >0) %}
                                         {% for c in city %}
                                             <option value="{{ c.city_code }}">{{ c.city_name }}</option>
                                         {% endfor %}
                                     {% endif %}
                                 </select>
-
                             </div>
                             <div class="col-md-6">
                                 <select class="form-control" name="dist_trans" disabled>
                                     <option value="-1" disabled selected>Vui lòng quận huyện</option>
                                 </select>
-
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col col-sm-12 pull-right tr">
-                                <strong>Tổng số tiền:</strong> <span class="normal" id="subtotal">{{ priceTotal|number_format(0, '.', ',') }} VNĐ</span>
+                                <strong>Tổng số tiền:</strong> <span class="normal" id="subtotal">{{ priceTotal|number_format(0, '.', ',') }}VNĐ</span>
                                 <br>
                                 <br>
                                 <strong> Chi phí ship:</strong> <span class="normal">N/A</span>
                                 <br>
                                 <br>
-                                <strong>Tông chi phí:</strong> <span class="red" id="total">{{ priceTotal|number_format(0, '.', ',') }} VNĐ</span>
+                                <strong>Tông chi phí:</strong> <span class="red" id="total">{{ priceTotal|number_format(0, '.', ',') }}VNĐ</span>
                                 <br>
                                 <br>
-
                                 <a href="javascript:;" class="btn btn-sm btn-success"><i class="fa fa-check"></i> &nbsp;
                                     Đặt hàng</a>
                                 <br>

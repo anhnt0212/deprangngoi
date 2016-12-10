@@ -94,12 +94,41 @@ var App = {
 
             });
         });
+    },
+    loadCity: function()
+    {
+        $('select[name="city_trans"]').change(function()
+        {
+           var city_code = $(this).find(":selected").val();
+            if(city_code){
+                jQuery.ajax({
+                    type: "POST",
+                    url: $('input[name="base_url"]').val()+'/_ajax/get_data/load_city',
+                    data: {'city_code':city_code },
+                    success: function (response) {
+                        var $json = jQuery.parseJSON(response);
+                        if ($json.status == 200) {
+                            $('select[name="dist_trans"]').html($json.html);
+                            $('select[name="dist_trans"]').removeAttr('disabled');
+                        } else {
+                            alert($json.message);
+                            return false
+                        }
+                    },
+                    error: function () {
+                        alert('Hệ thống quá tải,thử lại sau');
+                    }
+                });
+            }
+            return false;
+        });
     }
 };
 
 $(document).ready(function () {
     App.advInit();
     App.bxSlider();
+    App.loadCity();
     $('.search-panel .dropdown-menu').find('a').click(function(e) {
         e.preventDefault();
         var param = $(this).attr("href").replace("#","");

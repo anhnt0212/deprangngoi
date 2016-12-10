@@ -98,10 +98,24 @@ class Purchase
     /**
      * The customer billing address.
      *
-     * @var text
-     * @ORM\Column(type="text",name="total_price")
+     * @var float
+     * @ORM\Column(type="float",name="total_price")
      */
     protected $totalPrice;
+    /**
+     * The price of the product.
+     *
+     * @var float
+     * @ORM\Column(type="float",name="ship_price")
+     */
+    protected $shipPrice;
+    /**
+     * The customer billing address.
+     *
+     * @var text
+     * @ORM\Column(type="text",name="ship_info")
+     */
+    protected $shipInfo;
 
     /**
      * Items that have been purchased.
@@ -122,10 +136,12 @@ class Purchase
         $this->deliveryDate = new \DateTime('+2 days');
         $this->deliveryHour = new \DateTime('14:00');
     }
+
     public function __toString()
     {
         return $this->purchaseNo;
     }
+
     /**
      * @param \DateTime $deliveryDate
      */
@@ -388,7 +404,7 @@ class Purchase
      */
     public function setTotalPrice($totalPrice)
     {
-        if(!$totalPrice){
+        if (!$totalPrice) {
             $this->totalPrice = $this->getTotal();
         }
         $this->totalPrice = $totalPrice;
@@ -404,5 +420,53 @@ class Purchase
     public function getTotalPrice()
     {
         return $this->getTotal();
+    }
+
+    /**
+     * Set shipPrice
+     *
+     * @param string $shipPrice
+     *
+     * @return Purchase
+     */
+    public function setShipPrice($shipPrice)
+    {
+        $this->shipPrice = $shipPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get shipPrice
+     *
+     * @return string
+     */
+    public function getShipPrice()
+    {
+        return $this->shipPrice;
+    }
+
+    /**
+     * Set shipInfo
+     *
+     * @param string $shipInfo
+     *
+     * @return Purchase
+     */
+    public function setShipInfo($shipInfo)
+    {
+        $this->shipInfo = $shipInfo;
+
+        return $this;
+    }
+
+    /**
+     * Get shipInfo
+     *
+     * @return string
+     */
+    public function getShipInfo()
+    {
+        return $this->shipInfo;
     }
 }
