@@ -147,6 +147,7 @@ class CardController extends Controller
                         $errors = 'Lỗi hệ thống';
                         $variables['msg'] = $errors;
                     }
+                    $data['variables'] = $variables;
                 } else {
                     return new Response(json_encode($variables));
                 }
