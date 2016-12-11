@@ -32,10 +32,9 @@
                     <div class="row" id="row-2_0">
                         <div class="col col-sm-1">
                             {% if item.product.imageFeature == null %}
-                                <img src="{{ item.product.image }}" class="px60 img-responsive"
-                                     alt="{{ item.product.name }}">
+                                <img src="{{ item.product.image }}" class="px60 img-responsive" alt="{{ item.product.name }}">
                             {% else %}
-                                <img src="{% path item.imageFeature,'image_content' %}" class="px60 img-responsive"
+                                <img src="{% path item.product.imageFeature,'image_content' %}" class="px60 img-responsive"
                                      alt="{{ item.product.name }}">
                             {% endif %}
                         </div>
