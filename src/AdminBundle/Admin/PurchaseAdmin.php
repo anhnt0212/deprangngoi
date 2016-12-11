@@ -84,7 +84,7 @@ class PurchaseAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')->addIdentifier('customerName')->addIdentifier('customerPhone')->addIdentifier('customerEmail');
+        $listMapper->addIdentifier('id')->addIdentifier('purchaseNo')->addIdentifier('customerName')->addIdentifier('customerPhone')->addIdentifier('customerEmail');
     }
 
     public function prePersist($object)
