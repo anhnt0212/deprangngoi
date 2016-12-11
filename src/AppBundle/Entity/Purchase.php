@@ -149,6 +149,7 @@ class Purchase
     {
         $this->purchasedItems = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
         $this->deliveryDate = new \DateTime('+2 days');
         $this->deliveryHour = new \DateTime('14:00');
     }

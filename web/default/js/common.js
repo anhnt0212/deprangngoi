@@ -34,7 +34,6 @@ var App = {
         }
 
         var slideLeftInterval, slideRightInterval;
-
         function checkSlide() {
             var slideLeft = $("#slide-left");
             var slideRight = $("#slide-right");

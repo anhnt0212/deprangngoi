@@ -17,6 +17,9 @@ app_product_detail:
 app_product_card:
     path:   /gio-hang/chi-tiet
     defaults: { _controller: AppBundle:Card:index }
+app_product_card_edit:
+    path:   /gio-hang/chi-tiet/sua-don-hang
+    defaults: { _controller: AppBundle:Card:edit }
 
 app_list_product_hot :
         path:   /san-pham-ban-chay

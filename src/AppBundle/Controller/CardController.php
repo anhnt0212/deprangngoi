@@ -3,8 +3,12 @@
 namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
+use AppBundle\Entity\Purchase;
+use AppBundle\Entity\PurchaseItem;
+use AppBundle\Extensions\Util;
 
 
 class CardController extends Controller
@@ -92,13 +96,80 @@ class CardController extends Controller
         }
         return $priceTotal;
     }
-    public function submitAction(Request $request){
+
+    public function submitAction(Request $request)
+    {
+        $data = \AppBundle\Controller\BaseController::setMetaData();
+        $variables = array();
         if ($request->isMethod('post')) {
-           $products = $request->get('product');
-            $customeName = $request->get('fullname');
+            $products = $request->get('product');
+            $customer_name = $request->get('fullname');
             $customer_phone = $request->get('phone');
             $customer_email = $request->get('email');
             $customer_address = $request->get('address');
+            $customer_description = $request->get('description');
+            $priceTotal = $request->get('priceTotal');
+            $shipPrice = $request->get('shipPrice');
+            $totalCard = $request->get('totalCard');
+            if (!is_null($products)) {
+                $manager = $this->getDoctrine()->getManager();
+                $purchase = new Purchase();
+                $purchase->setCustomerAddress($customer_address);
+                $purchase->setCustomerEmail($customer_email);
+                $purchase->setCustomerName($customer_name);
+                $purchase->setCustomerPhone($customer_phone);
+                $purchase->setcustomerDescription($customer_description);
+                $purchase->setTotalAll(floatval($totalCard));
+                $purchase->setShipPrice(floatval($shipPrice));
+                $purchase->setTotalPrice(floatval($priceTotal));
+                $util = new Util();
+                $purchase->setPurchaseNo($util->generateRandomString(5));
+                $manager->persist($purchase);
+                foreach ($products as $product) {
+                    $item = new PurchaseItem();
+                    $productObj = $manager->getRepository('AppBundle:Product')->findOneBy(array('id' => intval($product['productId'])));
+                    $item->setProduct($productObj);
+                    $item->setQuantity(intval($product['quantity']));
+                    $item->setPurchase($purchase);
+                    $manager->persist($item);
+                }
+                try {
+                    $manager->flush();
+                    $session = new Session();
+                    $session->clear();
+                    $success = "Đặt hàng thành công !";
+                    $variables['msg'] = $success;
+                } catch (\Exception $ex) {
+                    $errors = 'Lỗi hệ thống';
+                    $variables['msg'] = $errors;
+                }
+            } else {
+                return new Response(json_encode($variables));
+            }
+        } else {
+            $variables['msg'] = 'Bạn chưa có đơn hàng nào !';
+            $data['variables'] = $variables;
         }
+
+        return $this->render("AppBundle:Card:result.html.twig", $data);
+    }
+    public function editAction(Request $request) {
+        $variables = array();
+        $session = new Session();
+        $card = $session->get('card');
+        $action = $request->query->get('action');
+        $value = $request->query->get('value');
+        if($action && $value){
+            if($action == 'delete') {
+                unset($card[$value]);
+                $session->remove('card');
+                $session->set('card',$card);
+            } if($action == 'all') {
+                $session->clear();
+            }
+        } else {
+            return new Response(json_encode($variables));
+        }
+        return $this->redirectToRoute('app_product_card', array(), 301);
     }
 }
