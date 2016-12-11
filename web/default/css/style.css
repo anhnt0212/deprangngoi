@@ -783,4 +783,7 @@ h3.title-category {
     .box-slogan {
         display: none;
     }
+    .card-sub-title {
+        display: none;
+    }
 }

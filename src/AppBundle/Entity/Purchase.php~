@@ -95,6 +95,14 @@ class Purchase
      * @ORM\Column(type="text",name="customer_address")
      */
     protected $customerAddress;
+
+    /**
+     * The customer billing address.
+     *
+     * @var text
+     * @ORM\Column(type="text",name="customer_description",nullable=true)
+     */
+    protected $customerDescription;
     /**
      * The customer billing address.
      *
@@ -109,6 +117,14 @@ class Purchase
      * @ORM\Column(type="float",name="ship_price")
      */
     protected $shipPrice;
+    /**
+     * The price of the product.
+     *
+     * @var float
+     * @ORM\Column(type="float",name="total_all")
+     */
+    protected $totalAll;
+
     /**
      * The customer billing address.
      *
@@ -404,9 +420,6 @@ class Purchase
      */
     public function setTotalPrice($totalPrice)
     {
-        if (!$totalPrice) {
-            $this->totalPrice = $this->getTotal();
-        }
         $this->totalPrice = $totalPrice;
 
         return $this;
@@ -468,5 +481,29 @@ class Purchase
     public function getShipInfo()
     {
         return $this->shipInfo;
+    }
+
+    /**
+     * Set customerDescription
+     *
+     * @param string $customerDescription
+     *
+     * @return Purchase
+     */
+    public function setCustomerDescription($customerDescription)
+    {
+        $this->customerDescription = $customerDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get customerDescription
+     *
+     * @return string
+     */
+    public function getCustomerDescription()
+    {
+        return $this->customerDescription;
     }
 }

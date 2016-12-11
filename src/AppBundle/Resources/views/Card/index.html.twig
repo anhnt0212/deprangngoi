@@ -12,14 +12,15 @@
     <div class="row card-detail">
         <h1>Đặt Hàng Ngay</h1>
 
-        <form action="/shop/cartupdate" id="ProductCartupdateForm" method="post" accept-charset="utf-8">
+        <form action="{{ path('app_card_submit_card') }}" id="ProductCartupdateForm" method="post"
+              accept-charset="utf-8">
             <hr>
-            <div class="row">
+            <div class="row card-sub-title">
                 <div class="col col-sm-1"><strong>Hình</strong></div>
-                <div class="col col-sm-7"><strong>Sản phẩm</strong></div>
-                <div class="col col-sm-1"><strong>Giá</strong></div>
+                <div class="col col-sm-5"><strong>Sản phẩm</strong></div>
+                <div class="col col-sm-2"><strong>Giá</strong></div>
                 <div class="col col-sm-1"><strong>SL</strong></div>
-                <div class="col col-sm-1"><strong>VND</strong></div>
+                <div class="col col-sm-2"><strong>VND</strong></div>
                 <div class="col col-sm-1"><strong>Xoá</strong></div>
             </div>
             <hr
@@ -34,27 +35,32 @@
                                  alt="{{ item.product.name }}">
                         {% endif %}
                     </div>
-                    <div class="col col-sm-7">
+                    <div class="col col-sm-5">
                         <strong><a href="{{ path('app_product_detail',{'slug':item.product.alias }) }}">{{ item.product.name }}</a></strong>
                         <br>
                         <small></small>
                     </div>
-                    <div class="col col-sm-1" id="price-2_0">{{ item.product.price|number_format(0, '.', ',') }}VNĐ
+                    <div class="col col-sm-2"
+                         id="price-{{ item.product.id }}">{{ item.product.price|number_format(0, '.', ',') }}VNĐ
                     </div>
-                    <div class="col col-sm-1"><input name="data[Product][quantity-2_0]"
-                                                     class="numeric form-control input-small" size="2" disabled
-                                                     maxlength="2"
-                                                     tabindex="1" data-id="2" data-mods="" value="{{ item.quantity }}"
-                                                     type="text" id="ProductQuantity-20"></div>
-                    <div class="col col-sm-1"
-                         id="subtotal_2_0">{{ (item.product.price*item.quantity)|number_format(0, '.', ',') }} VNĐ
+                    <div class="col col-sm-1">
+                        <input name="quantity" disabled class="numeric form-control input-small"
+                               value="{{ item.quantity }}" type="text" id="quantity-{{ item.product.id }}"/>
                     </div>
-                    <div class="col col-sm-1"><a class="remove" id="2_0"
+                    <div class="col col-sm-2"
+                         id="subtotal-{{ item.product.id }}">{{ (item.product.price*item.quantity)|number_format(0, '.', ',') }}
+                        VNĐ
+                    </div>
+                    <div class="col col-sm-1"><a class="remove" id="product-id-{{ item.product.id }}"
                                                  href="{{ path('app_product_card',{'action':'delete','value': item.product.id }) }}"
                                                  title="Xoá Sản Phẩm"><i class="glyphicon glyphicon-trash"></i></a>
                     </div>
                 </div>
                 <hr>
+                <input name="product[{{ item.product.id }}][quantity]" value="{{ item.quantity }}" type="hidden"
+                       id="ProductQuantity-{{ item.product.id }}"/>
+                <input name="product[{{ item.product.id }}][productId]" value="{{ item.product.id }}" type="hidden"
+                       id="ProductId-{{ item.product.id }}"/>
             {% endfor %}
             <div class="row">
                 <div class="col col-sm-12">
@@ -69,83 +75,104 @@
                     </div>
                 </div>
             </div>
-        </form>
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="main-login main-center">
-                    <form class="form-horizontal" method="post" action="#">
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <div class="input-group">
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-login main-center">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa"
                                                                        aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="name" id="name"
-                                           placeholder="Nhập Email"/>
+                                        <input type="email" class="form-control" name="email" id="email"
+                                               placeholder="Nhập Email" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                           aria-hidden="true"></i></span>
+                                        <input type="tel" onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' class="form-control" name="phone" id="phone" required
+                                               placeholder="Nhập số điện thoại"/>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="email" id="email"
-                                           placeholder="Nhập số điện thoại"/>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                           aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="fullname" id="fullname"
+                                               placeholder="Nhập tên của bạn" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                           aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="address" id="address"
+                                               placeholder="Nhập địa chỉ" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <textarea class="form-control" cols="200" rows="5" name="description"
+                                                  placeholder="Thêm mô tả"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <select class="form-control" name="city_trans">
+                                        <option value="-1" selected disabled>Vui lòng chọn thành phố giao hàng</option>
+                                        {% if(city|length >0) %}
+                                            {% for c in city %}
+                                                <option value="{{ c.city_code }}">{{ c.city_name }}</option>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-control" onchange="App.changePrice();" name="dist_trans"
+                                            disabled>
+                                        <option value="-1" disabled selected>Vui lòng quận huyện</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="hidden" value="{{ priceTotal }}" name="priceTotal"/>
+                            <input type="hidden" value="" name="shipPrice"/>
+                            <input type="hidden" value="{{ priceTotal }}" name="totalCard"/>
+
+                            <div class="form-group">
+                                <div class="col col-sm-12 pull-right tr">
+                                    <strong>Tổng số tiền:</strong> <span class="normal"
+                                                                         id="subtotal">{{ priceTotal|number_format(0, '.', ',') }}
+                                        VNĐ</span>
+                                    <br>
+                                    <br>
+                                    <strong> Chi phí ship:</strong> <span class="normal" id="shipPrice">N/A</span>
+                                    <br>
+                                    <br>
+                                    <strong>Tông chi phí:</strong> <span class="red"
+                                                                         id="total">{{ priceTotal|number_format(0, '.', ',') }}
+                                        VNĐ</span>
+                                    <br>
+                                    <br>
+                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i>
+                                        &nbsp;Đặt hàng
+                                    </button>
+                                    <br>
+                                    <br>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="email" id="email"
-                                           placeholder="Nhập tên của bạn"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control" name="email" id="email"
-                                           placeholder="Nhập địa chỉ"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <select class="form-control" name="city_trans">
-                                    <option value="-1" selected disabled>Vui lòng chọn thành phố giao hàng</option>
-                                    {% if(city|length >0) %}
-                                        {% for c in city %}
-                                            <option value="{{ c.city_code }}">{{ c.city_name }}</option>
-                                        {% endfor %}
-                                    {% endif %}
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <select class="form-control" name="dist_trans" disabled>
-                                    <option value="-1" disabled selected>Vui lòng quận huyện</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col col-sm-12 pull-right tr">
-                                <strong>Tổng số tiền:</strong> <span class="normal" id="subtotal">{{ priceTotal|number_format(0, '.', ',') }}VNĐ</span>
-                                <br>
-                                <br>
-                                <strong> Chi phí ship:</strong> <span class="normal">N/A</span>
-                                <br>
-                                <br>
-                                <strong>Tông chi phí:</strong> <span class="red" id="total">{{ priceTotal|number_format(0, '.', ',') }}VNĐ</span>
-                                <br>
-                                <br>
-                                <a href="javascript:;" class="btn btn-sm btn-success"><i class="fa fa-check"></i> &nbsp;
-                                    Đặt hàng</a>
-                                <br>
-                                <br>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
     <div class="row">
         <div class="span12 margin-top hidden-phone">

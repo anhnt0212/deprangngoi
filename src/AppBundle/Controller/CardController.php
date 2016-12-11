@@ -58,12 +58,12 @@ class CardController extends Controller
                 $data['items'] = $card;
                 $priceTotal = $this->getTotal($card);
                 $data['priceTotal'] = $priceTotal;
-                return $this->render('AppBundle:Card:index.html.twig', $data);
+                return $this->redirectToRoute('app_product_card', array(), 301);
             } elseif (!is_null($card)) {
                 $priceTotal = $this->getTotal($card);
                 $data['priceTotal'] = $priceTotal;
                 $data['items'] = $card;
-                return $this->render('AppBundle:Card:index.html.twig', $data);
+                return $this->redirectToRoute('app_product_card', array(), 301);
             } else {
                 return $this->redirectToRoute('app_homepage', array(), 301);
             }
@@ -87,9 +87,18 @@ class CardController extends Controller
         $priceTotal = 0;
         if ($card) {
             foreach ($card as $key => $value) {
-                $priceTotal += $value['product']->getPrice()*$value['quantity'];
+                $priceTotal += $value['product']->getPrice() * $value['quantity'];
             }
         }
         return $priceTotal;
+    }
+    public function submitAction(Request $request){
+        if ($request->isMethod('post')) {
+           $products = $request->get('product');
+            $customeName = $request->get('fullname');
+            $customer_phone = $request->get('phone');
+            $customer_email = $request->get('email');
+            $customer_address = $request->get('address');
+        }
     }
 }

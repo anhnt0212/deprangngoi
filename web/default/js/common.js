@@ -1,6 +1,10 @@
 /**
  * Created by JOBZREFER on 11/21/2016.
  */
+Number.prototype.format = function (n, x) {
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
+};
 var App = {
     advInit: function () {
         var slideInterval;
@@ -89,27 +93,24 @@ var App = {
 
     },
     bxSlider: function () {
-        $(document).ready(function(){
-            $('.sliders').bxSlider({
-
-            });
+        $(document).ready(function () {
+            $('.sliders').bxSlider({});
         });
     },
-    loadCity: function()
-    {
-        $('select[name="city_trans"]').change(function()
-        {
-           var city_code = $(this).find(":selected").val();
-            if(city_code){
+    loadCity: function () {
+        $('select[name="city_trans"]').change(function () {
+            var city_code = $(this).find(":selected").val();
+            if (city_code) {
                 jQuery.ajax({
                     type: "POST",
-                    url: $('input[name="base_url"]').val()+'/_ajax/get_data/load_city',
-                    data: {'city_code':city_code },
+                    url: $('input[name="base_url"]').val() + '/_ajax/get_data/load_city',
+                    data: {'city_code': city_code},
                     success: function (response) {
                         var $json = jQuery.parseJSON(response);
                         if ($json.status == 200) {
                             $('select[name="dist_trans"]').html($json.html);
                             $('select[name="dist_trans"]').removeAttr('disabled');
+                            App.changePrice();
                         } else {
                             alert($json.message);
                             return false
@@ -122,6 +123,15 @@ var App = {
             }
             return false;
         });
+    },
+    changePrice: function () {
+        var shipPrice = parseFloat($('select[name="dist_trans"]').find(":selected").val());
+        var productTotal = parseFloat($('input[name="priceTotal"]').val());
+        var total = parseFloat(shipPrice+productTotal);
+        $('#shipPrice').text((shipPrice.format())+'VNĐ');
+        $('#total').text((total.format())+'VNĐ');
+        $('input[name="totalCard"]').val(total);
+        $('input[name="shipPrice"]').val(shipPrice);
     }
 };
 
@@ -129,19 +139,19 @@ $(document).ready(function () {
     App.advInit();
     App.bxSlider();
     App.loadCity();
-    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+    $('.search-panel .dropdown-menu').find('a').click(function (e) {
         e.preventDefault();
-        var param = $(this).attr("href").replace("#","");
+        var param = $(this).attr("href").replace("#", "");
         var concept = $(this).text();
         $('.search-panel span#search_concept').text(concept);
         $('.input-group #search_param').val(param);
     });
-    $('.navbar a.dropdown-toggle').on('click', function(e) {
+    $('.navbar a.dropdown-toggle').on('click', function (e) {
         var $el = $(this);
         var $parent = $(this).offsetParent(".dropdown-menu");
         $(this).parent("li").toggleClass('open');
 
-        if(!$parent.parent().hasClass('nav')) {
+        if (!$parent.parent().hasClass('nav')) {
             $el.next().css({"top": $el[0].offsetTop, "left": $parent.outerWidth() - 4});
         }
 

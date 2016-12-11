@@ -41,9 +41,30 @@ class PurchaseAdmin extends AbstractAdmin
             ->add('customerPhone', 'text', ['label' => 'SĐT khách hàng'])
             ->add('customerEmail', 'email', ['label' => 'Email khách hàng'])
             ->add('customerAddress', 'text', ['label' => 'Địa chỉ khách hàng'])
-            ->add('totalPrice', 'number', ['label' => 'Tổng số tiền','required' => FALSE,'attr' => array(
-                'readonly' => true,
-                'disabled' => true
+            ->add('customerDescription', 'ckeditor', array(
+                'config' => array(
+                    'toolbar' => array(
+                        array(
+                            'name' => 'basicstyles',
+                            'items' => array(
+                                'Bold', 'Italic', 'Underline',
+                                '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+                                '-', 'Undo', 'Redo',
+                                '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
+                                '-', 'Blockquote',
+                                '-', 'Image', 'Link', 'Unlink', 'Table'
+                            )
+                        )
+                    ),
+                    'uiColor' => '#ffffff'
+                ),
+                'label' => 'Mô tả'
+            ))
+            ->add('totalPrice', 'number', ['label' => 'Số tiền đơn hàng','required' => FALSE,'attr' => array(
+            )])
+            ->add('shipPrice', 'number', ['label' => 'Tiền Ship','required' => FALSE,'attr' => array(
+            )])
+            ->add('totalAll', 'number', ['label' => 'Tổng số tiền','required' => FALSE,'attr' => array(
             )])
             ->add('purchasedItems', 'entity', array(
                 'property' => 'product',
