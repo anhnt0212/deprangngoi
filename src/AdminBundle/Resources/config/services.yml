@@ -65,3 +65,9 @@ services:
         arguments: [~, AppBundle\Entity\Purchase, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Quản lý đơn hàng }
+
+    jobz_admin.purchase_item:
+        class: AdminBundle\Admin\PurchaseItemAdmin
+        arguments: [~, AppBundle\Entity\PurchaseItem, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Chi tiết đơn hàng }

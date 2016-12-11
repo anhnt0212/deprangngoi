@@ -16,6 +16,7 @@ class CategoryController extends Controller
             ->createQueryBuilder('p')
             ->join('p.categories', 'c')
             ->where("c.id = " .$category->getId())
+            ->orderBy('p.updatedAt')
             ->getQuery()->getResult();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($product, $request->query->getInt('page', 1), 15);

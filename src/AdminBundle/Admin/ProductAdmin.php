@@ -75,7 +75,6 @@ class ProductAdmin extends AbstractAdmin
 
 
             ))
-            ->add('image', 'text')
             ->add('imageFeature', 'sonata_type_model_list', array(
                 'required' => FALSE,
                 'label' =>'Hình đại diện'
@@ -104,6 +103,7 @@ class ProductAdmin extends AbstractAdmin
                     '1' => 'Đang bày bán'
                 ),
             ))
+
             ->add('createdAt', 'sonata_type_date_picker', array(
                 'label' => 'Tạo ngày',
                 'format' => 'yyyy/MM/dd',
@@ -122,14 +122,6 @@ class ProductAdmin extends AbstractAdmin
             ])
             ->add('metaDescription', 'text', ['required' => FALSE])
             ->add('metaKeyword', 'text', ['required' => FALSE])
-            ->add('old', 'choice', array(
-                'label' => 'Dữ liệu',
-                'choices' => array
-                (
-                    '0' => 'Cũ',
-                    '1' => 'Mới'
-                ),
-            ))
             ->end()
             ->end();
     }

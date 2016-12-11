@@ -11,25 +11,36 @@
         </div>
     </div>
     <div class="row product-info">
-        {% if(item.old == true) %}
-            <div class="col-sm-4">
-                <div class="product-image zoom" id="productFex">
-                    <img src="{{ item.image }}" alt="{{ item.name }}" class="img-thumbnail img-responsive">
-                </div>
-                <div class="clearfix"></div>
-                <div id="gallery_01">
-                    {% if(oldGallery|length > 0) %}
-                        {% for g in oldGallery %}
-                            <a href="javascript:;" data-image="http://deprangngoi.vn/{{ g.image }}"
-                               data-zoom-image="http://deprangngoi.vn/{{ g.image }}">
-                                <img id="img_01" src="http://deprangngoi.vn/{{ g.image }}" title="OK MEN.png"
-                                     alt="{{ g.title }}" width="90">
-                            </a>
-                        {% endfor %}
-                    {% endif %}
-                </div>
+        <div class="col-sm-4">
+            {% if(item.imageFeature == null) %}
+                <img class="group list-group-image img-responsive" data-toggle="tooltip"
+                     data-placement="top"
+                     src="{{ item.image }}" alt=""/>
+            {% else %}
+                <img class="group list-group-image img-responsive" data-toggle="tooltip"
+                     data-placement="top"
+                     src="{% path item.imageFeature,'image_content' %}" alt=""/>
+            {% endif %}
+            <div class="clearfix"></div>
+            <div id="gallery_01">
+                {% if(oldGallery|length > 0 and item.gallery == null) %}
+                    {% for g in oldGallery %}
+                        <a href="javascript:;" data-image="http://deprangngoi.vn/{{ g.image }}"
+                           data-zoom-image="http://deprangngoi.vn/{{ g.image }}">
+                            <img id="img_01" src="http://deprangngoi.vn/{{ g.image }}" title="OK MEN.png"
+                                 alt="{{ g.title }}" width="90">
+                        </a>
+                    {% endfor %}
+                {% elseif  (item.gallery != null) %}
+                    {% for img in item.gallery.GalleryHasMedias().toArray() %}
+                        <a href="javascript:;" data-image="{% path img.media, 'image_content' %}"
+                           data-zoom-image="{% path img.media, 'image_content' %}">
+                            <img id="img_01" src="{% path img.media, 'image_content' %}" title="OK MEN.png" width="90">
+                        </a>
+                    {% endfor %}
+                {% endif %}
             </div>
-        {% endif %}
+        </div>
         <div class="col-sm-5">
             <h4 class="title-detail">{{ item.name }}</h4>
 

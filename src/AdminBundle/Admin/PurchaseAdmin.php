@@ -18,7 +18,7 @@ class PurchaseAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Chi tiết đơn hàng', array(
+            ->with('Chi tiết', array(
                 'class' => 'col-md-8',
                 'box_class' => 'box'
             ))
@@ -60,24 +60,20 @@ class PurchaseAdmin extends AbstractAdmin
                 ),
                 'label' => 'Mô tả'
             ))
-            ->add('totalPrice', 'number', ['label' => 'Số tiền đơn hàng','required' => FALSE,'attr' => array(
-            )])
-            ->add('shipPrice', 'number', ['label' => 'Tiền Ship','required' => FALSE,'attr' => array(
-            )])
-            ->add('totalAll', 'number', ['label' => 'Tổng số tiền','required' => FALSE,'attr' => array(
-            )])
-            ->add('purchasedItems', 'entity', array(
-                'property' => 'product',
-                'class' => 'AppBundle\Entity\PurchaseItem',
-                'empty_value' => 'Vui lòng chọn',
-                'multiple' => true,
-                'required' => FALSE,
-                'label' => 'Danh sách sản phẩm',
-                'attr' => array(
-                    'readonly' => true,
-                    'disabled' => true
-                )
+            ->add('totalPrice', 'number', ['label' => 'Số tiền đơn hàng', 'required' => FALSE, 'attr' => array()])
+            ->add('shipPrice', 'number', ['label' => 'Tiền Ship', 'required' => FALSE, 'attr' => array()])
+            ->add('totalAll', 'number', ['label' => 'Tổng số tiền', 'required' => FALSE, 'attr' => array()])
+            ->end()
+            ->with('Chi tiết đơn hàng', array('class' => 'col-sm-4'))
+            ->add('purchasedItems', 'sonata_type_collection', array(
+                'by_reference' => false,
+                'type_options' => array()), array(
+                'edit' => 'inline',
+                'inline' => 'class',
+                'label' => false,
+                'required' => FALSE
             ))
+            ->end()
             ->end();
     }
 
@@ -90,11 +86,14 @@ class PurchaseAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('id')->addIdentifier('customerName')->addIdentifier('customerPhone')->addIdentifier('customerEmail');
     }
-    public function prePersist($object) {
+
+    public function prePersist($object)
+    {
         $this->preUpdate($object);
     }
 
-    public function preUpdate($object) {
+    public function preUpdate($object)
+    {
 
     }
 
