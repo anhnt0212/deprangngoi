@@ -41,10 +41,7 @@ class ArticleAdmin extends AbstractAdmin
                             'items' => array(
                                 'Bold', 'Italic', 'Underline',
                                 '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
-                                '-', 'Undo', 'Redo',
-                                '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
-                                '-', 'Blockquote',
-                                '-', 'Image', 'Link', 'Unlink', 'Table'
+                                '-', 'Undo', 'Redo'
                             )
                         )
                     ),
@@ -53,25 +50,7 @@ class ArticleAdmin extends AbstractAdmin
                 'label' => 'Mô tả'
             ))
             ->add('content', 'ckeditor', array(
-                'config' => array(
-                    'toolbar' => array(
-                        array(
-                            'name' => 'basicstyles',
-                            'items' => array(
-                                'Bold', 'Italic', 'Underline',
-                                '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
-                                '-', 'Undo', 'Redo',
-                                '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
-                                '-', 'Blockquote',
-                                '-', 'Image', 'Link', 'Unlink', 'Table'
-                            )
-                        )
-                    ),
-                    'uiColor' => '#ffffff'
-                ),
                 'label' => 'Bài viết'
-
-
             ))
             ->add('imageUrl', 'text')
             ->add('imageFeature', 'sonata_type_model_list', array(

@@ -7,6 +7,7 @@ imports:
     - { resource: "@AppBundle/Resources/config/services.yml" }
     - { resource:  sonata_admin.yml }
     - { resource:  sonata_media.yml }
+    - { resource:  ivory_ckeditor.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -135,3 +136,12 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+sonata_formatter:
+
+    # ...
+
+    ckeditor:
+        templates:
+            browser: 'SonataFormatterBundle:Ckeditor:browser.html.twig'
+            upload: 'SonataFormatterBundle:Ckeditor:upload.html.twig'

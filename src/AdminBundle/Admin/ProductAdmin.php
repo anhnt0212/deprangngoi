@@ -49,9 +49,6 @@ class ProductAdmin extends AbstractAdmin
                                 'Bold', 'Italic', 'Underline',
                                 '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
                                 '-', 'Undo', 'Redo',
-                                '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
-                                '-', 'Blockquote',
-                                '-', 'Image', 'Link', 'Unlink', 'Table'
                             )
                         )
                     ),
@@ -60,25 +57,7 @@ class ProductAdmin extends AbstractAdmin
                 'label' =>'Mô tả ngắn'
             ))
             ->add('body', 'ckeditor', array(
-                'config' => array(
-                    'toolbar' => array(
-                        array(
-                            'name' => 'basicstyles',
-                            'items' => array(
-                                'Bold', 'Italic', 'Underline',
-                                '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
-                                '-', 'Undo', 'Redo',
-                                '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
-                                '-', 'Blockquote',
-                                '-', 'Image', 'Link', 'Unlink', 'Table'
-                            )
-                        )
-                    ),
-                    'uiColor' => '#ffffff',
-                ),
                 'label' =>'Bài viết mô tả'
-
-
             ))
             ->add('imageFeature', 'sonata_type_model_list', array(
                 'required' => FALSE,
@@ -127,6 +106,14 @@ class ProductAdmin extends AbstractAdmin
             ])
             ->add('metaDescription', 'text', ['required' => FALSE])
             ->add('metaKeyword', 'text', ['required' => FALSE])
+            ->add('inSale', 'checkbox', array(
+                'label' => 'Khuyến Mãi',
+                'required' => FALSE
+            ))
+            ->add('inHot', 'checkbox', array(
+                'label' => 'Sản Phẩm Hot',
+                'required' => FALSE
+            ))
             ->end()
             ->end();
     }
