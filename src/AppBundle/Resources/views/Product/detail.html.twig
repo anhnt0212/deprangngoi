@@ -12,19 +12,21 @@
     </div>
     <div class="row product-info">
         <div class="col-sm-4">
-            {% if(item.imageFeature == null) %}
-                <img class="group list-group-image img-responsive" data-toggle="tooltip"
-                     data-placement="top"
-                     src="{{ item.image }}" alt=""/>
-            {% else %}
-                <img class="group list-group-image img-responsive" data-toggle="tooltip"
-                     data-placement="top"
-                     src="{% path item.imageFeature,'image_content' %}" alt=""/>
-            {% endif %}
+            <div class="product-image zoom" id="productFex">
+                {% if(item.imageFeature == null) %}
+                    <img class="img-thumbnail img-responsive" id="primateImage" data-toggle="tooltip"
+                         data-placement="top"
+                         src="{{ item.image }}" alt=""/>
+                {% else %}
+                    <img class="img-thumbnail img-responsive" id="primateImage" data-toggle="tooltip"
+                         data-placement="top"
+                         src="{% path item.imageFeature,'image_content' %}" alt=""/>
+                {% endif %}
+            </div>
             <div class="clearfix"></div>
             <div id="gallery_01">
                 {% if(oldGallery|length > 0 and item.gallery == null) %}
-                    {% for g in oldGallery %}
+                    {% for g in oldGallery[0:3] %}
                         <a href="javascript:;" data-image="http://deprangngoi.vn/{{ g.image }}"
                            data-zoom-image="http://deprangngoi.vn/{{ g.image }}">
                             <img id="img_01" src="http://deprangngoi.vn/{{ g.image }}" title="OK MEN.png"
@@ -150,6 +152,11 @@
     <script>
         $(document).ready(function () {
             $('#productFex').zoom();
+
+        });
+        $('#gallery_01 img').on('click', function () {
+            var src = $(this).attr('src');
+            $('#primateImage').attr('src', src);
         });
     </script>
     <script type="text/javascript"

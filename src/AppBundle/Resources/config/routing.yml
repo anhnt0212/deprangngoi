@@ -11,8 +11,8 @@ app_category:
 app_product_detail:
     path:   /chi-tiet-san-pham/{slug}
     defaults: { _controller: AppBundle:Product:index }
-    requirements:
-        slug: "[a-zA-Z0-9\-_–]+"
+#    requirements:
+#        slug: "[a-zA-Z0-9\-_–]+"
 
 app_product_card:
     path:   /gio-hang/chi-tiet
