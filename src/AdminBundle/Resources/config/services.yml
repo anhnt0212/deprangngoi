@@ -11,7 +11,7 @@ services:
         class: AdminBundle\Admin\ArticleAdmin
         arguments: [~, AppBundle\Entity\Article, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Bài viết }
+            - { name: sonata.admin, manager_type: orm, label: Danh sách bài biết }
 
     jobz_admin.catelogy:
         class: AdminBundle\Admin\CatelogyAdmin
@@ -23,13 +23,13 @@ services:
         class: AdminBundle\Admin\CategoryAdmin
         arguments: [~, AppBundle\Entity\Category, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Category }
+            - { name: sonata.admin, manager_type: orm, label: Danh mục sản phẩm }
 
     jobz_admin.product:
         class: AdminBundle\Admin\ProductAdmin
         arguments: [~, AppBundle\Entity\Product, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Danh mục sản phẩm }
+            - { name: sonata.admin, manager_type: orm, label: Danh sách sản phẩm }
 
 
 

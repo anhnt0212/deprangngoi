@@ -16,6 +16,11 @@ use Symfony\Component\HttpFoundation\File\File;
 
 class ArticleAdmin extends AbstractAdmin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'updatedAt'
+    );
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper

@@ -65,14 +65,17 @@ class PurchaseAdmin extends AbstractAdmin
             ->add('totalAll', 'number', ['label' => 'Tổng số tiền', 'required' => FALSE, 'attr' => array()])
             ->end()
             ->with('Chi tiết đơn hàng', array('class' => 'col-sm-4'))
-            ->add('purchasedItems', 'sonata_type_collection', array(
+            ->add('purchasedItems', 'sonata_type_collection',
+                array('btn_add' => false,
                 'by_reference' => false,
-                'type_options' => array()), array(
+                'type_options' => array('delete' => false, 'btn_add' => false))
+                ,array(
                 'edit' => 'inline',
                 'inline' => 'class',
                 'label' => false,
-                'required' => FALSE
-            ))
+                'required' => FALSE,
+                )
+            )
             ->end()
             ->end();
     }

@@ -34,6 +34,7 @@ class HomeController extends Controller
                 ->innerJoin('p.categories', 'g')
                 ->where('g.id IN (:category_id)')
                 ->setParameter('category_id', $all_childs[$value['id']])
+                ->orderBy('p.updatedAt','DESC')
                 ->getQuery()->setMaxResults(6)->getResult();
         }
         $data['category'] = $product;

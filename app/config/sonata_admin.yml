@@ -92,7 +92,7 @@ sonata_admin:
                    icon:            '<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>'
                    items:
                        - jobz_admin.purchase
-                       - jobz_admin.purchase_item
+#                       - jobz_admin.purchase_item
     templates:
         user_block:           'SonataAdminBundle:Core:user_block.html.twig'
         add_block:            'SonataAdminBundle:Core:add_block.html.twig'
