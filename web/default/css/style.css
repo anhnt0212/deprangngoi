@@ -186,9 +186,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 10px;
 }
 .list-group-image {
-    max-height: 200px;
-    min-height: 170px;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 
 
@@ -260,6 +258,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 20px;
     margin: 0;
     line-height: 25px;
+    padding-top: 15px;
 }
 .product-image img {
     padding: 25px;
@@ -304,7 +303,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 40px;
     padding-right: 0;
     padding-bottom: 20px;
-    padding-left: 0;/*	border-top-width: 4px;
+    padding-left: 25px;/*	border-top-width: 4px;
 	border-top-style: solid;
 	border-top-color: #003;*/
     max-width: 1025px;
@@ -719,7 +718,25 @@ h3.title-category {
     text-transform:uppercase;margin-bottom:10px;
 }
 /*form*/
-
+.product-content-post {
+    /* background: #F7F6FB; */
+    border-radius: 5px;
+    /* box-shadow: inset 0 0 4px #999; */
+    /* overflow: hidden; */
+    -webkit-box-shadow: 3px 3px 11px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 3px 3px 11px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 3px 3px 11px 0px rgba(50, 50, 50, 0.75);
+}
+.post-content {
+    padding: 15px;
+}
+.like-category-box {
+   padding-left: 12px;
+   padding-right: 12px;
+}
+.post-content img {
+    max-width: 100% !important;
+}
 
 
 @media (min-width: 1199px)  and (max-width: 1366px) {
@@ -732,8 +749,27 @@ h3.title-category {
 
 }
 @media only screen and (min-width: 991px){
-    .thumbnail {
-        min-height: 415px;
+
+    .item-product {
+        height: 515px !important;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .item-product .thumbnail {
+        height: 470px !important;
+    }
+    .item-product .thumbnail img {
+        height: 290px !important;
+    }
+    .box-category .product-title {
+        height: 40px;
+    }
+    .box-category .product-description {
+        height: 35px;
+    }
+    #primateImage {
+        width: 300px;
+        height: 250px;
     }
 }
 @media only screen and (min-width: 1366px){
@@ -787,5 +823,11 @@ h3.title-category {
     }
     .card-sub-title {
         display: none;
+    }
+    .product-content-post .product-info {
+        padding-left: 25px !important;
+    }
+    .box-breadcrumb {
+        display: none; !important;
     }
 }

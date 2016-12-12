@@ -10,101 +10,102 @@
             <a href="#" class="btn btn-default">{{ item.name }}</a>
         </div>
     </div>
-    <div class="row product-info">
-        <div class="col-sm-4">
-            <div class="product-image zoom" id="productFex">
-                {% if(item.imageFeature == null) %}
-                    <img class="img-thumbnail img-responsive" id="primateImage" data-toggle="tooltip"
-                         data-placement="top"
-                         src="{{ item.image }}" alt=""/>
-                {% else %}
-                    <img class="img-thumbnail img-responsive" id="primateImage" data-toggle="tooltip"
-                         data-placement="top"
-                         src="{% path item.imageFeature,'image_content' %}" alt=""/>
-                {% endif %}
-            </div>
-            <div class="clearfix"></div>
-            <div id="gallery_01">
-                {% if(oldGallery|length > 0 and item.gallery == null) %}
-                    {% for g in oldGallery[0:3] %}
-                        <a href="javascript:;" data-image="http://deprangngoi.vn/{{ g.image }}"
-                           data-zoom-image="http://deprangngoi.vn/{{ g.image }}">
-                            <img id="img_01" src="http://deprangngoi.vn/{{ g.image }}" title="OK MEN.png"
-                                 alt="{{ g.title }}" width="90">
-                        </a>
-                    {% endfor %}
-                {% elseif  (item.gallery != null) %}
-                    {% for img in item.gallery.GalleryHasMedias().toArray() %}
-                        <a href="javascript:;" data-image="{% path img.media, 'image_content' %}"
-                           data-zoom-image="{% path img.media, 'image_content' %}">
-                            <img id="img_01" src="{% path img.media, 'image_content' %}" title="OK MEN.png" width="90">
-                        </a>
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </div>
-        <div class="col-sm-5">
-            <h4 class="title-detail">{{ item.name }}</h4>
-
-            <div class="socical">
-                <!-- AddThis Button BEGIN -->
-                <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
-                    <a class="addthis_button_facebook"></a>
-                    <a class="addthis_button_twitter"></a>
-                    <a class="addthis_button_zingme"></a>
-                    <a class="addthis_button_google_plusone_share"></a>
-                    <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+    <div class="product-content-post">
+        <div class="row product-info">
+            <div class="col-sm-4">
+                <div class="product-image zoom" id="productFex">
+                    {% if(item.imageFeature == null) %}
+                        <img class="img-thumbnail img-responsive" id="primateImage" data-toggle="tooltip"
+                             data-placement="top"
+                             src="{{ item.image }}" alt=""/>
+                    {% else %}
+                        <img class="img-thumbnail img-responsive" id="primateImage" data-toggle="tooltip"
+                             data-placement="top"
+                             src="{% path item.imageFeature,'image_content' %}" alt=""/>
+                    {% endif %}
+                </div>
+                <div class="clearfix"></div>
+                <div id="gallery_01">
+                    {% if(oldGallery|length > 0 and item.gallery == null) %}
+                        {% for g in oldGallery[0:3] %}
+                            <a href="javascript:;" data-image="http://deprangngoi.vn/{{ g.image }}"
+                               data-zoom-image="http://deprangngoi.vn/{{ g.image }}">
+                                <img id="img_01" src="http://deprangngoi.vn/{{ g.image }}" title="OK MEN.png"
+                                     alt="{{ g.title }}" width="90">
+                            </a>
+                        {% endfor %}
+                    {% elseif  (item.gallery != null) %}
+                        {% for img in item.gallery.GalleryHasMedias().toArray() %}
+                            <a href="javascript:;" data-image="{% path img.media, 'image_content' %}"
+                               data-zoom-image="{% path img.media, 'image_content' %}">
+                                <img id="img_01" src="{% path img.media, 'image_content' %}" title="OK MEN.png" width="90">
+                            </a>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
-            <hr>
-            <div class="product-detail">
-                <p><strong>Mã sản phẩm:</strong> <span>{{ item.productCode }}</span></p>
+            <div class="col-sm-5">
+                <h4 class="title-detail">{{ item.name }}</h4>
 
-                <p><strong>Xuất xứ: </strong><span> {{ item.madeIn }}</span></p>
+                <div class="socical">
+                    <!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style addthis_16x16_style">
+                        <a class="addthis_button_facebook"></a>
+                        <a class="addthis_button_twitter"></a>
+                        <a class="addthis_button_zingme"></a>
+                        <a class="addthis_button_google_plusone_share"></a>
+                        <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                    </div>
+                </div>
+                <hr>
+                <div class="product-detail">
+                    <p><strong>Mã sản phẩm:</strong> <span>{{ item.productCode }}</span></p>
 
-                <p><strong>Thương hiệu:</strong> <span>{{ item.trademark }}</span></p>
+                    <p><strong>Xuất xứ: </strong><span> {{ item.madeIn }}</span></p>
 
-                <p><strong>Loại sản phẩm:</strong> <span>{{ item.typeName }}</span></p>
+                    <p><strong>Thương hiệu:</strong> <span>{{ item.trademark }}</span></p>
 
-                <p><strong>Trọng lượng:</strong> <span> {{ item.weights }}</span></p>
+                    <p><strong>Loại sản phẩm:</strong> <span>{{ item.typeName }}</span></p>
 
-                <p><strong>Quy cách: </strong><span> {{ item.specification }}</span></p>
+                    <p><strong>Trọng lượng:</strong> <span> {{ item.weights }}</span></p>
+
+                    <p><strong>Quy cách: </strong><span> {{ item.specification }}</span></p>
+                </div>
+                <span class="product_price">{{ item.price|number_format(0, '.', ',') }} VND</span>
+                <span class="product_price_old">{{ item.priceOld|number_format(0, '.', ',') }} VND</span>
+                <br>
+                <br>
+
+                <form action="{{ path('app_product_card') }}" id="ProductAddForm" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="productId" value="{{ item.id }}" id="ProductId">
+                    <button class="btn btn-success addtocart" id="2"
+                            onclick="window.location.href='{{ path('app_product_card') }}'" type="submit"><i
+                                class="fa fa-cart-plus"></i> &nbsp;
+                        Thêm vào giỏ hàng
+                    </button>
+                </form>
+                <br>
             </div>
-            <span class="product_price">{{ item.price|number_format(0, '.', ',') }} VND</span>
-            <span class="product_price_old">{{ item.priceOld|number_format(0, '.', ',') }} VND</span>
-            <br>
-            <br>
-
-            <form action="{{ path('app_product_card') }}" id="ProductAddForm" method="post" accept-charset="utf-8">
-                <input type="hidden" name="productId" value="{{ item.id }}" id="ProductId">
-                <button class="btn btn-success addtocart" id="2"
-                        onclick="window.location.href='{{ path('app_product_card') }}'" type="submit"><i
-                            class="fa fa-cart-plus"></i> &nbsp;
-                    Thêm vào giỏ hàng
-                </button>
-            </form>
-            <br>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="post-content">
+                    {{ item.body|raw }}
+                </div>
+                <div class="fb-comments" data-href="https://www.facebook.com/biquyetdeprangngoi/" data-width="100%"
+                     data-numposts="1"></div>
+            </div>
         </div>
     </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-12 col-xs-12">
-            <div class="post-content">
-                {{ item.body|raw }}
-            </div>
-            <div class="fb-comments" data-href="https://www.facebook.com/biquyetdeprangngoi/" data-width="100%"
-                 data-numposts="1"></div>
-        </div>
-    </div>
-    <div class="row box-category">
+    <div class="row box-category like-category-box">
         <div class="col-md-12 boder-box">
             <h3 class="title-category">Sản Phẩm Tương Tự</h3>
             <br>
-
             <div class="row row-list-item">
                 <div id="products-1" class="row list-group">
                     {% for item in productLike %}
-                        <div class="item  col-xs-12 col-lg-4">
+                        <div class="item-product col-xs-12 col-lg-4">
                             <div class="thumbnail">
                                 {% if(item.imageFeature == null) %}
                                     <img class="group list-group-image img-responsive" data-toggle="tooltip"
@@ -123,9 +124,9 @@
 
                                     <p class="group inner list-group-item-text product-description">
                                         {% if(item.description|length > 0) %}
-                                            {{ item.description }}
+                                            {{ characterLimit(item.description,80) }}
                                         {% else %}
-                                            {{ characterLimit(item.body,225)|raw }}
+                                            {{ characterLimit(item.body,80)|raw }}
                                         {% endif %}
                                     </p>
 
