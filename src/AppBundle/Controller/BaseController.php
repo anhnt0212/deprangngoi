@@ -24,7 +24,7 @@ class BaseController extends Controller
         $sql = "SELECT
           id,parent_id,name,parent_id,alias,image_url,body,meta_keyword,meta_description,position,image_feature
             FROM category
-          WHERE category.enabled = 1 AND category.id != 32 AND category.id != 33";
+          WHERE category.enabled = 1 AND category.id != 32 AND category.id != 33 AND category.id != 34";
         $em = $this->getDoctrine()->getManager();
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
