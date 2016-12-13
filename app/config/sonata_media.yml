@@ -47,7 +47,7 @@ sonata_media:
             providers:
               - sonata.media.provider.image
             formats:
-                preview: { width: 600, height: 218, quality: 100}
+                preview: { width: 800, height: 800, quality: 100}
     cdn:
         server:
             path: /uploads/media # http://media.sonata-project.org/
