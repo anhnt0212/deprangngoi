@@ -64,6 +64,10 @@ app_block_news :
      path:  /render/block/news
      defaults: { _controller: AppBundle:Base:news }
 
+app_block_banner :
+     path:  /render/block/banner
+     defaults: { _controller: AppBundle:Base:banner }
+
 app_card_submit_card :
      path:  /gio-hang/chi-tiet/dat-hang
      defaults: { _controller: AppBundle:Card:submit }

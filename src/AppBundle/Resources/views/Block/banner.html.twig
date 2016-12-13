@@ -1,0 +1,32 @@
+{% for b in banner %}
+    {% if(b.position == 1) %}
+        <div class="slide-left left" id="slide-left">
+            <a rel="nofollow" title="{{ b.metaTitle }}">
+                {% if b.imageFeature == null %}
+                    <img src="{{ asset('default/images/Left-banner_a94138b7.png') }}"
+                         class="img-responsive adv_img left"
+                         title="{{ b.metaTitle }}" alt=""/>
+                {% else %}
+                    <img src="{% path b.imageFeature,'preview' %}"
+                         class="img-responsive adv_img left"
+                         title="{{ b.metaTitle }}" alt=""/>
+                {% endif %}
+            </a>
+        </div>
+    {% endif %}
+    {% if(b.position == 2) %}
+        <div class="slide-right right" id="slide-right">
+            <a rel="nofollow" title="Quảng cáo phải">
+                {% if b.imageFeature == null %}
+                    <img src="{{ asset('default/images/Right-banner_1_e9c10c24.png') }}"
+                         class="img-responsive adv_img right"
+                         title="{{ b.metaTitle }}" alt=""/>
+                {% else %}
+                    <img src="{% path b.imageFeature,'preview' %}"
+                         class="img-responsive adv_img right"
+                         title="{{ b.metaTitle }}" alt=""/>
+                {% endif %}
+            </a>
+        </div>
+    {% endif %}
+{% endfor %}

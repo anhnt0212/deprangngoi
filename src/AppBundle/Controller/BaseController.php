@@ -87,4 +87,15 @@ class BaseController extends Controller
         $data['title'] = 'Mỹ phẩm đẹp rạng ngời';
         return $data;
     }
+    public function bannerAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('AppBundle:Adv')->createQueryBuilder('ad');
+        $banner = $qb->where('ad.enabled = 1')->orderBy('ad.position', 'DESC')->getQuery()->setMaxResults(2)->getResult();
+        $variables = array
+        (
+            'banner' => $banner
+        );
+        return $this->render('AppBundle:Block:banner.html.twig', $variables);
+    }
 }

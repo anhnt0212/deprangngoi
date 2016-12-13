@@ -37,18 +37,7 @@
 <body>
 
 {% block adv %}
-    <div class="slide-left left" id="slide-left">
-        <a rel="nofollow" title="Quảng cáo trái">
-            <img src="{{ asset('default/images/Left-banner_a94138b7.png') }}" class="img-responsive adv_img left"
-                 title="Quảng cáo trái" alt=""/>
-        </a>
-    </div>
-    <div class="slide-right right" id="slide-right">
-        <a rel="nofollow" title="Quảng cáo phải">
-            <img src="{{ asset('default/images/Right-banner_1_e9c10c24.png') }}" class="img-responsive adv_img right"
-                 title="Quảng cáo phải" alt=""/>
-        </a>
-    </div>
+    {{ render(url('app_block_banner')) }}
 {% endblock %}
 <div class="container" id="main">
     {% block nav_bar %}

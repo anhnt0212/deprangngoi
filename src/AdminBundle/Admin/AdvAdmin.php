@@ -31,7 +31,7 @@ class AdvAdmin extends AbstractAdmin
             ])
             ->add('imageFeature', 'sonata_type_model_list', array(
                 'required' => FALSE
-            ), array('link_parameters' => array('context' => 'slider')))
+            ), array('link_parameters' => array('context' => 'banner')))
             ->add('enabled', 'choice', array(
                 'label' => 'Trạng Thái',
                 'choices' => array
@@ -40,9 +40,14 @@ class AdvAdmin extends AbstractAdmin
                     '1' => 'Mở'
                 ),
             ))
-            ->add('position', 'number', [
-                'required' => FALSE,
-            ])
+            ->add('position', 'choice', array(
+                'label' => 'Vị Trí',
+                'choices' => array
+                (
+                    '1' => 'Trái',
+                    '2' => 'Phải'
+                ),
+            ))
             ->end()
             ->with('SEO', array('class' => 'col-sm-4'))
             ->add('metaDescription', 'text', ['required' => FALSE])
