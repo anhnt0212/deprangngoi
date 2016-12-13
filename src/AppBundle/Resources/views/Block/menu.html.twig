@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="/">Trang Chủ</a>
+                    <a href="/"><i class="glyphicon glyphicon-home"></i></a>
                 </li>
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh Mục<b
@@ -66,31 +66,26 @@
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
                         {% for td in trademark %}
-                        <li>
-                            <a href="{{ path('app_category',{'alias':td.alias}) }}" title="{{ td.name }}">{{ td.name }}</a>
-                        </li>
+                            <li>
+                                <a href="{{ path('app_category',{'alias':td.alias}) }}"
+                                   title="{{ td.name }}">{{ td.name }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </li>
                 <li><a href="{{ path('app_list_new') }}">Cẩm Nang Làm Đẹp</a></li>
-                <li><a href="{{ path('app_homepage') }}">Sản Phẩm Bán Chạy</a></li>
+                <li><a href="{{ path('app_category',{'alias':'san-pham-ban-chay'}) }}">Sản Phẩm Bán Chạy</a></li>
+                <li><a href="{{ path('app_category',{'alias':'san-pham-khuyen-mai'}) }}">Sản Phẩm Khuyến Mãi</a></li>
                 <li><a href="{{ path('app_contact') }}">Liên Hệ</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
-                <li class=" dropdown"><a href="javascript:;"
-                                         class="dropdown-toggle active"
-                                         data-toggle="dropdown"
-                                         role="button" aria-haspopup="true" aria-expanded="false">Tài Khoản<span
-                                class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:;">Đăng Nhập</a></li>
-                        <li><a href="javascript:;">Đăng Kí</a></li>
-                    </ul>
-                </li>
                 <li class="">
-
                     <a href="{{ path('app_product_card') }}" title="Giỏ hàng">
                         <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> ({{ card }})
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">Hotline : 0971.319.345
                     </a>
                 </li>
             </ul>
