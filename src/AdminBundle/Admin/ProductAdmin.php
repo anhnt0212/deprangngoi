@@ -106,13 +106,23 @@ class ProductAdmin extends AbstractAdmin
             ])
             ->add('metaDescription', 'text', ['required' => FALSE])
             ->add('metaKeyword', 'text', ['required' => FALSE])
-            ->add('inSale', 'checkbox', array(
+            ->add('inSale', 'choice', array(
                 'label' => 'Khuyến Mãi',
-                'required' => FALSE
+                'required' => FALSE,
+                'choices' => array
+                (
+                    '0' => 'Không',
+                    '1' => 'Khuyến Mãi'
+                ),
             ))
-            ->add('inHot', 'checkbox', array(
-                'label' => 'Sản Phẩm Hot',
-                'required' => FALSE
+            ->add('inHot', 'choice', array(
+                'label' => 'Hot',
+                'required' => FALSE,
+                'choices' => array
+                (
+                    '0' => 'Không',
+                    '1' => 'Sản Phẩm Hot'
+                ),
             ))
             ->end()
             ->end();
