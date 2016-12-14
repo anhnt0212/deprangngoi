@@ -73,18 +73,18 @@ class Purchase
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255,name="customer_name")
+     * @ORM\Column(type="string", length=255,name="customer_name",nullable=true)
      */
     protected $customerName;
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255,name="customer_phone")
+     * @ORM\Column(type="string", length=255,name="customer_phone",nullable=true)
      */
     protected $customerPhone;
     /**
      * @var string
-     * @ORM\Column(type="string", length=255,name="customer_email")
+     * @ORM\Column(type="string", length=255,name="customer_email",nullable=true)
      */
     protected $customerEmail;
 
@@ -92,7 +92,7 @@ class Purchase
      * The customer billing address.
      *
      * @var text
-     * @ORM\Column(type="text",name="customer_address")
+     * @ORM\Column(type="text",name="customer_address",nullable=true)
      */
     protected $customerAddress;
 
@@ -107,21 +107,21 @@ class Purchase
      * The customer billing address.
      *
      * @var float
-     * @ORM\Column(type="float",name="total_price")
+     * @ORM\Column(type="float",name="total_price",nullable=true)
      */
     protected $totalPrice;
     /**
      * The price of the product.
      *
      * @var float
-     * @ORM\Column(type="float",name="ship_price")
+     * @ORM\Column(type="float",name="ship_price",nullable=true)
      */
     protected $shipPrice;
     /**
      * The price of the product.
      *
      * @var float
-     * @ORM\Column(type="float",name="total_all")
+     * @ORM\Column(type="float",name="total_all",nullable=true)
      */
     protected $totalAll;
 
@@ -129,7 +129,7 @@ class Purchase
      * The customer billing address.
      *
      * @var text
-     * @ORM\Column(type="text",name="ship_info")
+     * @ORM\Column(type="text",name="ship_info",nullable=true)
      */
     protected $shipInfo;
 

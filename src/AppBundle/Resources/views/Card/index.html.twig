@@ -1,6 +1,8 @@
 {% extends 'AppBundle::layout.html.twig' %}
 {% block main_content %}
+    <style>
 
+    </style>
     <div class="row box-breadcrumb">
         <div class="btn-group btn-breadcrumb">
             <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
@@ -46,7 +48,7 @@
                         <div class="col col-sm-2" id="price-{{ item.product.id }}">{{ item.product.price|number_format(0, '.', ',') }}VNĐ
                         </div>
                         <div class="col col-sm-1">
-                            <input name="product[{{ item.product.id }}][quantity]" class="product-quantity" data-productid="{{ item.product.id }}" data-productprice="{{ item.product.price }}" value="{{ item.quantity }}" data-quantityold="{{ item.quantity }}" min="1" max="30" type="number" id="ProductQuantity-{{ item.product.id }}"/>
+                            <input  name="product[{{ item.product.id }}][quantity]" class="product-quantity" data-productid="{{ item.product.id }}" data-productprice="{{ item.product.price }}" value="{{ item.quantity }}" data-quantityold="{{ item.quantity }}" min="1" max="30" type="number" id="ProductQuantity-{{ item.product.id }}"/>
                         </div>
                         <div class="col col-sm-2"
                              id="subtotal-{{ item.product.id }}">{{ (item.product.price*item.quantity)|number_format(0, '.', ',') }}

@@ -134,20 +134,20 @@ var App = {
     },
     changeQuantity : function () {
         $('input[class="product-quantity"]').change(function () {
-            var productId = $(this).data('productid');
-            console.log(productId);
-            var productPrice = $(this).data('productprice');
-            console.log(productPrice);
             var quantity = parseInt($(this).val());
             var oldQuantity = parseInt($(this).data('quantityold'));
             console.log(quantity);
+            if(isNaN(quantity)){
+                alert('Bạn không thể thực hiện thao tác này');
+                $(this).val(oldQuantity);
+                return false;
+            }
+            var productId = $(this).data('productid');
+            var productPrice = $(this).data('productprice');
             var newTotalProduct = parseFloat(productPrice*quantity);
-            console.log(newTotalProduct);
             $('#subtotal-'+productId).text((newTotalProduct.format())+'VNĐ');
             var oldTotalProduct = parseFloat(productPrice*oldQuantity);
-            console.log(oldTotalProduct);
             var oldSubTotalAll = parseFloat($('input[name="priceTotal"]').val());
-            console.log(oldSubTotalAll);
             var newSubAllTotal = parseFloat(oldSubTotalAll +  newTotalProduct - oldTotalProduct);
             $('input[name="priceTotal"]').val(newSubAllTotal);
             $('span[id="subtotal"]').text((newSubAllTotal.format())+'VNĐ');
