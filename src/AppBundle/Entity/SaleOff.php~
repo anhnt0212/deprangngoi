@@ -1,0 +1,100 @@
+<?php
+
+/*
+ * This file is part of the Doctrine-TestSet project created by
+ * https://github.com/Anh Nguyen
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * at https://github.com/Anh Nguyen/Doctrine-TestSet
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class SaleOff.
+ *
+ * @author Anh Nguyen
+ *
+ * @ORM\Table(name="sale_off")
+ * @ORM\Entity
+ */
+class SaleOff
+{
+    /**
+     *
+     * @var int
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id = null;
+
+    /**
+     * Anh Nguyen
+     *
+     * @var string
+     * @ORM\Column(type="string",nullable=true)
+     */
+    protected $title;
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var bool
+     * @ORM\Column(type="boolean",name="enabled")
+     */
+    protected $enabled = false;
+    /**
+     * Anh Nguyen
+     *
+     * @var string
+     * @ORM\Column(type="string",name="link",nullable=true)
+     */
+    protected $link;
+    /**
+     * The description of the product.
+     *
+     * @var string
+     * @ORM\Column(type="string", length=255,name="meta_description",nullable=true)
+     */
+    protected $metaDescription;
+
+    /**
+     * The description of the product.
+     *
+     * @var string
+     * @ORM\Column(type="string", length=255,name="meta_keyword",nullable=true)
+     */
+    protected $metaKeyword;
+
+
+    /**
+     * The description of the product.
+     *
+     * @var string
+     * @ORM\Column(type="string", length=255,name="meta_title",nullable=true)
+     */
+    protected $metaTitle;
+    /**
+     * @var \Media
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove", "merge"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image_feature", referencedColumnName="id", nullable=true, onDelete="Set null")
+     * })
+     */
+    protected $imageFeature;
+    /**
+     * Indicate if the product is enabled (available in store).
+     *
+     * @var integer
+     * @ORM\Column(type="integer",name="position")
+     */
+    protected $position = 1;
+    public function __toString()
+    {
+        return $this->title;
+    }
+}

@@ -81,6 +81,7 @@ sonata_admin:
                    items:
                        - jobz_admin.slider
                        - jobz_admin.adv
+                       - jobz_admin.sale_off
 
               sonata.admin.group.ship:
                    label:           Quản lý chi phí

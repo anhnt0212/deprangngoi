@@ -13,6 +13,9 @@ class ProductController extends Controller
         $alias = $request->get('slug', NULL);
         $manager = $this->getDoctrine()->getManager();
         $product = $manager->getRepository('AppBundle:Product')->findOneBy(array('alias' => trim($alias)));
+        if(is_null($product)) {
+            return $this->redirectToRoute('app_homepage', array(), 301);
+        }
         if ($product->getOld() == 1) {
             $sql = "SELECT * FROM product_gallery WHERE product_gallery.productId =" . $product->getId();
             $em = $this->getDoctrine()->getManager();

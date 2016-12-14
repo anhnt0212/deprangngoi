@@ -39,6 +39,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Quảng cáo }
 
+    jobz_admin.sale_off:
+        class: AdminBundle\Admin\SaleOffAdmin
+        arguments: [~, AppBundle\Entity\SaleOff, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Banner Khuyến Mãi }
+
 
     jobz_admin.slider:
         class: AdminBundle\Admin\SliderAdmin
