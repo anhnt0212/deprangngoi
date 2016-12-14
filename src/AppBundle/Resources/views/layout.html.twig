@@ -26,7 +26,8 @@
           type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{ asset('default/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('default/css/style.css') }}">
-    <link href="{{ asset('default/css/font-awesome.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('default/bxslider/jquery.bxslider.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('default/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -35,7 +36,7 @@
     <script type="text/javascript" src="{{ asset('default/js/jquery.zoom.min.js') }}"></script>
 </head>
 <body>
-
+<div id="goTop" class="gotoppage"><img src="{{ asset('default/images/icon-back.png') }}" alt="Len dau trang"></div>
 {% block adv %}
     {{ render(url('app_block_banner')) }}
 {% endblock %}
@@ -208,27 +209,9 @@
     </script>
     <!--End of Tawk.to Script-->
 {% endblock %}
-
 {% block app_js %}
-    <script type="text/javascript">
-        function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: uluru
-            });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            });
-        }
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKphRSM9_O7y_BnL6bPUaNYKNK0lSnihs&callback=initMap">
-    </script>
     <script type="text/javascript" src="{{ asset('default/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('default/js/common.js') }}"></script>
     <script src="{{ asset('default/bxslider/jquery.bxslider.min.js') }}"></script>
-    <link href="{{ asset('default/bxslider/jquery.bxslider.css') }}" rel="stylesheet"/>
 {% endblock %}
 </html>

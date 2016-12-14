@@ -43,12 +43,10 @@
                             <br>
                             <small></small>
                         </div>
-                        <div class="col col-sm-2"
-                             id="price-{{ item.product.id }}">{{ item.product.price|number_format(0, '.', ',') }}VNĐ
+                        <div class="col col-sm-2" id="price-{{ item.product.id }}">{{ item.product.price|number_format(0, '.', ',') }}VNĐ
                         </div>
                         <div class="col col-sm-1">
-                            <input name="quantity" disabled class="numeric form-control input-small"
-                                   value="{{ item.quantity }}" type="text" id="quantity-{{ item.product.id }}"/>
+                            <input name="product[{{ item.product.id }}][quantity]" class="product-quantity" data-productid="{{ item.product.id }}" data-productprice="{{ item.product.price }}" value="{{ item.quantity }}" data-quantityold="{{ item.quantity }}" min="1" max="30" type="number" id="ProductQuantity-{{ item.product.id }}"/>
                         </div>
                         <div class="col col-sm-2"
                              id="subtotal-{{ item.product.id }}">{{ (item.product.price*item.quantity)|number_format(0, '.', ',') }}
@@ -60,8 +58,6 @@
                         </div>
                     </div>
                     <hr>
-                    <input name="product[{{ item.product.id }}][quantity]" value="{{ item.quantity }}" type="hidden"
-                           id="ProductQuantity-{{ item.product.id }}"/>
                     <input name="product[{{ item.product.id }}][productId]" value="{{ item.product.id }}" type="hidden"
                            id="ProductId-{{ item.product.id }}"/>
                 {% endfor %}

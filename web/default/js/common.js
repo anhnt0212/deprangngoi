@@ -131,6 +131,29 @@ var App = {
         $('#total').text((total.format())+'VNĐ');
         $('input[name="totalCard"]').val(total);
         $('input[name="shipPrice"]').val(shipPrice);
+    },
+    changeQuantity : function () {
+        $('input[class="product-quantity"]').change(function () {
+            var productId = $(this).data('productid');
+            console.log(productId);
+            var productPrice = $(this).data('productprice');
+            console.log(productPrice);
+            var quantity = parseInt($(this).val());
+            var oldQuantity = parseInt($(this).data('quantityold'));
+            console.log(quantity);
+            var newTotalProduct = parseFloat(productPrice*quantity);
+            console.log(newTotalProduct);
+            $('#subtotal-'+productId).text((newTotalProduct.format())+'VNĐ');
+            var oldTotalProduct = parseFloat(productPrice*oldQuantity);
+            console.log(oldTotalProduct);
+            var oldSubTotalAll = parseFloat($('input[name="priceTotal"]').val());
+            console.log(oldSubTotalAll);
+            var newSubAllTotal = parseFloat(oldSubTotalAll +  newTotalProduct - oldTotalProduct);
+            $('input[name="priceTotal"]').val(newSubAllTotal);
+            $('span[id="subtotal"]').text((newSubAllTotal.format())+'VNĐ');
+            $(this).data('quantityold',quantity);
+            App.changePrice();
+        });
     }
 };
 
@@ -138,6 +161,7 @@ $(document).ready(function () {
     App.advInit();
     App.bxSlider();
     App.loadCity();
+    App.changeQuantity();
     $('.search-panel .dropdown-menu').find('a').click(function (e) {
         e.preventDefault();
         var param = $(this).attr("href").replace("#", "");
@@ -157,5 +181,14 @@ $(document).ready(function () {
         $('.nav li.open').not($(this).parents("li")).removeClass("open");
 
         return false;
+    });
+    $(window).scroll(function ()
+    {
+        if ($(this).scrollTop() > 100) $('#goTop').fadeIn();
+        else $('#goTop').fadeOut();
+    });
+    $('#goTop').click(function ()
+    {
+        $('body,html').animate({ scrollTop: 0 }, 'slow');
     });
 });
