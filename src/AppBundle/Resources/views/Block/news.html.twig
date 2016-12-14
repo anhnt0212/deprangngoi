@@ -4,12 +4,17 @@
             <h2 class="text-box-1">Khuyến mại</h2>
         </div>
         <div class="adv-home">
-            <a rel="nofollow"
-               title="CHƯƠNG TRÌNH KHUYẾN MÃI">
-                <img src="{{ asset('default/images/1_c31d92cb.jpg') }}" class="img-responsive"
-                     title="CHƯƠNG TRÌNH KHUYẾN MÃI"
-                     alt=""/>
-            </a>
+            {% if(saleoff == null) %}
+                <a rel="nofollow" title="CHƯƠNG TRÌNH KHUYẾN MÃI">
+                    <img src="{{ asset('default/images/1_c31d92cb.jpg') }}" class="img-responsive"
+                         title="CHƯƠNG TRÌNH KHUYẾN MÃI" alt=""/>
+                </a>
+            {% else %}
+                <a href="{{ saleoff.link }}" title="{{ saleoff.title }}">
+                    <img src="{% path saleoff.imageFeature,'preview' %}" class="img-responsive" title="{{ saleoff.title }}"
+                         alt=""/>
+                </a>
+            {% endif %}
         </div>
     </div>
     <div class="col-md-4 pull-left">
@@ -40,7 +45,7 @@
                 {% for n in news %}
                     <a href="{{ path('app_list_new_detail',{'alias':n.alias}) }}"
                        title="{{ n.title }}">
-                        <h3 class="text-left text-news-home">{{characterLimit(n.title,50)}}
+                        <h3 class="text-left text-news-home">{{ characterLimit(n.title,50) }}
                         </h3></a>
                 {% endfor %}
             </div>

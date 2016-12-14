@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
+
 class BaseController extends Controller
 {
     public function searchAction()
@@ -35,7 +36,7 @@ class BaseController extends Controller
           WHERE category.enabled = 1 AND category.parent_id = 32";
         $stmt2 = $em->getConnection()->prepare($sql2);
         $stmt2->execute();
-        $trademark =$stmt2->fetchAll();
+        $trademark = $stmt2->fetchAll();
         $card = $session->get('card');
         $variables = array(
             'categories' => $categories,
@@ -61,9 +62,12 @@ class BaseController extends Controller
         $em = $this->getDoctrine()->getManager();
         $qb = $em->getRepository('AppBundle:Article')->createQueryBuilder('a');
         $articles = $qb->where('a.enabled = 1')->orderBy('a.updatedAt', 'DESC')->getQuery()->setMaxResults(5)->getResult();
+        $bb = $em->getRepository('AppBundle:SaleOff')->createQueryBuilder('s');
+        $saleoff = $bb->where('s.enabled = 1')->orderBy('s.id', 'DESC')->getQuery()->setMaxResults(1)->getSingleResult();
         $variables = array
         (
-            'news' => $articles
+            'news' => $articles,
+            'saleoff' => $saleoff
         );
         return $this->render('AppBundle:Block:news.html.twig', $variables);
     }
@@ -87,6 +91,7 @@ class BaseController extends Controller
         $data['title'] = 'Mỹ phẩm đẹp rạng ngời';
         return $data;
     }
+
     public function bannerAction()
     {
         $em = $this->getDoctrine()->getManager();
