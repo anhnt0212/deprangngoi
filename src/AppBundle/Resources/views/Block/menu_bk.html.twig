@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-fixed-top sb-slide" role="navigation" style="position:fixed">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container main-menu">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -13,40 +13,47 @@
                 <li>
                     <a href="/"><i class="glyphicon glyphicon-home"></i></a>
                 </li>
-                <li class="dropdown"><a href="javascript:;" title="Danh mục" class="dropdown-toggle"
-                                        data-toggle="dropdown">Danh Mục<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh Mục<b
+                                class="caret"></b></a>
+                    <ul class="dropdown-menu">
                         {% for category in categories %}
                             {% if category['children'] == false %}
-                                <li><a href="{{ path('app_category',{'alias':category.alias}) }}"
-                                       title="{{ category.name }}">{{ category.name }}</a></li>
+                                <li>
+                                    <a href="{{ path('app_category',{'alias':category.alias}) }}">{{ category.name }}</a>
+                                </li>
                             {% else %}
-                                <li class="dropdown-submenu">
-                                    <a href="{{ path('app_category',{'alias':category.alias}) }}" tabindex="-1"
-                                       class="dropdown-toggle" data-toggle="dropdown">{{ category.name }}</a>
+                                <li><a href="{{ path('app_category',{'alias':category.alias}) }}"
+                                       class="dropdown-toggle" data-toggle="dropdown">{{ category.name }}
+                                        <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         {% for cc in category['children'] %}
                                             {% if cc['children'] == false %}
-                                                <li>
-                                                    <a href="{{ path('app_category',{'alias':cc.alias}) }}"
-                                                       title="{{ cc.name }}">{{ cc.name }}</a>
-                                                </li>
+                                            <li>
+                                                <a href="{{ path('app_category',{'alias':cc.alias}) }}">{{ cc.name }}</a>
+                                            </li>
                                             {% else %}
-                                                <li class="dropdown-submenu">
-                                                    <a href="{{ path('app_category',{'alias':cc.alias}) }}"
-                                                       tabindex="-1" class="dropdown-toggle"
-                                                       data-toggle="dropdown">{{ cc.name }}</a>
+                                                <li>
+                                                    <a href="{{ path('app_category',{'alias':cc.alias}) }}" class="dropdown-toggle" data-toggle="dropdown">{{ cc.name }}<b class="caret"></b>
+                                                    </a>
                                                     <ul class="dropdown-menu">
                                                         {% for ccc in cc['children'] %}
-                                                            <li><a href="{{ path('app_category',{'alias':ccc.alias}) }}"
-                                                                   title="{{ ccc.name }}">{{ ccc.name }}</a></li>
+                                                            <li>
+                                                                <a href="{{ path('app_category',{'alias':ccc.alias}) }}">{{ ccc.name }}</a>
+                                                            </li>
+                                                            {% if ccc['children'] == false %}
+                                                            {% else %}
+                                                                <li>
+                                                                    <a href="{{ path('app_category',{'alias':ccc.alias}) }}">{{ ccc.name }}</a>
+                                                                </li>
+                                                            {% endif %}
                                                         {% endfor %}
                                                     </ul>
-                                                </li><!--end submenu-->
+                                                </li>
                                             {% endif %}
                                         {% endfor %}
                                     </ul>
-                                </li><!--end submenu-->
+                                </li>
                             {% endif %}
                         {% endfor %}
                     </ul>
@@ -81,5 +88,6 @@
                 </li>
             </ul>
         </div>
+        <!--/.nav-collapse -->
     </div>
 </div>
