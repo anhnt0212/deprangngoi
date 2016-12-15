@@ -28,9 +28,9 @@
                 <div id="gallery_01">
                     {% if(oldGallery|length > 0 and item.gallery == null) %}
                         {% for g in oldGallery[0:3] %}
-                            <a href="javascript:;" data-image="http://deprangngoi.vn/{{ g.image }}"
-                               data-zoom-image="http://deprangngoi.vn/{{ g.image }}">
-                                <img id="img_01" src="http://deprangngoi.vn/{{ g.image }}" title="OK MEN.png"
+                            <a href="javascript:;" data-image="{{ g.image }}"
+                               data-zoom-image="{{ g.image }}">
+                                <img id="img_01" src="{{ g.image }}"
                                      alt="{{ g.title }}" width="90">
                             </a>
                         {% endfor %}

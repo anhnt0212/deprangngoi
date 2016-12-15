@@ -138,7 +138,7 @@ class CardController extends Controller
                         $item->setPurchase($purchase);
                         $manager->persist($item);
                     }
-                    try {
+                    try {   
                         $manager->flush();
                         $session->clear();
                         $success = "Đặt hàng thành công !";
