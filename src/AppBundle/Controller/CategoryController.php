@@ -29,6 +29,17 @@ class CategoryController extends Controller
             }
         }
         array_push($array_id, $category->getId());
+        $all_c = $manager->getRepository('AppBundle:Category')
+            ->createQueryBuilder('p')
+            ->join('p.parent', 'c')
+            ->where('c.id IN (:category_id)')
+            ->setParameter('category_id', $array_id)
+            ->getQuery()->getArrayResult();
+        if ($all_c) {
+            foreach ($all_c as $key => $value) {
+                array_push($array_id, $value['id']);
+            }
+        }
         $product = $manager->getRepository('AppBundle:Product')
             ->createQueryBuilder('p')
             ->join('p.categories', 'c')

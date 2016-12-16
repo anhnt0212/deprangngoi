@@ -191,4 +191,9 @@ $(document).ready(function () {
     {
         $('body,html').animate({ scrollTop: 0 }, 'slow');
     });
+    $('form#frmnewsletter').on('submit',function()
+    {
+        alert('Cảm ơn bạn đã theo dõi thông tin khuyến mãi của chúng tôi !');
+        return false;
+    });
 });

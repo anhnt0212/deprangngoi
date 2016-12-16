@@ -141,7 +141,7 @@ class CardController extends Controller
                     try {   
                         $manager->flush();
                         $session->clear();
-                        $success = "Đặt hàng thành công !";
+                        $success = "Quý khách đã đặt hàng thành công. Chúng tôi sẽ liên lạc lại với Quý khách trong thời gian sớm nhất. Cảm ơn !";
                         $variables['msg'] = $success;
                     } catch (\Exception $ex) {
                         $errors = 'Lỗi hệ thống';

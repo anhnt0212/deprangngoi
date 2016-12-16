@@ -913,6 +913,10 @@ h3.title-category {
         width: 300px;
         height: 250px;
     }
+    .show_result {
+        margin-top: 25px;
+        margin-bottom: 255px;
+    }
 }
 
 @media only screen and (min-width: 1366px) {
