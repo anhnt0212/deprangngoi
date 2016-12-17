@@ -874,7 +874,9 @@ h3.title-category {
 .post-content img {
     max-width: 100% !important;
 }
-
+a.show-ship-img {
+    padding-left: 15px;
+}
 @media (min-width: 1199px)  and (max-width: 1366px) {
     .slide-left,
     .slide-right {
@@ -911,7 +913,7 @@ h3.title-category {
 
     #primateImage {
         width: 300px;
-        height: 250px;
+        min-height: 150px;
     }
     .show_result {
         margin-top: 25px;
@@ -954,6 +956,9 @@ h3.title-category {
 }
 
 @media (max-width: 767px) {
+    .post-content img {
+        height: 200px !important;
+    }
     .page_links {
         text-align: center;
     }
