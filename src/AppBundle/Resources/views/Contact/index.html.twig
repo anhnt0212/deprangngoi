@@ -42,24 +42,24 @@
                     <form role="form" action="#" method="post">
                         <h3 style="margin-bottom: 25px; text-align: center;">TIN NHẮN</h3>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Tên của bạn" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Email"
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email"
                                    required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="mobile" name="mobile"
-                                   placeholder="Mobile Number" required>
+                            <input type="tel" class="form-control" id="mobile" name="mobile"
+                                   placeholder="Số điện thoại" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Tiêu đề"
                                    required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" type="textarea" id="message" placeholder="Message"
+                            <textarea class="form-control" type="textarea" id="message" placeholder="Tin nhắn"
                                       maxlength="140" rows="7"></textarea>
-                            <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
+                            <span class="help-block"><p id="characterLeft" class="help-block ">Bạn vui lòng để lại lời nhắn</p></span>
                         </div>
                         <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Gửi</button>
                     </form>
@@ -81,13 +81,14 @@
         function initMap() {
             var uluru = {lat: 10.837170, lng: 106.688531};
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
+                zoom: 20,
                 center: uluru
             });
             var marker = new google.maps.Marker({
                 position: uluru,
                 map: map
             });
+            var infowindow = new google.maps.InfoWindow();
             marker.addListener('click', function () {
                 map.setZoom(10);
                 infowindow.setContent('Mỹ Phẩm Đẹp Rạng Ngời');
