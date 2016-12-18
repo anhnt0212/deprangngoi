@@ -27,18 +27,6 @@ class ConfigAdmin extends AbstractAdmin
                 'required' => FALSE,
                 'label' =>'Tên'
             ])
-            ->add('value', 'text', [
-                'required' => FALSE,
-                'label' =>'Giá trị'
-            ])
-            ->add('enabled', 'choice', array(
-                'label' => 'Trạng thái',
-                'choices' => array
-                (
-                    '0' => 'Không',
-                    '1' => 'Kích hoạt'
-                ),
-            ))
             ->add('body', 'ckeditor', array(
                 'config' => array(
                     'toolbar' => array(
@@ -59,10 +47,6 @@ class ConfigAdmin extends AbstractAdmin
                 'label' =>'Văn bản'
 
             ))
-            ->add('type', 'number', [
-                'required' => FALSE,
-                'label' =>'Kiểu'
-            ])
             ->end()
             ->end();
     }
@@ -74,7 +58,7 @@ class ConfigAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')->addIdentifier('name')->addIdentifier('enabled');
+        $listMapper->addIdentifier('id')->addIdentifier('name');
     }
     public function prePersist($object) {
         $this->preUpdate($object);

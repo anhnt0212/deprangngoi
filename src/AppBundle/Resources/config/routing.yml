@@ -14,6 +14,18 @@ app_product_detail:
 #    requirements:
 #        slug: "[a-zA-Z0-9\-_–]+"
 
+
+app_product_detail:
+    path:   /chi-tiet-san-pham/{slug}
+    defaults: { _controller: AppBundle:Product:index }
+#    requirements:
+#        slug: "[a-zA-Z0-9\-_–]+"
+app_product_detail2:
+    path:   /{category}/{slug}
+    defaults: { _controller: AppBundle:Product:index }
+#    requirements:
+#        slug: "[a-zA-Z0-9\-_–]+"
+
 app_product_card:
     path:   /gio-hang/chi-tiet
     defaults: { _controller: AppBundle:Card:index }
@@ -67,6 +79,9 @@ app_block_news :
 app_block_banner :
      path:  /render/block/banner
      defaults: { _controller: AppBundle:Base:banner }
+app_block_footer :
+     path:  /render/block/footer
+     defaults: { _controller: AppBundle:Base:footer }
 
 app_card_submit_card :
      path:  /gio-hang/chi-tiet/dat-hang

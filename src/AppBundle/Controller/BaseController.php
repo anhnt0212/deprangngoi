@@ -103,4 +103,19 @@ class BaseController extends Controller
         );
         return $this->render('AppBundle:Block:banner.html.twig', $variables);
     }
+    public function footerAction()
+    {
+        $variables = [];
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->getRepository('AppBundle:Config')->createQueryBuilder('ad');
+        $footer = $qb->getQuery()->setMaxResults(2)->getResult();
+        if($footer){
+            $variables = array
+            (
+                'contact' => $footer[0],
+                'facebook'=>$footer[1]
+            );
+        }
+        return $this->render('AppBundle:Block:footer.html.twig', $variables);
+    }
 }

@@ -93,7 +93,7 @@
                                     <div class="caption">
                                         <a href="{{ path('app_product_detail',{'slug':item.alias }) }}"
                                            title="{{ item.name }}"><h4
-                                                    class="text-left product-title">{{ characterLimit(item.name) }}</h4>
+                                                    class="text-left product-title">{{ characterLimit(item.name,60) }}</h4>
                                         </a>
 
                                         <p class="group inner list-group-item-text product-description">
