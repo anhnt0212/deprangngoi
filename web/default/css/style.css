@@ -877,6 +877,36 @@ h3.title-category {
 a.show-ship-img {
     padding-left: 15px;
 }
+
+#back-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background:#e02c92;
+    color: #444;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+}
+#back-to-top:hover {
+    background: #e9ebec;
+}
+#back-to-top.show {
+    opacity: 1;
+}
+#content-top {
+    height: 2000px;
+}
+
+
 @media (min-width: 1199px)  and (max-width: 1366px) {
     .slide-left,
     .slide-right {

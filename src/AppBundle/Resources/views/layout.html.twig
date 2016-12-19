@@ -36,11 +36,12 @@
     <script type="text/javascript" src="{{ asset('default/js/jquery.zoom.min.js') }}"></script>
 </head>
 <body>
-<div id="goTop" class="gotoppage"><img src="{{ asset('default/images/icon-back.png') }}" alt="Len dau trang"></div>
 {% block adv %}
     {{ render(url('app_block_banner')) }}
 {% endblock %}
 <div class="container" id="main">
+    <div id="content-top">Đầu trang &darr;</div>
+    <a href="#" id="back-to-top" title="Lên đầu trang">&uarr;</a>
     {% block nav_bar %}
         {{ render(url('app_block_menu')) }}
     {% endblock %}
@@ -102,17 +103,17 @@
     <input type="hidden" name="base_url" value="{{ app.request.getSchemeAndHttpHost() }}">
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
         (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/580ee450e808d60cd07266ea/default';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/580ee450e808d60cd07266ea/default';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
     </script>
-    <!--End of Tawk.to Script-->
+    {#<!--End of Tawk.to Script-->#}
 {% endblock %}
 {% block app_js %}
     <script type="text/javascript" src="{{ asset('default/js/bootstrap.min.js') }}"></script>
