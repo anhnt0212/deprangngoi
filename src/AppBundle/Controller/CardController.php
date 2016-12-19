@@ -62,12 +62,12 @@ class CardController extends Controller
                 $data['items'] = $card;
                 $priceTotal = $this->getTotal($card);
                 $data['priceTotal'] = $priceTotal;
-                return $this->redirectToRoute('app_product_card', array(), 301);
+                return $this->redirectToRoute('app_product_card', array('slug'=>'dat-hang'), 301);
             } elseif (!is_null($card)) {
                 $priceTotal = $this->getTotal($card);
                 $data['priceTotal'] = $priceTotal;
                 $data['items'] = $card;
-                return $this->redirectToRoute('app_product_card', array(), 301);
+                return $this->redirectToRoute('app_product_card', array('slug'=>'dat-hang'), 301);
             } else {
                 return $this->redirectToRoute('app_homepage', array(), 301);
             }
@@ -178,6 +178,6 @@ class CardController extends Controller
         } else {
             return new Response(json_encode($variables));
         }
-        return $this->redirectToRoute('app_product_card', array(), 301);
+        return $this->redirectToRoute('app_product_card', array('slug'=>'dat-hang'), 301);
     }
 }

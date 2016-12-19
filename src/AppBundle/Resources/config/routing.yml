@@ -2,41 +2,6 @@ app_homepage:
     path:     /
     defaults: { _controller: AppBundle:Home:index }
 
-
-app_category:
-    path:   /danh-muc/{alias}
-    defaults: { _controller: AppBundle:Category:index }
-    requirements:
-        alias: "[a-zA-Z0-9\-_–]+"
-app_product_detail:
-    path:   /chi-tiet-san-pham/{slug}
-    defaults: { _controller: AppBundle:Product:index }
-#    requirements:
-#        slug: "[a-zA-Z0-9\-_–]+"
-
-
-app_product_detail:
-    path:   /chi-tiet-san-pham/{slug}
-    defaults: { _controller: AppBundle:Product:index }
-#    requirements:
-#        slug: "[a-zA-Z0-9\-_–]+"
-app_product_detail2:
-    path:   /{category}/{slug}
-    defaults: { _controller: AppBundle:Product:index }
-#    requirements:
-#        slug: "[a-zA-Z0-9\-_–]+"
-
-app_product_card:
-    path:   /gio-hang/chi-tiet
-    defaults: { _controller: AppBundle:Card:index }
-app_product_card_edit:
-    path:   /gio-hang/chi-tiet/sua-don-hang
-    defaults: { _controller: AppBundle:Card:edit }
-
-app_list_product_hot :
-        path:   /san-pham-ban-chay
-        defaults: { _controller: AppBundle:Product:index }
-
 app_list_product_trademark:
         path:   /san-pham/thuong-hieu
         defaults: { _controller: AppBundle:Category:index}
@@ -51,6 +16,66 @@ app_list_new_detail:
     requirements:
         alias: "[a-zA-Z0-9\-_–]+"
 
+app_list_product_hot :
+        path:   /san-pham-ban-chay
+        defaults: { _controller: AppBundle:Product:index }
+app_product_card_edit:
+    path:   /gio-hang/chi-tiet/sua-don-hang
+    defaults: { _controller: AppBundle:Card:edit }
+
+app_block_search :
+     path:  /render/block/search/12/19/2016
+     defaults: { _controller: AppBundle:Base:search }
+
+app_block_menu :
+     path:  /render/block/menu/12/19/2016
+     defaults: { _controller: AppBundle:Base:menu }
+
+#block
+app_block_slider :
+     path:  /render/block/slider/12/19/2016
+     defaults: { _controller: AppBundle:Base:slider }
+
+app_block_news :
+     path:  /render/block/news/12/19/2016
+     defaults: { _controller: AppBundle:Base:news }
+
+app_block_banner :
+     path:  /render/block/banner/12/19/2016
+     defaults: { _controller: AppBundle:Base:banner }
+app_block_footer :
+     path:  /render/block/footer/12/19/2016
+     defaults: { _controller: AppBundle:Base:footer }
+#endblock
+#category
+app_category:
+    path:   /danh-muc/{alias}
+    defaults: { _controller: AppBundle:Category:index }
+    requirements:
+        alias: "[a-zA-Z0-9\-_–]+"
+#endcategory
+#product
+app_product_detail:
+    path:   /chi-tiet-san-pham/{slug}
+    defaults: { _controller: AppBundle:Product:index }
+    requirements:
+        slug: "[a-zA-Z0-9\-_–]+"
+
+app_product_detail_2:
+    path:   /{category}/{slug}
+    defaults: { _controller: AppBundle:Product:index }
+    requirements:
+        slug: "[a-zA-Z0-9\-_–]+"
+        category: "[a-zA-Z0-9\-_–]+"
+
+app_product_card:
+    path:   /gio-hang/chi-tiet/{slug}
+    defaults: { _controller: AppBundle:Card:index }
+    requirements:
+        slug: "dat-hang"
+
+#endproduct
+
 app_contact:
     path:  /lien-he/thong-tin/thong-tin-len-he
     defaults: { _controller: AppBundle:Contact:index }
@@ -59,34 +84,11 @@ app_form_search :
      path:  /tim-kiem
      defaults: { _controller: AppBundle:Product:search }
 
-
-app_block_search :
-     path:  /render/block/search
-     defaults: { _controller: AppBundle:Base:search }
-
-app_block_menu :
-     path:  /render/block/menu
-     defaults: { _controller: AppBundle:Base:menu }
-
-app_block_slider :
-     path:  /render/block/slider
-     defaults: { _controller: AppBundle:Base:slider }
-
-app_block_news :
-     path:  /render/block/news
-     defaults: { _controller: AppBundle:Base:news }
-
-app_block_banner :
-     path:  /render/block/banner
-     defaults: { _controller: AppBundle:Base:banner }
-app_block_footer :
-     path:  /render/block/footer
-     defaults: { _controller: AppBundle:Base:footer }
-
 app_card_submit_card :
-     path:  /gio-hang/chi-tiet/dat-hang
+     path:  /gio-hang/chi-tiet/dat-hang/{url}
      defaults: { _controller: AppBundle:Card:submit }
-
+     requirements:
+        url: "thanh-toan"
 
 #ajax
 

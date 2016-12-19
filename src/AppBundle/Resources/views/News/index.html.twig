@@ -27,7 +27,7 @@
                             </a>
                         </div>
                         <div class="data">
-                            <p>{{ item.description }}</p>
+                            <p>{{ item.description|raw }}</p>
                             <span><a href="{{ path('app_list_new_detail',{'alias':item.alias}) }}">Chi tiết &gt;&gt;&gt;</a></span>
                         </div>
                         <div class="clear"></div>
