@@ -1,9 +1,9 @@
 parameters:
-    database_host: jobzrefer.com
+    database_host: 112.78.2.119
     database_port: 3306
     database_name: dep71282_drg
-    database_user: root
-    database_password: jobz
+    database_user: dep71282_anhnt
+    database_password: H*y{50OEGH5~
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
