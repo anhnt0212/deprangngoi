@@ -345,7 +345,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-image img {
-    padding: 25px;
+    padding: 1px;
 }
 
 #gallery_01 {
@@ -940,11 +940,15 @@ a.show-ship-img {
 
     #primateImage {
         width: 300px;
-        min-height: 150px;
+        height: 275px;
     }
     .show_result {
         margin-top: 25px;
         margin-bottom: 255px;
+    }
+    #zoomImg {
+        width: 300px !important;
+        min-height: 250px !important;
     }
 }
 
