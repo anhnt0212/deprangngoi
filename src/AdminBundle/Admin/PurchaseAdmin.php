@@ -15,6 +15,11 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class PurchaseAdmin extends AbstractAdmin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
