@@ -34,6 +34,7 @@ var App = {
         }
 
         var slideLeftInterval, slideRightInterval;
+
         function checkSlide() {
             var slideLeft = $("#slide-left");
             var slideRight = $("#slide-right");
@@ -126,32 +127,32 @@ var App = {
     changePrice: function () {
         var shipPrice = parseFloat($('select[name="dist_trans"]').find(":selected").val());
         var productTotal = parseFloat($('input[name="priceTotal"]').val());
-        var total = parseFloat(shipPrice+productTotal);
-        $('#shipPrice').text((shipPrice.format())+'VNĐ');
-        $('#total').text((total.format())+'VNĐ');
+        var total = parseFloat(shipPrice + productTotal);
+        $('#shipPrice').text((shipPrice.format()) + 'VNĐ');
+        $('#total').text((total.format()) + 'VNĐ');
         $('input[name="totalCard"]').val(total);
         $('input[name="shipPrice"]').val(shipPrice);
     },
-    changeQuantity : function () {
+    changeQuantity: function () {
         $('input[class="product-quantity"]').change(function () {
             var quantity = parseInt($(this).val());
             var oldQuantity = parseInt($(this).data('quantityold'));
             console.log(quantity);
-            if(isNaN(quantity)){
+            if (isNaN(quantity)) {
                 alert('Bạn không thể thực hiện thao tác này');
                 $(this).val(oldQuantity);
                 return false;
             }
             var productId = $(this).data('productid');
             var productPrice = $(this).data('productprice');
-            var newTotalProduct = parseFloat(productPrice*quantity);
-            $('#subtotal-'+productId).text((newTotalProduct.format())+'VNĐ');
-            var oldTotalProduct = parseFloat(productPrice*oldQuantity);
+            var newTotalProduct = parseFloat(productPrice * quantity);
+            $('#subtotal-' + productId).text((newTotalProduct.format()) + 'VNĐ');
+            var oldTotalProduct = parseFloat(productPrice * oldQuantity);
             var oldSubTotalAll = parseFloat($('input[name="priceTotal"]').val());
-            var newSubAllTotal = parseFloat(oldSubTotalAll +  newTotalProduct - oldTotalProduct);
+            var newSubAllTotal = parseFloat(oldSubTotalAll + newTotalProduct - oldTotalProduct);
             $('input[name="priceTotal"]').val(newSubAllTotal);
-            $('span[id="subtotal"]').text((newSubAllTotal.format())+'VNĐ');
-            $(this).data('quantityold',quantity);
+            $('span[id="subtotal"]').text((newSubAllTotal.format()) + 'VNĐ');
+            $(this).data('quantityold', quantity);
             App.changePrice();
         });
     }
@@ -203,9 +204,32 @@ $(document).ready(function () {
             }, 700);
         });
     }
-    $('form#frmnewsletter').on('submit',function()
-    {
+    $('form#frmnewsletter').on('submit', function () {
         alert('Cảm ơn bạn đã theo dõi thông tin khuyến mãi của chúng tôi !');
         return false;
+    });
+    $('form#ProductCartupdateForm').on('submit', function () {
+        var email = $('input[name="email"]').val();
+        console.log(email);
+        var phone = $('input[name="phone"]').val();
+        console.log(phone);
+        var address = $('input[name="address"]').val();
+        console.log(address);
+        if (email == '') {
+            alert('Email không được để trống');
+            return false;
+        } else {
+            if (phone == '') {
+                alert('Số điện thoại không được để trống');
+                return false;
+            } else {
+                if (address == '') {
+                    alert('Địa chỉ không được để trống');
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
     });
 });
