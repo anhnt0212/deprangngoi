@@ -32,6 +32,9 @@ class ProductController extends Controller
             ->join('p.products', 'c')
             ->where("c.id = " . $product->getId())
             ->getQuery()->getArrayResult();
+        if (is_null($category)) {
+            return $this->redirectToRoute('app_homepage', array(), 301);
+        }
         $productLike = $manager->getRepository('AppBundle:Product')
             ->createQueryBuilder('p')
             ->join('p.categories', 'c')
