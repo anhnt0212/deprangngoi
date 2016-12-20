@@ -49,9 +49,7 @@ class ProductController extends Controller
         $product = $manager->getRepository('AppBundle:Product')->createQueryBuilder('p');
         $like = "%" . mb_strtolower(trim(strip_tags($this->stripUnicode($keyword)))) . "%";
         $product->where("LOWER(p.name) LIKE :like")
-            ->orWhere("LOWER(p.description) LIKE :like")
-            ->orWhere("LOWER(p.typeName) LIKE :like")
-            ->orWhere("LOWER(p.trademark) LIKE :like");
+            ->orWhere("LOWER(p.metaKeyword) LIKE :like");
         $result = $product->setParameter('like', $like)->orderBy('p.updatedAt', 'DESC')->getQuery()->getResult();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($result, $request->query->getInt('page', 1), 15);
