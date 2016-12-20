@@ -389,10 +389,6 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 40px;
     padding-right: 0;
     padding-bottom: 20px;
-    padding-left: 25px;
-    /*	border-top-width: 4px;
-        border-top-style: solid;
-        border-top-color: #003;*/
     max-width: 1025px;
     margin-left: auto;
     margin-right: auto;
@@ -949,6 +945,10 @@ a.show-ship-img {
     #zoomImg {
         width: 300px !important;
         min-height: 250px !important;
+    }
+    .footer {
+
+        padding-left: 25px;
     }
 }
 
