@@ -22,24 +22,24 @@ class PurchaseAdmin extends AbstractAdmin
                 'class' => 'col-md-8',
                 'box_class' => 'box'
             ))
-            ->add('purchaseNo', 'text', ['label' => 'Mã đơn hàng'])
-            ->add('deliveryDate', 'sonata_type_date_picker', array(
-                'label' => 'Ngày Giao',
-                'format' => 'yyyy/MM/dd',
-                'required' => FALSE
-            ))
-            ->add('createdAt', 'sonata_type_date_picker', array(
-                'label' => 'Tạo Ngày',
-                'format' => 'yyyy/MM/dd',
-                'required' => FALSE
-            ))
-            ->add('deliveryHour', 'time', array(
-                'label' => 'Giờ Giao',
-                'required' => FALSE
-            ))
+//            ->add('purchaseNo', 'text', ['label' => 'Mã đơn hàng'])
+//            ->add('deliveryDate', 'sonata_type_date_picker', array(
+//                'label' => 'Ngày Giao',
+//                'format' => 'yyyy/MM/dd',
+//                'required' => FALSE
+//            ))
+//            ->add('createdAt', 'sonata_type_date_picker', array(
+//                'label' => 'Tạo Ngày',
+//                'format' => 'yyyy/MM/dd',
+//                'required' => FALSE
+//            ))
+//            ->add('deliveryHour', 'time', array(
+//                'label' => 'Giờ Giao',
+//                'required' => FALSE
+//            ))
             ->add('customerName', 'text', ['label' => 'Tên khách hàng'])
             ->add('customerPhone', 'text', ['label' => 'SĐT khách hàng'])
-            ->add('customerEmail', 'email', ['label' => 'Email khách hàng'])
+//            ->add('customerEmail', 'email', ['label' => 'Email khách hàng'])
             ->add('customerAddress', 'text', ['label' => 'Địa chỉ khách hàng'])
             ->add('customerDescription', 'ckeditor', array(
                 'config' => array(
@@ -58,7 +58,7 @@ class PurchaseAdmin extends AbstractAdmin
                     ),
                     'uiColor' => '#ffffff'
                 ),
-                'label' => 'Mô tả'
+                'label' => 'Ghi chú thêm'
             ))
             ->add('totalPrice', 'number', ['label' => 'Số tiền đơn hàng', 'required' => FALSE, 'attr' => array()])
             ->add('shipPrice', 'number', ['label' => 'Tiền Ship', 'required' => FALSE, 'attr' => array()])
@@ -68,11 +68,11 @@ class PurchaseAdmin extends AbstractAdmin
             ->add('purchasedItems', 'sonata_type_collection',
                 array('btn_add' => false,
                 'by_reference' => false,
+                'label' => 'Chi tiết hoá đơn',
                 'type_options' => array('delete' => false, 'btn_add' => false))
                 ,array(
                 'edit' => 'inline',
                 'inline' => 'class',
-                'label' => false,
                 'required' => FALSE,
                 )
             )
@@ -87,7 +87,7 @@ class PurchaseAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id')->addIdentifier('purchaseNo')->addIdentifier('customerName')->addIdentifier('customerPhone')->addIdentifier('customerEmail');
+        $listMapper->addIdentifier('id')->addIdentifier('customerName')->addIdentifier('customerPhone')->addIdentifier('customerEmail')->addIdentifier('createdAt');
     }
 
     public function prePersist($object)

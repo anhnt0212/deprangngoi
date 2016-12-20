@@ -47,11 +47,12 @@ sonata_admin:
           blocks:
 
           groups:
-              jobz.admin.group.user:
-                  label: Quản lý tài khoản
-                  icon:  '<i class="fa fa-user-md"></i>'
-                  items:
-                          - jobz_admin.user
+              sonata.admin.group.purchase:
+                   label:           Quản lý đơn hàng
+                   icon:            '<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>'
+                   items:
+                       - jobz_admin.purchase
+#                       - jobz_admin.purchase_item
               jobz.admin.group.post:
                   label: Bài viết
                   icon:  '<i class="fa fa-caret-square-o-up"></i>'
@@ -88,12 +89,11 @@ sonata_admin:
                    icon:            '<i class="fa fa-car" aria-hidden="true"></i>'
                    items:
                        - jobz_admin.transport
-              sonata.admin.group.purchase:
-                   label:           Quản lý đơn hàng
-                   icon:            '<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>'
-                   items:
-                       - jobz_admin.purchase
-#                       - jobz_admin.purchase_item
+              jobz.admin.group.user:
+                  label: Quản lý tài khoản
+                  icon:  '<i class="fa fa-user-md"></i>'
+                  items:
+                          - jobz_admin.user
     templates:
         user_block:           'SonataAdminBundle:Core:user_block.html.twig'
         add_block:            'SonataAdminBundle:Core:add_block.html.twig'

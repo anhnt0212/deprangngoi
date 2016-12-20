@@ -102,10 +102,11 @@ class ProductAdmin extends AbstractAdmin
             ->with('SEO', array('class' => 'col-sm-4'))
             ->add('alias', 'text', [
                 'required' => true,
+                'label'=>'Link thân thiện',
                 'attr' => array('class' => 'alias'),
             ])
-            ->add('metaDescription', 'text', ['required' => FALSE])
-            ->add('metaKeyword', 'text', ['required' => FALSE])
+            ->add('metaDescription', 'text', ['required' => FALSE,'label'=>'Mô tả'])
+            ->add('metaKeyword', 'text', ['required' => FALSE,'label'=>'Từ khoá'])
             ->add('inSale', 'choice', array(
                 'label' => 'Khuyến Mãi',
                 'required' => FALSE,
