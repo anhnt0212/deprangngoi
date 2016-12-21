@@ -234,6 +234,7 @@ class Product
     public function __construct()
     {
         $this->updatedAt = new \DateTime('now');
+        $this->createdAt = new \DateTime('now');
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->purchasedItems = new \Doctrine\Common\Collections\ArrayCollection();
     }
