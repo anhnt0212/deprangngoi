@@ -1019,7 +1019,8 @@ a.show-ship-img {
     }
 
     .product-content-post .product-info {
-        padding-left: 25px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
     }
 
     .box-breadcrumb {
