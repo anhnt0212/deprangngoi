@@ -83,8 +83,8 @@ class ProductAdmin extends AbstractAdmin
                 'label' => 'Trạng thái',
                 'choices' => array
                 (
-                    '0' => 'Đang ẩn',
-                    '1' => 'Đang bày bán'
+                    '1' => 'Đang bày bán',
+                    '0' => 'Đang ẩn'
                 ),
             ))
 
