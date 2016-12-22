@@ -36,7 +36,7 @@
                             {% if item.product.imageFeature == null %}
                                 <img src="{{ item.product.image }}" class="px60 img-responsive" alt="{{ item.product.name }}">
                             {% else %}
-                                <img src="/uploads/media/product/0001/01/thumb_{{item.product.imageFeature.id}}_product_image_content.jpeg" class="px60 img-responsive"
+                                <img src="/uploads/media/product/0001/01/thumb_{{item.product.imageFeature.id}}_product_image_content.jpeg" onerror="this.src='/uploads/media/product/0001/01/thumb_{{item.product.imageFeature.id}}_product_image_content.png'" class="px60 img-responsive"
                                      alt="{{ item.product.name }}">
                             {% endif %}
                         </div>
