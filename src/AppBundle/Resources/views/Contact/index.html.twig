@@ -13,24 +13,9 @@
             <div class="col-md-6">
                 <h3 style="margin-bottom: 25px; text-align: center;">ĐỊA CHỈ LIÊN HỆ</h3>
                 <div class="contact">
-                    <p><strong>Địa Chỉ:</strong>&nbsp;394 Dương Quảng Hàm, phường 5, Quân Gò Vấp, Tp.HCM</p>
-
-                    <p><strong>Hotline:</strong>&nbsp; <span
-                                style="color:rgb(45, 45, 45); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:11.8999996185303px">0938.367.123 (Zalo)</span>
-                    </p>
-
-                    <p><strong>Tel:</strong>&nbsp;&nbsp;<span
-                                style="color:rgb(45, 45, 45); font-family:helvetica neue,helvetica,arial,sans-serif; font-size:11.8999996185303px">0971.319.345</span>
-                    </p>
-
-                    <p><strong>Email:&nbsp;</strong><a href="mailto:deprangngoi.vn@gmail.com"
-                                                       style="color: rgb(0, 136, 204); text-decoration: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11.8999996185303px; line-height: 20px;"
-                                                       title="Gửi mail đến Đẹp Rạng Ngời">deprangngoi.vn@gmail.com</a>
-                    </p>
-
-                    <p><strong>Website:</strong>&nbsp;<a href="http://deprangngoi.vn"
-                                                         style="color: rgb(0, 136, 204); text-decoration: none; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11.8999996185303px; line-height: 20px;"
-                                                         title="Gửi mail đến Đẹp Rạng Ngời">deprangngoi.vn</a></p>
+                    {% if(contact) %}
+                        {{ contact.body|raw }}
+                    {% endif %}
                 </div>
                 <br>
                 <div class="map">
