@@ -86,6 +86,7 @@ class ProductAdmin extends AbstractAdmin
                     '1' => 'Đang bày bán',
                     '0' => 'Đang ẩn'
                 ),
+                'data' => 1
             ))
 
             ->add('createdAt', 'sonata_type_date_picker', array(
