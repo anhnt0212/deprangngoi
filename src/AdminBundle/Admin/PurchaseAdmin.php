@@ -24,7 +24,7 @@ class PurchaseAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Chi tiết', array(
-                'class' => 'col-md-8',
+                'class' => 'col-md-4',
                 'box_class' => 'box'
             ))
 //            ->add('purchaseNo', 'text', ['label' => 'Mã đơn hàng'])
@@ -65,22 +65,22 @@ class PurchaseAdmin extends AbstractAdmin
                 ),
                 'label' => 'Ghi chú thêm'
             ))
+            ->end()
+            ->with('Chi tiết đơn hàng', array('class' => 'col-sm-8'))
+            ->add('purchasedItems', 'sonata_type_collection',
+                array('btn_add' => false,
+                    'by_reference' => false,
+                    'label' => 'Chi tiết hoá đơn',
+                    'type_options' => array('delete' => false, 'btn_add' => false))
+                ,array(
+                    'edit' => 'inline',
+                    'inline' => 'class',
+                    'required' => FALSE,
+                )
+            )
             ->add('totalPrice', 'number', ['label' => 'Số tiền đơn hàng', 'required' => FALSE, 'attr' => array()])
             ->add('shipPrice', 'number', ['label' => 'Tiền Ship', 'required' => FALSE, 'attr' => array()])
             ->add('totalAll', 'number', ['label' => 'Tổng số tiền', 'required' => FALSE, 'attr' => array()])
-            ->end()
-            ->with('Chi tiết đơn hàng', array('class' => 'col-sm-4'))
-            ->add('purchasedItems', 'sonata_type_collection',
-                array('btn_add' => false,
-                'by_reference' => false,
-                'label' => 'Chi tiết hoá đơn',
-                'type_options' => array('delete' => false, 'btn_add' => false))
-                ,array(
-                'edit' => 'inline',
-                'inline' => 'class',
-                'required' => FALSE,
-                )
-            )
             ->end()
             ->end();
     }
